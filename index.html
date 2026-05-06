@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Trading Command Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#030712; --bg2:#0d1117; --bg3:#161b22; --border:#21262d;
+  --green:#00ff88; --red:#ff4757; --yellow:#ffd700; --orange:#ff8c00;
+  --blue:#58a6ff; --text:#e6edf3; --muted:#7d8590;
+  --glow-g:0 0 20px rgba(0,255,136,0.3); --glow-r:0 0 20px rgba(255,71,87,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(0,255,136,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,136,0.03) 1px,transparent 1px);
+  background-size:40px 40px;pointer-events:none;z-index:0;}
+.wrapper{position:relative;z-index:1;padding:20px;max-width:1600px;margin:0 auto;}
+
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;border:1px solid var(--border);background:rgba(13,17,23,0.9);
+  backdrop-filter:blur(10px);margin-bottom:20px;border-radius:4px;
+  position:sticky;top:20px;z-index:100;}
+.logo{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;
+  letter-spacing:3px;color:var(--green);text-shadow:var(--glow-g);
+  display:flex;align-items:center;gap:10px;}
+.logo-icon{animation:spin 4s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.status-bar{display:flex;align-items:center;gap:20px;font-family:'Share Tech Mono',monospace;font-size:0.75rem;}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);
+  box-shadow:var(--glow-g);animation:pulse 2s ease-in-out infinite;}
+.dot.off{background:var(--red);box-shadow:var(--glow-r);animation:none;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+#clock{color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:0.8rem;}
+.sim-badge{background:rgba(255,215,0,0.1);border:1px solid var(--yellow);
+  color:var(--yellow);padding:2px 10px;border-radius:2px;
+  font-size:0.65rem;letter-spacing:2px;font-family:'Orbitron',monospace;}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);
+  padding:20px 24px;border-radius:4px;position:relative;overflow:hidden;transition:border-color 0.3s;}
+.stat-card:hover{border-color:var(--green);}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0.5;}
+.stat-label{font-size:0.65rem;letter-spacing:2px;color:var(--muted);
+  text-transform:uppercase;margin-bottom:8px;font-family:'Orbitron',monospace;}
+.stat-value{font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;line-height:1;}
+.stat-sub{font-size:0.75rem;color:var(--muted);margin-top:4px;font-family:'Share Tech Mono',monospace;}
+.pos{color:var(--green);text-shadow:var(--glow-g);}
+.neg{color:var(--red);text-shadow:var(--glow-r);}
+.neu{color:var(--text);}
+.yel{color:var(--yellow);}
+
+/* ── MARKET CONTEXT ROW ── */
+.context-row{display:grid;grid-template-columns:1fr 1fr 2fr;gap:16px;margin-bottom:16px;}
+
+.ctx-card{background:var(--bg2);border:1px solid var(--border);
+  border-radius:4px;padding:16px 20px;position:relative;overflow:hidden;}
+.ctx-title{font-family:'Orbitron',monospace;font-size:0.62rem;
+  letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:12px;}
+
+/* Fear & Greed gauge */
+.fg-wrap{display:flex;align-items:center;gap:16px;}
+.fg-score{font-family:'Orbitron',monospace;font-size:2.2rem;font-weight:900;line-height:1;}
+.fg-info{flex:1;}
+.fg-label{font-size:0.8rem;font-weight:600;margin-bottom:4px;}
+.fg-bar-wrap{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:6px;}
+.fg-bar{height:100%;border-radius:3px;transition:width 1s ease,background 1s ease;}
+.fg-advice{font-size:0.7rem;color:var(--muted);font-family:'Share Tech Mono',monospace;}
+.fg-filter{font-size:0.65rem;margin-top:4px;font-family:'Share Tech Mono',monospace;}
+
+/* BTC Dominance */
+.dom-wrap{display:flex;align-items:center;gap:16px;}
+.dom-pct{font-family:'Orbitron',monospace;font-size:2.2rem;font-weight:900;color:var(--orange);}
+.dom-info{flex:1;}
+.dom-signal{font-size:0.8rem;font-weight:600;color:var(--orange);margin-bottom:4px;}
+.dom-bar-wrap{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:6px;}
+.dom-bar{height:100%;background:linear-gradient(90deg,var(--green),var(--orange),var(--red));
+  border-radius:3px;transition:width 1s ease;}
+.dom-advice{font-size:0.7rem;color:var(--muted);font-family:'Share Tech Mono',monospace;}
+
+/* AI Decision */
+.ai-decision-wrap{display:flex;flex-direction:column;gap:8px;}
+.ai-dec-badge{display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:3px;font-family:'Orbitron',monospace;
+  font-size:0.75rem;letter-spacing:1px;width:fit-content;}
+.ai-dec-badge.wait{background:rgba(125,133,144,0.1);border:1px solid var(--muted);color:var(--muted);}
+.ai-dec-badge.trade{background:rgba(0,255,136,0.1);border:1px solid var(--green);color:var(--green);}
+.ai-dec-reason{font-size:0.72rem;color:var(--muted);font-family:'Share Tech Mono',monospace;
+  line-height:1.5;max-height:60px;overflow:hidden;}
+
+/* LAYOUT */
+.main-grid{display:grid;grid-template-columns:1fr 360px;gap:20px;}
+.left-col{display:flex;flex-direction:column;gap:20px;}
+.sidebar{display:flex;flex-direction:column;gap:16px;}
+
+/* PANEL */
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.panel-header{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.panel-title{font-family:'Orbitron',monospace;font-size:0.7rem;letter-spacing:3px;color:var(--green);}
+.badge{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);
+  color:var(--green);padding:2px 8px;border-radius:2px;
+  font-size:0.65rem;font-family:'Share Tech Mono',monospace;}
+
+/* TRADE CARDS */
+.trade-card{margin:16px;border:1px solid var(--border);border-radius:4px;
+  overflow:hidden;transition:all 0.3s;}
+.trade-card:hover{border-color:var(--green);transform:translateY(-1px);
+  box-shadow:0 4px 20px rgba(0,255,136,0.1);}
+.trade-card.short:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(255,71,87,0.1);}
+.trade-head{display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;background:var(--bg3);}
+.trade-symbol{font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;}
+.dir-badge{padding:3px 10px;border-radius:2px;font-size:0.65rem;
+  font-family:'Orbitron',monospace;letter-spacing:2px;}
+.long-badge{background:rgba(0,255,136,0.15);border:1px solid var(--green);color:var(--green);}
+.short-badge{background:rgba(255,71,87,0.15);border:1px solid var(--red);color:var(--red);}
+.type-badge{padding:2px 8px;border-radius:2px;font-size:0.6rem;
+  font-family:'Share Tech Mono',monospace;background:rgba(88,166,255,0.1);
+  border:1px solid rgba(88,166,255,0.3);color:var(--blue);}
+.trade-body{padding:14px 16px;}
+.trade-row{display:flex;justify-content:space-between;align-items:center;
+  padding:5px 0;font-size:0.8rem;border-bottom:1px solid rgba(33,38,45,0.5);}
+.trade-row:last-child{border-bottom:none;}
+.trade-key{color:var(--muted);font-size:0.7rem;letter-spacing:1px;text-transform:uppercase;}
+.trade-val{font-family:'Share Tech Mono',monospace;font-size:0.8rem;}
+.pnl-bar{height:3px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden;}
+.pnl-fill{height:100%;border-radius:2px;transition:width 1s ease;}
+
+/* TABLE */
+.trades-table{width:100%;border-collapse:collapse;}
+.trades-table th{padding:10px 16px;text-align:left;font-size:0.62rem;letter-spacing:2px;
+  color:var(--muted);font-family:'Orbitron',monospace;
+  background:var(--bg3);border-bottom:1px solid var(--border);}
+.trades-table td{padding:10px 16px;font-size:0.78rem;
+  font-family:'Share Tech Mono',monospace;border-bottom:1px solid rgba(33,38,45,0.5);}
+.trades-table tr:hover td{background:rgba(255,255,255,0.02);}
+
+/* CHART */
+#equity-chart{width:100%;height:200px;padding:16px;display:block;}
+
+/* WIN RING */
+.ring-wrap{display:flex;justify-content:center;padding:20px;}
+.win-ring{position:relative;width:120px;height:120px;}
+.win-ring svg{transform:rotate(-90deg);}
+.ring-bg{fill:none;stroke:var(--border);stroke-width:8;}
+.ring-fg{fill:none;stroke:var(--green);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1s ease;}
+.ring-label{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-family:'Orbitron',monospace;}
+.ring-pct{font-size:1.4rem;font-weight:900;color:var(--green);}
+.ring-sub{font-size:0.55rem;color:var(--muted);letter-spacing:2px;}
+
+/* MINI STATS */
+.mini-stat{display:flex;justify-content:space-between;align-items:center;
+  padding:10px 16px;border-bottom:1px solid rgba(33,38,45,0.5);font-size:0.8rem;}
+.mini-stat:last-child{border-bottom:none;}
+.mini-key{color:var(--muted);font-size:0.68rem;letter-spacing:1px;text-transform:uppercase;}
+.mini-val{font-family:'Share Tech Mono',monospace;}
+
+/* LOG */
+.ai-log{padding:16px;max-height:260px;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.log-entry{display:flex;gap:10px;padding:8px 0;
+  border-bottom:1px solid rgba(33,38,45,0.5);font-size:0.75rem;animation:fadeIn 0.4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1}}
+.log-time{color:var(--muted);font-family:'Share Tech Mono',monospace;white-space:nowrap;min-width:60px;}
+
+/* SCAN TICKER */
+.scan-ticker{padding:12px 20px;font-family:'Share Tech Mono',monospace;font-size:0.72rem;
+  color:var(--muted);display:flex;align-items:center;gap:8px;border-top:1px solid var(--border);}
+.blink{animation:blink 1s step-end infinite;color:var(--green);}
+@keyframes blink{50%{opacity:0}}
+
+/* EMPTY */
+.empty-state{display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:40px;color:var(--muted);gap:12px;}
+.empty-icon{font-size:2.5rem;opacity:0.4;}
+.empty-text{font-size:0.8rem;letter-spacing:1px;text-align:center;}
+
+/* CONN BANNER */
+#conn-banner{display:none;background:rgba(255,71,87,0.1);border:1px solid var(--red);
+  color:var(--red);padding:12px 20px;border-radius:4px;margin-bottom:16px;
+  font-family:'Share Tech Mono',monospace;font-size:0.8rem;text-align:center;}
+
+@media(max-width:1100px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .context-row{grid-template-columns:1fr 1fr;}
+  .main-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .context-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div id="conn-banner">
+    ⚠️ Cannot connect to bot. Make sure <strong>python api_server.py</strong> is running.
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><span class="logo-icon">◈</span> AI TRADING COMMAND CENTER</div>
+    <div class="status-bar">
+      <div class="sim-badge">SIMULATION</div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <div class="dot off" id="conn-dot"></div>
+        <span id="conn-text" style="color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:0.75rem">CONNECTING...</span>
+      </div>
+      <div id="clock">--:--:--</div>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Initial Capital</div>
+      <div class="stat-value neu" id="s-initial">$500.00</div>
+      <div class="stat-sub">USDT · Simulation</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Current Balance</div>
+      <div class="stat-value neu" id="s-balance">$500.00</div>
+      <div class="stat-sub" id="s-return">+0.00%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Profit / Loss</div>
+      <div class="stat-value neu" id="s-profit">+$0.00</div>
+      <div class="stat-sub" id="s-closed">0 closed trades</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Active Positions</div>
+      <div class="stat-value yel" id="s-open">0</div>
+      <div class="stat-sub">of 2 max slots</div>
+    </div>
+  </div>
+
+  <!-- MARKET CONTEXT ROW -->
+  <div class="context-row">
+
+    <!-- FEAR & GREED -->
+    <div class="ctx-card">
+      <div class="ctx-title">◈ Fear &amp; Greed Index</div>
+      <div class="fg-wrap">
+        <div class="fg-score" id="fg-score">--</div>
+        <div class="fg-info">
+          <div class="fg-label" id="fg-label">Loading...</div>
+          <div class="fg-bar-wrap">
+            <div class="fg-bar" id="fg-bar" style="width:50%;background:var(--yellow)"></div>
+          </div>
+          <div class="fg-advice" id="fg-advice">Fetching data...</div>
+          <div class="fg-filter" id="fg-filter"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BTC DOMINANCE -->
+    <div class="ctx-card">
+      <div class="ctx-title">◈ BTC Dominance</div>
+      <div class="dom-wrap">
+        <div class="dom-pct" id="dom-pct">--%</div>
+        <div class="dom-info">
+          <div class="dom-signal" id="dom-signal">Loading...</div>
+          <div class="dom-bar-wrap">
+            <div class="dom-bar" id="dom-bar" style="width:55%"></div>
+          </div>
+          <div class="dom-advice" id="dom-advice">Fetching data...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI LAST DECISION -->
+    <div class="ctx-card">
+      <div class="ctx-title">◈ Last AI Decision</div>
+      <div class="ai-decision-wrap">
+        <div class="ai-dec-badge wait" id="ai-dec-badge">
+          <span>⏳</span>
+          <span id="ai-dec-text">Waiting for scan...</span>
+        </div>
+        <div class="ai-dec-reason" id="ai-dec-reason">AI will analyze markets every 5 minutes and show decision here.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-grid">
+    <div class="left-col">
+
+      <!-- LIVE POSITIONS -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">◈ LIVE POSITIONS</span>
+          <span class="badge" id="live-badge">0 ACTIVE</span>
+        </div>
+        <div id="open-trades-wrap">
+          <div class="empty-state">
+            <div class="empty-icon">📡</div>
+            <div class="empty-text">SCANNING MARKETS<br>Waiting for high-probability setup</div>
+          </div>
+        </div>
+        <div class="scan-ticker">
+          <span class="blink">▶</span>
+          <span id="scan-status">Initializing scanner...</span>
+        </div>
+      </div>
+
+      <!-- EQUITY CURVE -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">◈ EQUITY CURVE</span>
+          <span class="badge">LIVE</span>
+        </div>
+        <canvas id="equity-chart"></canvas>
+      </div>
+
+      <!-- TRADE HISTORY -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">◈ TRADE HISTORY</span>
+          <span class="badge" id="history-badge">0 TRADES</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="trades-table">
+            <thead><tr>
+              <th>SYMBOL</th><th>DIR</th><th>TYPE</th><th>ENTRY</th>
+              <th>EXIT</th><th>P&amp;L</th><th>RESULT</th><th>TIME</th>
+            </tr></thead>
+            <tbody id="closed-tbody">
+              <tr><td colspan="8" style="text-align:center;color:var(--muted);padding:30px">No closed trades yet</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">◈ PERFORMANCE</span></div>
+        <div class="ring-wrap">
+          <div class="win-ring">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="52"/>
+              <circle class="ring-fg" id="ring-fg" cx="60" cy="60" r="52"
+                stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+            </svg>
+            <div class="ring-label">
+              <div class="ring-pct" id="wr-pct">0%</div>
+              <div class="ring-sub">WIN RATE</div>
+            </div>
+          </div>
+        </div>
+        <div class="mini-stat"><span class="mini-key">Wins</span><span class="mini-val pos" id="m-wins">0</span></div>
+        <div class="mini-stat"><span class="mini-key">Losses</span><span class="mini-val neg" id="m-losses">0</span></div>
+        <div class="mini-stat"><span class="mini-key">Avg Profit</span><span class="mini-val" id="m-avg">$0.00</span></div>
+        <div class="mini-stat"><span class="mini-key">Session</span><span class="mini-val" id="m-session">—</span></div>
+      </div>
+
+      <div class="panel" style="flex:1">
+        <div class="panel-header">
+          <span class="panel-title">◈ AI SIGNAL LOG</span>
+          <span class="badge">LIVE</span>
+        </div>
+        <div class="ai-log" id="ai-log">
+          <div class="log-entry">
+            <span class="log-time">BOOT</span>
+            <span style="color:var(--green)">Dashboard loaded. Connecting...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── CHART ──────────────────────────────────────────────────────────────────
+const canvas = document.getElementById('equity-chart');
+const ctx    = canvas.getContext('2d');
+let equity   = [{v:500}];
+function resizeChart(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
+resizeChart();
+window.addEventListener('resize',()=>{resizeChart();drawChart();});
+
+function drawChart(){
+  const W=canvas.width,H=canvas.height;
+  ctx.clearRect(0,0,W,H);
+  if(equity.length<2){
+    ctx.fillStyle='rgba(125,133,144,0.4)';ctx.font='12px Share Tech Mono';
+    ctx.textAlign='center';ctx.fillText('Waiting for data...',W/2,H/2);return;
+  }
+  const vals=equity.map(d=>d.v);
+  const minV=Math.min(...vals)*0.999,maxV=Math.max(...vals)*1.001,range=maxV-minV||1;
+  const pad={t:20,r:20,b:30,l:60};
+  const cW=W-pad.l-pad.r,cH=H-pad.t-pad.b;
+  const tx=i=>pad.l+(i/(equity.length-1))*cW;
+  const ty=v=>pad.t+(1-(v-minV)/range)*cH;
+  ctx.strokeStyle='rgba(33,38,45,0.8)';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){
+    const y=pad.t+(i/4)*cH;
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();
+    ctx.fillStyle='rgba(125,133,144,0.7)';ctx.font='10px Share Tech Mono';ctx.textAlign='right';
+    ctx.fillText('$'+(maxV-(i/4)*range).toFixed(0),pad.l-5,y+4);
+  }
+  const last=vals[vals.length-1],isPos=last>=vals[0];
+  const color=isPos?'#00ff88':'#ff4757';
+  const grad=ctx.createLinearGradient(0,pad.t,0,H-pad.b);
+  grad.addColorStop(0,isPos?'rgba(0,255,136,0.2)':'rgba(255,71,87,0.2)');
+  grad.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.beginPath();ctx.moveTo(tx(0),ty(equity[0].v));
+  equity.forEach((d,i)=>{if(i>0)ctx.lineTo(tx(i),ty(d.v));});
+  ctx.lineTo(tx(equity.length-1),H-pad.b);ctx.lineTo(tx(0),H-pad.b);
+  ctx.closePath();ctx.fillStyle=grad;ctx.fill();
+  ctx.beginPath();ctx.moveTo(tx(0),ty(equity[0].v));
+  equity.forEach((d,i)=>{if(i>0)ctx.lineTo(tx(i),ty(d.v));});
+  ctx.strokeStyle=color;ctx.lineWidth=2;ctx.shadowColor=color;ctx.shadowBlur=8;
+  ctx.stroke();ctx.shadowBlur=0;
+  ctx.beginPath();ctx.arc(tx(equity.length-1),ty(last),4,0,Math.PI*2);
+  ctx.fillStyle=color;ctx.fill();
+}
+
+// ── HELPERS ────────────────────────────────────────────────────────────────
+const $=id=>document.getElementById(id);
+const fmt=n=>(n>=0?'+':'')+n.toFixed(2);
+
+function addLog(msg,color='var(--text)'){
+  const log=$('ai-log'),now=new Date().toLocaleTimeString();
+  const el=document.createElement('div');el.className='log-entry';
+  el.innerHTML=`<span class="log-time">${now}</span><span style="color:${color}">${msg}</span>`;
+  log.insertBefore(el,log.firstChild);
+  if(log.children.length>60)log.removeChild(log.lastChild);
+}
+
+// ── MARKET CONTEXT UPDATE ─────────────────────────────────────────────────
+function updateMarketContext(mc){
+  if(!mc) return;
+
+  // Fear & Greed
+  const fg = mc.fear_greed;
+  if(fg){
+    const val = fg.value;
+    $('fg-score').textContent = val;
+    $('fg-label').textContent = fg.label;
+
+    // Color based on value
+    let color, barColor;
+    if(val <= 25)      { color='var(--green)'; barColor='#00ff88'; }
+    else if(val <= 45) { color='var(--blue)';  barColor='#58a6ff'; }
+    else if(val <= 55) { color='var(--yellow)';barColor='#ffd700'; }
+    else if(val <= 75) { color='var(--orange)';barColor='#ff8c00'; }
+    else               { color='var(--red)';   barColor='#ff4757'; }
+
+    $('fg-score').style.color = color;
+    $('fg-label').style.color = color;
+    $('fg-bar').style.width   = val+'%';
+    $('fg-bar').style.background = barColor;
+
+    let advice = '';
+    if(fg.avoid_longs)  advice = '🚫 LONGS BLOCKED (Extreme Greed)';
+    else if(fg.avoid_shorts) advice = '🚫 SHORTS BLOCKED (Extreme Fear)';
+    else advice = '✅ Both directions allowed';
+    $('fg-advice').textContent = '';
+    $('fg-filter').textContent = advice;
+    $('fg-filter').style.color = (fg.avoid_longs||fg.avoid_shorts)?'var(--red)':'var(--green)';
+  }
+
+  // BTC Dominance
+  const dom = mc.btc_dominance;
+  if(dom){
+    $('dom-pct').textContent = dom.value+'%';
+    $('dom-signal').textContent = dom.signal.replace('_',' ');
+
+    const domColor = dom.avoid_alts ? 'var(--red)' : dom.value>=52 ? 'var(--orange)' : 'var(--green)';
+    $('dom-pct').style.color    = domColor;
+    $('dom-signal').style.color = domColor;
+    $('dom-bar').style.width    = Math.min(dom.value, 100)+'%';
+
+    let advice = '';
+    if(dom.avoid_alts) advice = '🚫 Altcoins blocked — BTC/ETH only';
+    else if(dom.value >= 52) advice = '⚠️ Prefer BTC/ETH over altcoins';
+    else if(dom.value < 47)  advice = '🚀 Altseason — all coins tradeable';
+    else                     advice = '✅ All coins tradeable';
+    $('dom-advice').textContent = advice;
+    $('dom-advice').style.color = dom.avoid_alts ? 'var(--red)' : 'var(--muted)';
+  }
+
+  // AI Decision
+  const dec = mc.last_ai_decision;
+  const reason = mc.last_ai_reason || '';
+  if(dec){
+    const isTrade = dec.includes('TRADE') || dec.includes('LONG') || dec.includes('SHORT');
+    const badge = $('ai-dec-badge');
+    const icon  = isTrade ? '🔔' : '⏳';
+    $('ai-dec-text').textContent = dec;
+    $('ai-dec-reason').textContent = reason || 'Waiting for next scan...';
+    badge.className = 'ai-dec-badge '+(isTrade?'trade':'wait');
+    badge.querySelector('span').textContent = icon;
+  }
+}
+
+// ── RENDER STATE ──────────────────────────────────────────────────────────
+let prevOpen=0, prevBal=500;
+
+function renderState(s){
+  const bal=s.balance||500, init=s.initial_balance||500;
+  const profit=s.total_profit||0, ret=s.return_pct||0;
+  const wins=s.win_count||0, losses=s.loss_count||0;
+  const wr=s.win_rate||0, open=(s.open_trades||[]).length;
+  const closed=(s.closed_trades||[]).length, total=wins+losses;
+
+  $('s-initial').textContent='$'+init.toFixed(2);
+  $('s-balance').textContent='$'+bal.toFixed(2);
+  $('s-balance').className='stat-value '+(bal>=init?'pos':'neg');
+  $('s-return').textContent=fmt(ret)+'%';
+  $('s-return').className='stat-sub '+(ret>=0?'pos':'neg');
+  $('s-profit').textContent=(profit>=0?'+':'-')+'$'+Math.abs(profit).toFixed(2);
+  $('s-profit').className='stat-value '+(profit>=0?'pos':'neg');
+  $('s-closed').textContent=closed+' closed trades';
+  $('s-open').textContent=open;
+  $('live-badge').textContent=open+' ACTIVE';
+
+  $('wr-pct').textContent=wr+'%';
+  $('m-wins').textContent=wins;
+  $('m-losses').textContent=losses;
+  const avgP=total>0?profit/total:0;
+  $('m-avg').textContent=(avgP>=0?'+':'')+avgP.toFixed(2)+' USDT';
+  $('m-avg').className='mini-val '+(avgP>=0?'pos':'neg');
+  $('ring-fg').style.strokeDashoffset=326.7-(wr/100)*326.7;
+
+  if(s.session_start) $('m-session').textContent=new Date(s.session_start).toLocaleDateString();
+  if(s.last_scan) $('scan-status').textContent='Last scan: '+new Date(s.last_scan).toLocaleTimeString()+' · Next in ~5min';
+
+  equity.push({v:bal});
+  if(equity.length>200)equity.shift();
+  drawChart();
+
+  // Market context
+  if(s.market_context) updateMarketContext(s.market_context);
+
+  renderOpenTrades(s.open_trades||[]);
+  renderClosedTrades(s.closed_trades||[]);
+
+  if(open>prevOpen) addLog('🔔 New trade opened! ('+open+' active)','var(--yellow)');
+  if(open<prevOpen) addLog('Trade closed. Balance: $'+bal.toFixed(2),bal>prevBal?'var(--green)':'var(--red)');
+  prevOpen=open; prevBal=bal;
+}
+
+function renderOpenTrades(trades){
+  const wrap=$('open-trades-wrap');
+  if(!trades.length){
+    wrap.innerHTML=`<div class="empty-state"><div class="empty-icon">📡</div>
+      <div class="empty-text">SCANNING MARKETS<br>Waiting for high-probability setup</div></div>`;
+    return;
+  }
+  wrap.innerHTML=trades.map(t=>{
+    const isLong=t.direction==='LONG';
+    const pnl=t.current_pnl||0, pnlPct=t.current_pnl_pct||0;
+    const coin=t.symbol.replace('USDT','');
+    const entry=t.entry_price, tp=t.take_profit, sl=t.stop_loss;
+    const curr=t.current_price||entry;
+    let prog=0;
+    if(isLong) prog=Math.max(0,Math.min(100,(curr-entry)/(tp-entry)*100));
+    else       prog=Math.max(0,Math.min(100,(entry-curr)/(entry-tp)*100));
+
+    return `<div class="trade-card ${isLong?'':'short'}">
+      <div class="trade-head">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="trade-symbol">${coin}</span>
+          <span class="dir-badge ${isLong?'long-badge':'short-badge'}">${t.direction}</span>
+          <span class="type-badge">${t.trade_type||'TREND'}</span>
+        </div>
+        <div style="text-align:right">
+          <div class="trade-val ${pnl>=0?'pos':'neg'}" style="font-size:0.95rem;font-family:'Orbitron',monospace">
+            ${pnl>=0?'+':''}\$${pnl.toFixed(2)}</div>
+          <div style="font-size:0.65rem;color:var(--muted)">${pnlPct>=0?'+':''}${pnlPct.toFixed(2)}%</div>
+        </div>
+      </div>
+      <div class="trade-body">
+        <div class="trade-row"><span class="trade-key">Confidence</span>
+          <span class="trade-val yel">${t.confidence}% · Win ${t.win_probability}%</span></div>
+        <div class="trade-row"><span class="trade-key">Leverage</span>
+          <span class="trade-val">${t.leverage}x</span></div>
+        <div class="trade-row"><span class="trade-key">Size</span>
+          <span class="trade-val">\$${t.position_size.toFixed(2)}</span></div>
+        <div class="trade-row"><span class="trade-key">Entry</span>
+          <span class="trade-val">\$${entry.toFixed(4)}</span></div>
+        <div class="trade-row"><span class="trade-key">Take Profit</span>
+          <span class="trade-val pos">\$${tp.toFixed(4)}</span></div>
+        <div class="trade-row"><span class="trade-key">Stop Loss</span>
+          <span class="trade-val neg">\$${sl.toFixed(4)}</span></div>
+        <div class="trade-row"><span class="trade-key">R:R</span>
+          <span class="trade-val">1 : ${t.risk_reward.toFixed(1)}</span></div>
+        <div class="trade-row"><span class="trade-key">Opened</span>
+          <span class="trade-val" style="color:var(--muted)">${new Date(t.open_time).toLocaleTimeString()}</span></div>
+        <div class="pnl-bar"><div class="pnl-fill" style="width:${prog.toFixed(0)}%;background:${isLong?'var(--green)':'var(--red)'}"></div></div>
+        <div style="font-size:0.65rem;color:var(--muted);margin-top:4px;text-align:right">${prog.toFixed(0)}% to TP</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderClosedTrades(trades){
+  $('history-badge').textContent=trades.length+' TRADES';
+  const tbody=$('closed-tbody');
+  if(!trades.length){
+    tbody.innerHTML='<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:30px">No closed trades yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML=[...trades].reverse().slice(0,30).map(t=>{
+    const pnl=t.realized_pnl||0, isWin=pnl>0;
+    const coin=t.symbol.replace('USDT','');
+    const closeT=t.close_time?new Date(t.close_time).toLocaleTimeString():'—';
+    return `<tr>
+      <td><span style="font-family:'Orbitron',monospace;font-weight:700">${coin}</span></td>
+      <td><span class="${t.direction==='LONG'?'pos':'neg'}">${t.direction}</span></td>
+      <td><span style="font-size:0.65rem;color:var(--blue)">${t.trade_type||'?'}</span></td>
+      <td>\$${(t.entry_price||0).toFixed(4)}</td>
+      <td>\$${(t.close_price||0).toFixed(4)}</td>
+      <td class="${isWin?'pos':'neg'}">${pnl>=0?'+':''}\$${pnl.toFixed(2)}</td>
+      <td><span style="background:${isWin?'rgba(0,255,136,0.1)':'rgba(255,71,87,0.1)'};
+        border:1px solid ${isWin?'var(--green)':'var(--red)'};
+        color:${isWin?'var(--green)':'var(--red)'};
+        padding:2px 8px;border-radius:2px;font-size:0.65rem">
+        ${t.close_reason||(isWin?'TP':'SL')}</span></td>
+      <td style="color:var(--muted)">${closeT}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── CLOCK ──────────────────────────────────────────────────────────────────
+setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString();},1000);
+
+// ── SSE ────────────────────────────────────────────────────────────────────
+let connErr=false;
+function connect(){
+  const es=new EventSource('http://localhost:5000/api/stream');
+  es.onopen=()=>{
+    $('conn-dot').className='dot';
+    $('conn-text').textContent='LIVE';
+    $('conn-text').style.color='var(--green)';
+    $('conn-banner').style.display='none';
+    addLog('Connected to trading bot','var(--green)');
+    connErr=false;
+  };
+  es.onmessage=e=>{try{renderState(JSON.parse(e.data));}catch(err){console.error(err);}};
+  es.onerror=()=>{
+    $('conn-dot').className='dot off';
+    $('conn-text').textContent='DISCONNECTED';
+    $('conn-text').style.color='var(--red)';
+    $('conn-banner').style.display='block';
+    if(!connErr){addLog('Connection lost — start api_server.py','var(--red)');connErr=true;}
+    es.close();setTimeout(connect,5000);
+  };
+}
+connect();
+drawChart();
+</script>
+</body>
+</html>

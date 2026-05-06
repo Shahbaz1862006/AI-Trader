@@ -1,0 +1,28 @@
+# ╔══════════════════════════════════════════════╗
+# ║     AI TRADING SYSTEM - ENVIRONMENT FILE     ║
+# ╚══════════════════════════════════════════════╝
+# Yeh file apne paas rakho, kisi ko share mat karo
+# GitHub pe kabhi upload mat karna
+
+# ── ANTHROPIC ──────────────────────────────────
+# console.anthropic.com se lena
+ANTHROPIC_API_KEY=sk-ant-api03-xxxxxxxxxxxxxxxxxxxx
+
+# ── BINANCE FUTURES API ─────────────────────────
+# binance.com → Account → API Management se lena
+# Permissions: Enable Reading + Enable Futures (ONLY)
+# IP restriction lagao apne home IP pe (recommended)
+BINANCE_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+BINANCE_API_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# ── TRADING CONFIG ──────────────────────────────
+SIMULATION_MODE=True        # Week 1 hamesha True rakhna
+INITIAL_CAPITAL=500         # Starting USDT amount
+MAX_OPEN_TRADES=2           # Max simultaneous trades
+RISK_PER_TRADE=0.02         # 2% per trade
+MIN_WIN_PROBABILITY=75      # Minimum 75% win prob
+MAX_LEVERAGE=10             # Max leverage allowed
+SCAN_INTERVAL_SECONDS=300   # 5 min between scans
+
+# ── SERVER ─────────────────────────────────────
+API_PORT=5000

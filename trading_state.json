@@ -1,0 +1,8 @@
+{
+  "balance": 500.0,
+  "initial_balance": 500.0,
+  "open_trades": [],
+  "trade_history": [],
+  "last_scan": null,
+  "cooldowns": {}
+}
