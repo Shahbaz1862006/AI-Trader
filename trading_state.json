@@ -2,7 +2,30 @@
   "balance": 500.0,
   "initial_balance": 500.0,
   "open_trades": [],
-  "trade_history": [],
-  "last_scan": null,
-  "cooldowns": {}
+  "closed_trades": [],
+  "total_profit": 0.0,
+  "win_count": 0,
+  "loss_count": 0,
+  "last_scan": "2026-05-08T19:36:40.375438",
+  "session_start": null,
+  "sl_cooldowns": {},
+  "market_context": {
+    "fear_greed": {
+      "value": 38,
+      "label": "Fear",
+      "signal": "FEAR",
+      "soft_avoid_longs": false,
+      "soft_avoid_shorts": false,
+      "avoid_longs": false,
+      "avoid_shorts": false,
+      "breakout_override_note": "Fear market: prefer shorts, longs only on strong breakout confirmation"
+    },
+    "btc_dominance": {
+      "value": 58.41,
+      "btc_dominance": 58.41,
+      "signal": "BTC_DOMINANT",
+      "avoid_alts": true
+    },
+    "data_freshness": "2026-05-08T19:36:40.375438"
+  }
 }

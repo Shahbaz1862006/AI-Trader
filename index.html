@@ -535,7 +535,7 @@ function renderState(s){
   $('ring-fg').style.strokeDashoffset=326.7-(wr/100)*326.7;
 
   if(s.session_start) $('m-session').textContent=new Date(s.session_start).toLocaleDateString();
-  if(s.last_scan) $('scan-status').textContent='Last scan: '+new Date(s.last_scan).toLocaleTimeString()+' · Next in ~5min';
+  if(s.last_scan) $('scan-status').textContent='Last scan: '+new Date(s.last_scan).toLocaleTimeString()+' · Next in ~15min';
 
   equity.push({v:bal});
   if(equity.length>200)equity.shift();

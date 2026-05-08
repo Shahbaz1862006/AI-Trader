@@ -189,7 +189,12 @@ def load_state() -> dict:
     try:
         if os.path.exists(STATE_FILE):
             with open(STATE_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
+                saved = json.load(f)
+            # Backfill any keys added in newer versions so the bot never crashes
+            # on an old state file that predates a key.
+            for k, v in default.items():
+                saved.setdefault(k, v)
+            return saved
     except Exception:
         pass
     return default
@@ -407,70 +412,113 @@ def get_current_price(symbol: str) -> float:
 # ─── FEAR & GREED ─────────────────────────────────────────────────────────────
 def get_fear_and_greed() -> dict:
     """
-    v3: No longer sets hard avoid_longs / avoid_shorts flags.
-    Instead returns sentiment context so the AI can decide based on
-    breakout confirmation. avoid_longs / avoid_shorts are kept as
-    soft_warning fields only — the AI prompt instructs when to override.
+    Fetches Fear & Greed index from alternative.me with cache-busting headers
+    and a single retry. Logs the raw response so stale/wrong values are visible.
     """
-    try:
-        r    = requests.get("https://api.alternative.me/fng/?limit=1", timeout=8)
-        item = r.json()["data"][0]
-        val  = int(item["value"])
-        lbl  = item["value_classification"]
-        if val <= 25:
-            sig = "EXTREME_FEAR"
-            soft_avoid_longs, soft_avoid_shorts = True, False   # market falling → avoid longs, shorts ok
-            breakout_note = "Extreme Fear: SHORT preferred. LONG only on confirmed resistance breakout with volume"
-        elif val <= 45:
-            sig = "FEAR"
-            soft_avoid_longs, soft_avoid_shorts = False, False
-            breakout_note = "Fear market: prefer shorts, longs only on strong breakout confirmation"
-        elif val <= 55:
-            sig = "NEUTRAL"
-            soft_avoid_longs, soft_avoid_shorts = False, False
-            breakout_note = "Neutral: both directions allowed freely"
-        elif val <= 75:
-            sig = "GREED"
-            soft_avoid_longs, soft_avoid_shorts = False, False
-            breakout_note = "Greed market: prefer longs, shorts only on strong support breakdown with volume"
-        else:
-            sig = "EXTREME_GREED"
-            soft_avoid_longs, soft_avoid_shorts = False, True   # market rising → avoid shorts, longs ok
-            breakout_note = "Extreme Greed: LONG preferred. SHORT only on confirmed support breakdown with volume"
-        return {
-            "value": val,
-            "label": lbl,
-            "signal": sig,
-            # soft warnings — AI uses these as bias, NOT hard blocks
-            "soft_avoid_longs": soft_avoid_longs,
-            "soft_avoid_shorts": soft_avoid_shorts,
-            # keep old keys as False so dashboard/api_server stay compatible
-            "avoid_longs": False,
-            "avoid_shorts": False,
-            "breakout_override_note": breakout_note
-        }
-    except Exception as e:
-        log.error(f"Fear&Greed: {e}")
-        return {
-            "value": 50, "label": "Neutral", "signal": "NEUTRAL",
-            "soft_avoid_longs": False, "soft_avoid_shorts": False,
-            "avoid_longs": False, "avoid_shorts": False,
-            "breakout_override_note": "Neutral: both directions allowed freely"
-        }
+    _default = {
+        "value": 50, "label": "Neutral", "signal": "NEUTRAL",
+        "soft_avoid_longs": False, "soft_avoid_shorts": False,
+        "avoid_longs": False, "avoid_shorts": False,
+        "breakout_override_note": "Neutral: both directions allowed freely"
+    }
+    headers = {"Cache-Control": "no-cache", "Pragma": "no-cache"}
+    url = f"https://api.alternative.me/fng/?limit=1&format=json&t={int(time.time())}"
+
+    for attempt in range(2):
+        try:
+            r = requests.get(url, headers=headers, timeout=10)
+            r.raise_for_status()
+            raw_json = r.json()
+            log.info(f"[F&G] raw response: {raw_json}")
+            item = raw_json["data"][0]
+            val  = int(item["value"])
+            lbl  = item["value_classification"]
+            log.info(f"[F&G] parsed: value={val} label={lbl}")
+            if val <= 25:
+                sig = "EXTREME_FEAR"
+                soft_avoid_longs, soft_avoid_shorts = True, False
+                breakout_note = "Extreme Fear: SHORT preferred. LONG only on confirmed resistance breakout with volume"
+            elif val <= 45:
+                sig = "FEAR"
+                soft_avoid_longs, soft_avoid_shorts = False, False
+                breakout_note = "Fear market: prefer shorts, longs only on strong breakout confirmation"
+            elif val <= 55:
+                sig = "NEUTRAL"
+                soft_avoid_longs, soft_avoid_shorts = False, False
+                breakout_note = "Neutral: both directions allowed freely"
+            elif val <= 75:
+                sig = "GREED"
+                soft_avoid_longs, soft_avoid_shorts = False, False
+                breakout_note = "Greed market: prefer longs, shorts only on strong support breakdown with volume"
+            else:
+                sig = "EXTREME_GREED"
+                soft_avoid_longs, soft_avoid_shorts = False, True
+                breakout_note = "Extreme Greed: LONG preferred. SHORT only on confirmed support breakdown with volume"
+            return {
+                "value": val, "label": lbl, "signal": sig,
+                "soft_avoid_longs": soft_avoid_longs,
+                "soft_avoid_shorts": soft_avoid_shorts,
+                "avoid_longs": False, "avoid_shorts": False,
+                "breakout_override_note": breakout_note
+            }
+        except Exception as e:
+            log.warning(f"[F&G] attempt {attempt + 1}/2 failed: {e}")
+            if attempt == 0:
+                time.sleep(2)
+
+    log.error("[F&G] both attempts failed — using neutral default")
+    return _default
 
 # ─── BTC DOMINANCE ────────────────────────────────────────────────────────────
 def get_btc_dominance() -> dict:
-    try:
-        r   = requests.get("https://api.coingecko.com/api/v3/global", timeout=8)
-        dom = r.json()["data"]["market_cap_percentage"]["btc"]
-        if dom >= 58:   sig, avoid_alts = "BTC_DOMINANT", True
-        elif dom >= 52: sig, avoid_alts = "BTC_STRONG",   False
-        elif dom >= 47: sig, avoid_alts = "BALANCED",     False
-        else:           sig, avoid_alts = "ALTSEASON",    False
-        return {"btc_dominance": round(dom, 2), "signal": sig, "avoid_alts": avoid_alts}
-    except Exception as e:
-        log.error(f"BTC Dom: {e}")
-        return {"btc_dominance": 55.0, "signal": "BALANCED", "avoid_alts": False}
+    """
+    Fetches BTC dominance from CoinGecko with cache-busting headers and retry.
+    Logs the raw value before rounding and warns when the data is stale.
+    """
+    _default = {"btc_dominance": 55.0, "signal": "BALANCED", "avoid_alts": False}
+    headers = {
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "User-Agent": "Mozilla/5.0 TradingBot/1.0",
+    }
+    url = f"https://api.coingecko.com/api/v3/global?t={int(time.time())}"
+
+    for attempt in range(2):
+        try:
+            r = requests.get(url, headers=headers, timeout=10)
+            r.raise_for_status()
+            body = r.json()
+            dom = body["data"]["market_cap_percentage"]["btc"]
+            log.info(f"[BTC_DOM] raw value from CoinGecko: {dom}")
+
+            # Warn if CoinGecko data is stale (updated_at is a Unix timestamp)
+            updated_at = body["data"].get("updated_at", 0)
+            if updated_at:
+                age_secs = int(time.time()) - updated_at
+                if age_secs > 300:
+                    log.warning(f"[BTC_DOM] data is {age_secs}s old — CoinGecko may be serving cached response")
+                else:
+                    log.debug(f"[BTC_DOM] data age: {age_secs}s — fresh")
+
+            if dom >= 58:   sig, avoid_alts = "BTC_DOMINANT", True
+            elif dom >= 52: sig, avoid_alts = "BTC_STRONG",   False
+            elif dom >= 47: sig, avoid_alts = "BALANCED",     False
+            else:           sig, avoid_alts = "ALTSEASON",    False
+            # "value" key matches what the dashboard and api_server expect.
+            # "btc_dominance" key kept for internal bot code (print_context etc.).
+            return {
+                "value": round(dom, 2),
+                "btc_dominance": round(dom, 2),
+                "signal": sig,
+                "avoid_alts": avoid_alts,
+            }
+        except Exception as e:
+            log.warning(f"[BTC_DOM] attempt {attempt + 1}/2 failed: {e}")
+            if attempt == 0:
+                time.sleep(2)
+
+    log.error("[BTC_DOM] both attempts failed — using default")
+    return _default
 
 # ─── ECONOMIC CALENDAR ────────────────────────────────────────────────────────
 def check_high_impact_event() -> dict:
@@ -1274,6 +1322,7 @@ If no valid setup found:
             ]
         )
         raw = resp.choices[0].message.content.strip()
+        log.info(f"[AI] raw response ({len(raw)} chars): {raw[:600]}")
 
         # Guard: empty response from model
         if not raw:
@@ -1348,6 +1397,7 @@ def open_trade(state, decision) -> dict:
     real_price = get_current_price(sym)
     if real_price > 0:
         deviation = abs(entry - real_price) / real_price
+        log.info(f"[PRICE GUARD] {sym}: AI_entry={entry:.4f} market={real_price:.4f} deviation={deviation*100:.2f}%")
         if deviation > 0.02:  # AI price deviates >2% from real market — hallucination
             msg = (f"[PRICE GUARD] REJECT {sym}: AI entry {entry:.4f} deviates "
                    f"{deviation*100:.1f}% from market {real_price:.4f} — discarding trade")
@@ -1626,6 +1676,10 @@ def _run_full_scan(state: dict, latest_prices: dict):
         elif market_regime == "BEAR" and sym != "BTCUSDT":
             blocked_symbols[f"{sym}_LONG"]  = "BTC regime BEAR — no alt longs"
 
+    # Log all active blocks so we can see why symbols are being skipped
+    if blocked_symbols:
+        log.info(f"[BLOCKS] {len(blocked_symbols)} blocks active: {blocked_symbols}")
+
     # ── Pre-filter to top 5 candidates before AI (reduces prompt size ~75%) ──
     # S/R interaction is the primary signal — scored heavily.
     # Orderbook, BOS, breakout are bonus points.
@@ -1703,6 +1757,9 @@ def _run_full_scan(state: dict, latest_prices: dict):
         fg, btc, ev, market_regime, blocked_symbols
     )
 
+    trades_attempted = 0
+    trades_opened    = 0
+
     if decision.get("action") == "TRADE":
         sym  = decision.get("symbol", "?")
         dir_ = decision.get("direction", "?")
@@ -1729,22 +1786,52 @@ def _run_full_scan(state: dict, latest_prices: dict):
             decision = {"action": "WAIT", "reason": msg}
 
     if decision.get("action") == "TRADE":
+        trades_attempted = 1
         wp   = decision.get("win_probability", 0)
         rr   = decision.get("risk_reward", 0)
         sym  = decision.get("symbol", "?")
         dir_ = decision.get("direction", "?")
-        if wp >= MIN_WIN_PROB * 100:
-            open_trade(state, decision)
-        else:
-            msg = f"  SKIP {sym} {dir_}: win_prob {wp}% < {int(MIN_WIN_PROB*100)}% threshold (RR:{rr})"
+        conf = decision.get("confidence", 0)
+
+        log.info(
+            f"[TRADE GATE] {sym} {dir_}: win_prob={wp}% (min={int(MIN_WIN_PROB*100)}%) "
+            f"rr={rr} (min=1.5) confidence={conf}%"
+        )
+        print(f"  [TRADE GATE] {sym} {dir_}: wp={wp}% rr={rr} conf={conf}%")
+
+        if wp < MIN_WIN_PROB * 100:
+            msg = f"  [AI_REJECT] {sym} {dir_}: win_prob {wp}% < {int(MIN_WIN_PROB*100)}% minimum — skipping"
             print(msg); log.info(msg)
+        elif rr < 1.5:
+            msg = f"  [AI_REJECT] {sym} {dir_}: risk_reward {rr} < 1.5 minimum (wp={wp}%) — skipping"
+            print(msg); log.info(msg)
+        else:
+            result = open_trade(state, decision)
+            if result:
+                trades_opened = 1
     else:
         reason = decision.get("reason", "No setup found")
         print(f"  WAIT: {reason}")
         log.info(f"[WAIT] {reason}")
 
+    # ── Persist market context in state so dashboard always has fresh data ──
+    state["market_context"] = {
+        "fear_greed":     fg,
+        "btc_dominance":  btc,
+        "data_freshness": now.isoformat(),
+    }
     state["last_scan"] = now.isoformat()
     save_state(state)
+
+    log.info(
+        f"[SCAN COMPLETE] {len(SCAN_SYMBOLS)} symbols analyzed, "
+        f"{len(analyses)} had data, {len(candidates)} sent to AI, "
+        f"{trades_attempted} trades attempted, {trades_opened} trades opened"
+    )
+    print(
+        f"  [SCAN DONE] {len(analyses)}/{len(SCAN_SYMBOLS)} symbols | "
+        f"{trades_attempted} attempted | {trades_opened} opened"
+    )
 
 
 async def _trade_monitor(state: dict, latest_prices: dict):
@@ -1773,8 +1860,8 @@ async def _ws_main(state: dict):
     for sym in SCAN_SYMBOLS:
         s = sym.lower()
         streams.append(f"{s}@kline_15m")
-        streams.append(f"{s}@markPrice")
-    url = f"{FUTURES_WS}?streams={'/'.join(streams)}"
+        streams.append(f"{s}@markPrice@1s")
+    url = f"wss://fstream.binance.com/stream?streams={'/'.join(streams)}"
 
     # Debounce: collect all kline-close events in one batch then fire one scan
     candle_event = asyncio.Event()
@@ -1791,6 +1878,8 @@ async def _ws_main(state: dict):
                 continue
             async with scan_lock:
                 try:
+                    available = [s for s in SCAN_SYMBOLS if s in latest_prices]
+                    log.info(f"[WS] Scan starting — {len(available)}/{len(SCAN_SYMBOLS)} symbols have prices: {available}")
                     await loop.run_in_executor(
                         _executor,
                         lambda: _run_full_scan(state, dict(latest_prices))
@@ -1803,10 +1892,12 @@ async def _ws_main(state: dict):
 
     reconnect_delay = 5
     _dns_fail_count = 0   # track consecutive DNS failures to avoid log spam
+    _mp_tick_count: dict = {}  # per-symbol markPrice tick counter for debug sampling
+    _startup_scan_done = False  # only fire the immediate startup scan once
 
     while True:
         try:
-            log.info(f"[WS] Connecting to Binance Futures streams...")
+            log.info(f"[WS] Connecting to {len(streams)} streams — URL: {url}")
             async with websockets.connect(
                 url,
                 # ── Ping strategy ───────────────────────────────────────────
@@ -1827,21 +1918,32 @@ async def _ws_main(state: dict):
                 # Default 1 MB; 2 MB prevents silent truncation of large depth msgs.
                 max_size=2**21,
             ) as ws:
-                log.info(f"[WS] Connected — watching {len(SCAN_SYMBOLS)} symbols on 15m + mark price")
+                log.info(f"[WS] Connected — {len(streams)} streams active ({len(SCAN_SYMBOLS)} symbols × kline_15m + markPrice@1s)")
                 reconnect_delay = 5   # reset backoff on successful connect
                 _dns_fail_count = 0
                 # Warm up Ollama after reconnect so model is loaded and ready.
                 loop.run_in_executor(_executor, _warmup_ollama)
+
+                # Trigger one immediate scan shortly after first connect so the
+                # user doesn't wait up to 15 minutes for the first candle boundary.
+                if not _startup_scan_done:
+                    _startup_scan_done = True
+                    async def _trigger_startup_scan():
+                        await asyncio.sleep(10)
+                        log.info("[WS] Triggering startup scan (won't wait for next candle close)")
+                        candle_event.set()
+                    asyncio.create_task(_trigger_startup_scan())
                 async for raw in ws:
                     msg     = json.loads(raw)
                     stream  = msg.get("stream", "")
                     payload = msg.get("data", {})
+                    log.debug(f"[WS] msg: stream={stream} bytes={len(raw)}")
 
                     if "@kline_15m" in stream:
                         k = payload.get("k", {})
                         if k.get("x"):   # candle CLOSED
                             sym = k["s"]
-                            log.info(f"[WS] 15m candle closed: {sym}")
+                            log.info(f"[WS] 15m candle closed: {sym} close={k.get('c')} — scan signal set")
                             candle_event.set()
 
                     elif "@markPrice" in stream:
@@ -1849,6 +1951,9 @@ async def _ws_main(state: dict):
                         price = payload.get("p")
                         if sym and price:
                             latest_prices[sym] = float(price)
+                            _mp_tick_count[sym] = _mp_tick_count.get(sym, 0) + 1
+                            if _mp_tick_count[sym] % 60 == 0:
+                                log.debug(f"[WS] markPrice sample tick #{_mp_tick_count[sym]}: {sym}={price}")
 
         except (websockets.exceptions.ConnectionClosed,
                 websockets.exceptions.WebSocketException) as e:
@@ -1908,7 +2013,7 @@ def main():
         _provider = "CLOUD AI"
     print("="*60)
     print("  AI TRADING BOT v4 — WEBSOCKET EDITION")
-    print("  Min Win Prob: 70% | Min Leverage: 20x | Min Size: $30 | Max Trades: 5")
+    print(f"  Min Win Prob: {int(MIN_WIN_PROB*100)}% | Min Leverage: {MIN_LEVERAGE}x | Min Size: ${MIN_POSITION_USDT:.0f} | Max Trades: {MAX_OPEN_TRADES}")
     print("  4H+1H+15m | OB+BOS+Liquidity+FVG+Structure+SR")
     print(f"  AI: {_provider} | Model: {OLLAMA_MODEL}")
     print(f"  Mode: {'SIMULATION' if SIMULATION_MODE else 'LIVE'} | Capital: ${INITIAL_CAPITAL}")

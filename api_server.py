@@ -104,10 +104,27 @@ def get_market_context():
     _market_cache_time = now
     return ctx
 
+def _build_context(state_dict):
+    """
+    Always call get_market_context() so last_ai_decision is populated.
+    Then override fear_greed / btc_dominance with the bot's freshly-fetched
+    data when available (the bot fetches on every 15m candle close, which is
+    more frequent than the api_server's 5-minute cache).
+    """
+    ctx = get_market_context()
+    bot_ctx = state_dict.pop("market_context", None)
+    if bot_ctx and bot_ctx.get("data_freshness"):
+        if bot_ctx.get("fear_greed"):
+            ctx["fear_greed"] = bot_ctx["fear_greed"]
+        if bot_ctx.get("btc_dominance"):
+            ctx["btc_dominance"] = bot_ctx["btc_dominance"]
+        ctx["data_freshness"] = bot_ctx["data_freshness"]
+    return ctx
+
 @app.route("/api/state")
 def get_state():
     state = enrich_state(load_state())
-    state["market_context"] = get_market_context()
+    state["market_context"] = _build_context(state)
     return jsonify(state)
 
 @app.route("/api/trades/open")
@@ -123,7 +140,7 @@ def stream():
     def generate():
         while True:
             state = enrich_state(load_state())
-            state["market_context"] = get_market_context()
+            state["market_context"] = _build_context(state)
             yield f"data: {json.dumps(state)}\n\n"
             time.sleep(3)
     return Response(generate(), mimetype="text/event-stream",

@@ -3062,3 +3062,55 @@ websockets.exceptions.ConnectionClosedError: no close frame received or sent
 2026-05-06 14:35:38,032 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
 2026-05-06 14:35:38,080 [INFO] [OLLAMA] Model warm-up OK — runner is ready
 2026-05-06 20:33:13,461 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 16:12:41,799 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-08 16:12:43,973 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 16:12:45,018 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-08 16:13:05,216 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-08 16:13:05,243 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-08 16:44:37,833 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 16:44:49,861 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-08 16:44:51,923 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 16:44:53,305 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-08 16:45:09,823 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-08 16:45:09,837 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-08 16:46:14,661 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 16:48:39,816 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-08 16:48:41,893 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 16:48:43,213 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-08 16:48:47,125 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-08 16:48:47,136 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-08 16:49:04,713 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 16:49:04,715 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 16:49:12,174 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-08 16:49:14,248 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 16:49:16,330 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-08 16:49:20,093 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-08 16:49:20,101 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-08 16:57:52,206 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 16:57:52,209 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 19:36:24,565 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-08 19:36:26,648 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 19:36:28,351 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-08 19:36:38,358 [INFO] [WS] Triggering startup scan (won't wait for next candle close)
+2026-05-08 19:36:40,374 [INFO] [WS] Scan starting — 0/10 symbols have prices: []
+2026-05-08 19:36:41,383 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-08 19:36:41,411 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-08 19:36:42,669 [INFO] [F&G] raw response: {'name': 'Fear and Greed Index', 'data': [{'value': '38', 'value_classification': 'Fear', 'timestamp': '1778198400', 'time_until_update': '33799'}], 'metadata': {'error': None}}
+2026-05-08 19:36:42,669 [INFO] [F&G] parsed: value=38 label=Fear
+2026-05-08 19:36:44,458 [INFO] [BTC_DOM] raw value from CoinGecko: 58.41200389679514
+2026-05-08 19:39:17,570 [INFO] [REGIME] BTC OB=BUY conf=95 -> BULL
+2026-05-08 19:39:17,581 [INFO] [BLOCKS] 9 blocks active: {'ETHUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'XRPUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'BNBUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'SOLUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'ALGOUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'RUNEUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'AVAXUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'NEARUSDT_SHORT': 'BTC regime BULL — no alt shorts', 'DYDXUSDT_SHORT': 'BTC regime BULL — no alt shorts'}
+2026-05-08 19:40:50,232 [ERROR] AI error: Request timed out.
+2026-05-08 19:44:49,674 [WARNING] [WS] Connection closed: no close frame received or sent — reconnecting in 5s
+2026-05-08 19:45:13,417 [INFO] [WAIT] Request timed out.
+2026-05-08 19:45:13,419 [INFO] [SCAN COMPLETE] 10 symbols analyzed, 10 had data, 10 sent to AI, 0 trades attempted, 0 trades opened
+2026-05-08 19:45:18,419 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 19:46:03,424 [WARNING] [WS] Handshake timed out — network latency too high or Binance unreachable. Retrying in 10s
+2026-05-08 19:46:13,431 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 19:48:44,792 [WARNING] [WS] Handshake timed out — network latency too high or Binance unreachable. Retrying in 20s
+2026-05-08 19:49:04,793 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-08 19:49:11,374 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-08 19:49:29,145 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-08 19:49:29,147 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-08 19:55:08,968 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-08 19:55:09,002 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
