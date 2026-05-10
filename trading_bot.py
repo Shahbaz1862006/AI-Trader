@@ -1603,7 +1603,7 @@ def print_context(fg, btc, ev):
     print(f"  [Override: {fg['breakout_override_note']}]")
 
 # ─── WEBSOCKET MAIN ────────────────────────────────────────────────────────────
-FUTURES_WS   = "wss://fstream.binance.com/stream"
+FUTURES_WS   = "wss://fstream.binance.com/market/stream"
 _executor    = ThreadPoolExecutor(max_workers=2)
 _state_lock  = threading.Lock()   # protects state["open_trades"] / balance from concurrent close
 
@@ -1861,7 +1861,7 @@ async def _ws_main(state: dict):
         s = sym.lower()
         streams.append(f"{s}@kline_15m")
         streams.append(f"{s}@markPrice@1s")
-    url = f"wss://fstream.binance.com/stream?streams={'/'.join(streams)}"
+    url = f"wss://fstream.binance.com/market/stream?streams={'/'.join(streams)}"
 
     # Debounce: collect all kline-close events in one batch then fire one scan
     candle_event = asyncio.Event()
