@@ -1,0 +1,155 @@
+2025-01-06 09:00:09,089: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-06 09:00:09,541: root: INFO: Current backtesting datetime 2023-12-01 08:30:00-05:00
+2025-01-06 09:00:09,541: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2025-01-06 09:00:09,541: root: INFO: Current backtesting datetime 2023-12-01 09:30:00-05:00
+2025-01-06 09:00:09,541: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2025-01-06 09:00:09,542: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 09:00:09[0m
+2025-01-06 09:00:09,550: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-06 09:00:09,555: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2023-02-04T00:00:00.000000 | 2024-09-24T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-06 09:00:11,967: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 09:00:12,320: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 09:00:12[0m
+2025-01-06 09:00:12,322: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 09:00:12,323: root: INFO: Current backtesting datetime 2023-12-01 16:00:00-05:00
+2025-01-06 09:00:12,323: root: INFO: Current backtesting datetime 2023-12-02 09:30:00-05:00
+2025-01-06 09:00:12,323: asyncio: INFO: [MLTrader] [34mThe market is not currently open, skipping this trading iteration[0m
+2025-01-06 09:00:12,324: root: INFO: Current backtesting datetime 2023-12-02 09:25:00-05:00
+2025-01-06 09:00:12,324: root: INFO: Current backtesting datetime 2023-12-02 09:25:00-05:00
+2025-01-06 09:00:12,324: asyncio: INFO: [MLTrader] Executing the after_market_closes lifecycle method
+2025-01-06 09:00:12,324: root: INFO: Current backtesting datetime 2023-12-04 08:30:00-05:00
+2025-01-06 09:00:12,325: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2025-01-06 09:00:12,326: root: INFO: Current backtesting datetime 2023-12-04 09:30:00-05:00
+2025-01-06 09:00:12,326: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2025-01-06 09:00:12,327: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 09:00:12[0m
+2025-01-06 09:00:14,029: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 09:00:14,394: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 09:00:14[0m
+2025-01-06 09:00:14,397: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 09:00:14,398: root: INFO: Current backtesting datetime 2023-12-04 16:00:00-05:00
+2025-01-06 09:00:14,398: root: INFO: Current backtesting datetime 2023-12-05 09:30:00-05:00
+2025-01-06 09:00:14,398: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 09:00:14[0m
+2025-01-06 09:00:17,016: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 09:00:17,318: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1.0 BTC/USD buy | at price $52896.96 of class bracket with status new[0m
+2025-01-06 09:00:17,320: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 09:00:17[0m
+2025-01-06 09:00:17,320: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 09:00:17,321: root: INFO: market order of | 1.0 BTC/USD buy | at price $52896.96 of class bracket with status new was sent to broker backtesting
+2025-01-06 09:00:17,321: root: INFO: market order of | 1.0 BTC/USD buy | at price $52896.96 of class bracket with status new was sent to broker backtesting
+2025-01-06 09:00:17,321: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1.0 BTC/USD buy | at price $41983.0 of class bracket with status fill[0m
+2025-01-06 09:00:17,322: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 09:00:17,323: root: INFO: Current backtesting datetime 2023-12-05 16:00:00-05:00
+2025-01-06 09:00:17,323: root: INFO: Current backtesting datetime 2023-12-06 09:30:00-05:00
+2025-01-06 09:00:17,323: CcxtCacheDB: INFO: download ranges :
++---------------------+----------------------------+
+| from                | to                         |
+|---------------------+----------------------------|
+| 2023-02-04 00:00:00 | 2023-12-31 23:59:59.999999 |
++---------------------+----------------------------+
+2025-01-06 09:00:17,324: root: ERROR: A request for market data for USD/USDT was submitted. The market for that pair does not exist
+2025-01-06 09:00:17,324: asyncio: ERROR: [MLTrader] 'NoneType' object has no attribute 'set_index'
+2025-01-06 09:00:17,328: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 284, in func_output
+    self.strategy._update_portfolio_value()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 449, in _update_portfolio_value
+    prices = self.broker.data_source.get_last_prices(assets)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/data_source.py", line 348, in get_last_prices
+    result[asset] = self.get_last_price(asset, quote=quote, exchange=exchange)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 242, in get_last_price
+    bars = self.get_historical_prices(asset, 1, timestep=timestep, quote=quote, timeshift=None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 174, in get_historical_prices
+    response = self._pull_source_symbol_bars(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 109, in _pull_source_symbol_bars
+    data = self._pull_source_bars([asset],length,timestep,timeshift,quote,include_after_hours)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 154, in _pull_source_bars
+    data = self.cache_db.download_ohlcv(symbol,parsed_timestep,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 189, in download_ohlcv
+    df = self._fill_missing_data(df, timeframe)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 447, in _fill_missing_data
+    df.set_index("datetime", inplace=True)
+    ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'set_index'
+
+2025-01-06 09:00:17,328: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-06 09:00:18,002: asyncio: ERROR: [MLTrader] Cache file /Users/nicholasrenotte/Library/Caches/lumibot/1.0/kraken/ETH_USDT_1m.duckdb does not exist
+2025-01-06 09:00:18,003: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 284, in func_output
+    self.strategy._update_portfolio_value()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 449, in _update_portfolio_value
+    prices = self.broker.data_source.get_last_prices(assets)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/data_source.py", line 348, in get_last_prices
+    result[asset] = self.get_last_price(asset, quote=quote, exchange=exchange)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 242, in get_last_price
+    bars = self.get_historical_prices(asset, 1, timestep=timestep, quote=quote, timeshift=None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 174, in get_historical_prices
+    response = self._pull_source_symbol_bars(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 109, in _pull_source_symbol_bars
+    data = self._pull_source_bars([asset],length,timestep,timeshift,quote,include_after_hours)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 154, in _pull_source_bars
+    data = self.cache_db.download_ohlcv(symbol,parsed_timestep,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 189, in download_ohlcv
+    df = self._fill_missing_data(df, timeframe)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 447, in _fill_missing_data
+    df.set_index("datetime", inplace=True)
+    ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'set_index'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 929, in run
+    self._on_bot_crash(e)
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 274, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 434, in _on_bot_crash
+    self.strategy._dump_stats()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 573, in _dump_stats
+    self._dump_benchmark_stats()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 635, in _dump_benchmark_stats
+    bars = self.broker.data_source.get_historical_prices_between_dates(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 216, in get_historical_prices_between_dates
+    data = self.cache_db.get_data_from_cache(symbol, parsed_timestep, start_dt, end_dt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 118, in get_data_from_cache
+    raise Exception(f"Cache file {cache_file} does not exist")
+Exception: Cache file /Users/nicholasrenotte/Library/Caches/lumibot/1.0/kraken/ETH_USDT_1m.duckdb does not exist
+
+2025-01-06 09:00:18,006: root: INFO: Backtesting finished
+2025-01-06 09:00:18,492: asyncio: WARNING: [MLTrader] Cannot plot returns because the benchmark returns are missing
+2025-01-06 09:00:18,603: root: ERROR: No data to create tearsheet, skipping
+2025-01-06 09:00:18,603: backtest_stats: INFO: Backtest took 0:00:09.514580 for a speed of 0.000

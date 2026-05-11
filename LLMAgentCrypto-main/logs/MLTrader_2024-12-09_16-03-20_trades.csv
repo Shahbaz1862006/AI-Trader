@@ -1,0 +1,2 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type
+2022-12-05 09:30:00-05:00,MLTrader,0a52236055ec4dafbd975b50f6e02871,BTCUSD,sell,market,new,1,gtc,0.0,1,stock

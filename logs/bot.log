@@ -5690,3 +5690,95 @@ websockets.exceptions.ConnectionClosedError: no close frame received or sent
 2026-05-10 16:45:05,491 [WARNING] [BTC_DOM] data is 429s old — CoinGecko may be serving cached response
 2026-05-10 16:47:07,763 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
 2026-05-10 16:47:09,641 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-11 15:03:03,210 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-11 15:03:05,346 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/market/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/algousdt@kline_15m/algousdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/avaxusdt@kline_15m/avaxusdt@markPrice@1s/nearusdt@kline_15m/nearusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s
+2026-05-11 15:03:07,041 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-11 15:03:17,046 [INFO] [WS] Triggering startup scan (won't wait for next candle close)
+2026-05-11 15:03:19,056 [INFO] [WS] Scan starting — 10/10 symbols have prices: ['BTCUSDT', 'ETHUSDT', 'XRPUSDT', 'BNBUSDT', 'SOLUSDT', 'ALGOUSDT', 'RUNEUSDT', 'AVAXUSDT', 'NEARUSDT', 'DYDXUSDT']
+2026-05-11 15:03:21,771 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 15:03:21,834 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-11 15:03:22,506 [INFO] [F&G] raw response: {'name': 'Fear and Greed Index', 'data': [{'value': '48', 'value_classification': 'Neutral', 'timestamp': '1778457600', 'time_until_update': '50199'}], 'metadata': {'error': None}}
+2026-05-11 15:03:22,506 [INFO] [F&G] parsed: value=48 label=Neutral
+2026-05-11 15:03:23,880 [INFO] [BTC_DOM] raw value from CoinGecko: 58.21247638540126
+2026-05-11 15:05:42,194 [INFO] [REGIME] BTC OB=SELL conf=95 -> BEAR
+2026-05-11 15:05:42,201 [INFO] [BLOCKS] 9 blocks active: {'ETHUSDT_LONG': 'BTC regime BEAR — no alt longs', 'XRPUSDT_LONG': 'BTC regime BEAR — no alt longs', 'BNBUSDT_LONG': 'BTC regime BEAR — no alt longs', 'SOLUSDT_LONG': 'BTC regime BEAR — no alt longs', 'ALGOUSDT_LONG': 'BTC regime BEAR — no alt longs', 'RUNEUSDT_LONG': 'BTC regime BEAR — no alt longs', 'AVAXUSDT_LONG': 'BTC regime BEAR — no alt longs', 'NEARUSDT_LONG': 'BTC regime BEAR — no alt longs', 'DYDXUSDT_LONG': 'BTC regime BEAR — no alt longs'}
+2026-05-11 15:07:14,944 [ERROR] AI error: Request timed out.
+2026-05-11 17:20:45,596 [WARNING] Removed stale lock (PID 25804 is no longer running)
+2026-05-11 17:20:45,597 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-11 17:20:45,603 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored
+2026-05-11 17:21:46,079 [INFO] [SLEEP] Windows sleep prevention ENABLED — system will stay awake until bot stops
+2026-05-11 17:21:48,131 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/market/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/ltcusdt@kline_15m/ltcusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/linkusdt@kline_15m/linkusdt@markPrice@1s/suiusdt@kline_15m/suiusdt@markPrice@1s
+2026-05-11 17:21:49,360 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-11 17:21:59,378 [INFO] [WS] Triggering startup scan (won't wait for next candle close)
+2026-05-11 17:22:01,389 [INFO] [WS] Scan starting — 10/10 symbols have prices: ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'LTCUSDT', 'DYDXUSDT', 'RUNEUSDT', 'LINKUSDT', 'SUIUSDT']
+2026-05-11 17:22:02,987 [INFO] [F&G] raw response: {'name': 'Fear and Greed Index', 'data': [{'value': '48', 'value_classification': 'Neutral', 'timestamp': '1778457600', 'time_until_update': '41878'}], 'metadata': {'error': None}}
+2026-05-11 17:22:02,987 [INFO] [F&G] parsed: value=48 label=Neutral
+2026-05-11 17:22:04,518 [INFO] [BTC_DOM] raw value from CoinGecko: 58.27849952217784
+2026-05-11 17:22:07,314 [INFO] [NEWS] BTCUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:22:23,289 [WARNING] [OLLAMA] Warm-up ping failed (model may still be loading): Request timed out.
+2026-05-11 17:22:30,013 [WARNING] [SENTIMENT] LLM fallback failed BTCUSDT: Request timed out.
+2026-05-11 17:22:46,898 [INFO] [NEWS] ETHUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:23:09,763 [WARNING] [SENTIMENT] LLM fallback failed ETHUSDT: Request timed out.
+2026-05-11 17:23:19,013 [INFO] [NEWS] SOLUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:23:41,684 [WARNING] [SENTIMENT] LLM fallback failed SOLUSDT: Request timed out.
+2026-05-11 17:23:57,735 [INFO] [NEWS] BNBUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:24:20,834 [WARNING] [SENTIMENT] LLM fallback failed BNBUSDT: Request timed out.
+2026-05-11 17:24:33,949 [INFO] [NEWS] XRPUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:25:05,079 [WARNING] [SENTIMENT] LLM fallback failed XRPUSDT: Request timed out.
+2026-05-11 17:25:07,091 [INFO] [NEWS] LTCUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:25:29,651 [WARNING] [SENTIMENT] LLM fallback failed LTCUSDT: Request timed out.
+2026-05-11 17:25:41,477 [INFO] [NEWS] DYDXUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:26:04,430 [WARNING] [SENTIMENT] LLM fallback failed DYDXUSDT: Request timed out.
+2026-05-11 17:26:13,843 [INFO] [NEWS] RUNEUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:26:37,233 [WARNING] [SENTIMENT] LLM fallback failed RUNEUSDT: Request timed out.
+2026-05-11 17:26:46,828 [INFO] [NEWS] LINKUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:27:09,605 [WARNING] [SENTIMENT] LLM fallback failed LINKUSDT: Request timed out.
+2026-05-11 17:27:23,571 [INFO] [NEWS] SUIUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:27:54,239 [WARNING] [SENTIMENT] LLM fallback failed SUIUSDT: Request timed out.
+2026-05-11 17:29:42,870 [ERROR] Binance /fapi/v1/openInterest: HTTPSConnectionPool(host='fapi.binance.com', port=443): Read timed out. (read timeout=5)
+2026-05-11 17:29:54,836 [INFO] [REGIME] BTC OB=SELL conf=95 -> BEAR
+2026-05-11 17:29:54,843 [INFO] [BLOCKS] 9 blocks active: {'ETHUSDT_LONG': 'BTC regime BEAR — no alt longs', 'SOLUSDT_LONG': 'BTC regime BEAR — no alt longs', 'BNBUSDT_LONG': 'BTC regime BEAR — no alt longs', 'XRPUSDT_LONG': 'BTC regime BEAR — no alt longs', 'LTCUSDT_LONG': 'BTC regime BEAR — no alt longs', 'DYDXUSDT_LONG': 'BTC regime BEAR — no alt longs', 'RUNEUSDT_LONG': 'BTC regime BEAR — no alt longs', 'LINKUSDT_LONG': 'BTC regime BEAR — no alt longs', 'SUIUSDT_LONG': 'BTC regime BEAR — no alt longs'}
+2026-05-11 17:30:00,100 [INFO] [WS] 15m candle closed: ETHUSDT close=2335.93 — scan signal set
+2026-05-11 17:30:27,189 [INFO] [WS] 15m candle closed: LINKUSDT close=10.572 — scan signal set
+2026-05-11 17:31:04,577 [INFO] [WS] 15m candle closed: XRPUSDT close=1.4608 — scan signal set
+2026-05-11 17:31:06,522 [INFO] [WS] 15m candle closed: DYDXUSDT close=0.166200 — scan signal set
+2026-05-11 17:31:06,523 [INFO] [WS] 15m candle closed: BTCUSDT close=81266.00 — scan signal set
+2026-05-11 17:31:27,473 [ERROR] AI error: Request timed out.
+2026-05-11 17:32:00,084 [INFO] [WS] 15m candle closed: BNBUSDT close=656.120 — scan signal set
+2026-05-11 17:32:00,354 [INFO] [WAIT] Request timed out.
+2026-05-11 17:32:00,355 [INFO] [WS] 15m candle closed: SUIUSDT close=1.276600 — scan signal set
+2026-05-11 17:35:28,203 [INFO] [WS] 15m candle closed: SOLUSDT close=95.1600 — scan signal set
+2026-05-11 17:35:28,203 [INFO] [WS] 15m candle closed: LTCUSDT close=58.62 — scan signal set
+2026-05-11 17:35:28,204 [INFO] [WS] 15m candle closed: RUNEUSDT close=0.5997 — scan signal set
+2026-05-11 17:37:08,325 [INFO] [SCAN COMPLETE] 10 symbols analyzed, 10 had data, 10 sent to AI, 0 trades attempted, 0 trades opened
+2026-05-11 17:37:08,723 [WARNING] [WS] Connection closed: no close frame received or sent — reconnecting in 5s
+2026-05-11 17:37:10,568 [INFO] [WS] Scan starting — 10/10 symbols have prices: ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'LTCUSDT', 'DYDXUSDT', 'RUNEUSDT', 'LINKUSDT', 'SUIUSDT']
+2026-05-11 17:37:12,965 [INFO] [F&G] raw response: {'name': 'Fear and Greed Index', 'data': [{'value': '48', 'value_classification': 'Neutral', 'timestamp': '1778457600', 'time_until_update': '40968'}], 'metadata': {'error': None}}
+2026-05-11 17:37:12,966 [INFO] [F&G] parsed: value=48 label=Neutral
+2026-05-11 17:37:13,736 [INFO] [WS] Connecting to 20 streams — URL: wss://fstream.binance.com/market/stream?streams=btcusdt@kline_15m/btcusdt@markPrice@1s/ethusdt@kline_15m/ethusdt@markPrice@1s/solusdt@kline_15m/solusdt@markPrice@1s/bnbusdt@kline_15m/bnbusdt@markPrice@1s/xrpusdt@kline_15m/xrpusdt@markPrice@1s/ltcusdt@kline_15m/ltcusdt@markPrice@1s/dydxusdt@kline_15m/dydxusdt@markPrice@1s/runeusdt@kline_15m/runeusdt@markPrice@1s/linkusdt@kline_15m/linkusdt@markPrice@1s/suiusdt@kline_15m/suiusdt@markPrice@1s
+2026-05-11 17:37:14,417 [INFO] [BTC_DOM] raw value from CoinGecko: 58.28397568539751
+2026-05-11 17:37:14,418 [WARNING] [BTC_DOM] data is 383s old — CoinGecko may be serving cached response
+2026-05-11 17:37:14,654 [INFO] [WS] Connected — 20 streams active (10 symbols × kline_15m + markPrice@1s)
+2026-05-11 17:37:17,718 [INFO] [NEWS] BTCUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:37:28,511 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-11 17:37:28,538 [INFO] [OLLAMA] Model warm-up OK — runner is ready
+2026-05-11 17:37:40,864 [WARNING] [SENTIMENT] LLM fallback failed BTCUSDT: Request timed out.
+2026-05-11 17:38:00,842 [INFO] [NEWS] ETHUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:38:23,544 [WARNING] [SENTIMENT] LLM fallback failed ETHUSDT: Request timed out.
+2026-05-11 17:38:45,716 [INFO] [NEWS] SOLUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:39:24,131 [WARNING] [SENTIMENT] LLM fallback failed SOLUSDT: Request timed out.
+2026-05-11 17:39:26,124 [INFO] [NEWS] BNBUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:39:48,699 [WARNING] [SENTIMENT] LLM fallback failed BNBUSDT: Request timed out.
+2026-05-11 17:39:58,584 [INFO] [NEWS] XRPUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:40:30,634 [WARNING] [SENTIMENT] LLM fallback failed XRPUSDT: Request timed out.
+2026-05-11 17:40:34,581 [INFO] [NEWS] LTCUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:40:57,215 [WARNING] [SENTIMENT] LLM fallback failed LTCUSDT: Request timed out.
+2026-05-11 17:41:11,757 [INFO] [NEWS] DYDXUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:41:34,355 [WARNING] [SENTIMENT] LLM fallback failed DYDXUSDT: Request timed out.
+2026-05-11 17:41:53,306 [INFO] [NEWS] RUNEUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:42:15,883 [WARNING] [SENTIMENT] LLM fallback failed RUNEUSDT: Request timed out.
+2026-05-11 17:42:26,105 [INFO] [NEWS] LINKUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:42:48,693 [WARNING] [SENTIMENT] LLM fallback failed LINKUSDT: Request timed out.
+2026-05-11 17:42:58,478 [INFO] [NEWS] SUIUSDT: 15 headlines (Google News RSS — free)
+2026-05-11 17:43:21,076 [WARNING] [SENTIMENT] LLM fallback failed SUIUSDT: Request timed out.
+2026-05-11 17:44:28,466 [INFO] [SLEEP] Windows sleep prevention RELEASED — normal sleep restored

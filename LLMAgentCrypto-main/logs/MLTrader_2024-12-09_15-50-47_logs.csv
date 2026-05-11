@@ -1,0 +1,33 @@
+2024-12-09 15:50:47,264: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2024-12-09 15:50:47,767: root: INFO: Current backtesting datetime 2023-12-01 08:30:00-05:00
+2024-12-09 15:50:47,767: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2024-12-09 15:50:47,768: root: INFO: Current backtesting datetime 2023-12-01 09:30:00-05:00
+2024-12-09 15:50:47,768: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2024-12-09 15:50:47,768: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2024-12-09 15:50:47[0m
+2024-12-09 15:50:47,768: asyncio: ERROR: [MLTrader] list indices must be integers or slices, not list
+2024-12-09 15:50:47,770: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 286, in func_output
+    result = func_input(self, *args, **kwargs)
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 397, in _on_trading_iteration
+    raise e
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 369, in _on_trading_iteration
+    on_trading_iteration()
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/tools/decorators.py", line 62, in func_output
+    frame, result = call_function_get_frame(func_input, *args, **kwargs)
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/tools/decorators.py", line 30, in call_function_get_frame
+    result = func(*args, **kwargs)
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/tradingbotv2.py", line 52, in on_trading_iteration
+    sentiment = sentiment_options[[1 if np.random.random() > 0.5 else 0]]
+TypeError: list indices must be integers or slices, not list
+
+2024-12-09 15:50:47,771: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2024-12-09 15:50:47,773: root: INFO: Backtesting finished
+2024-12-09 15:50:48,588: asyncio: WARNING: [MLTrader] Cannot plot returns because the strategy returns are missing
+2024-12-09 15:50:48,629: asyncio: WARNING: [MLTrader] Cannot create a tearsheet because the strategy returns are missing
+2024-12-09 15:50:48,629: backtest_stats: INFO: Backtest took 0:00:01.366138 for a speed of 0.000

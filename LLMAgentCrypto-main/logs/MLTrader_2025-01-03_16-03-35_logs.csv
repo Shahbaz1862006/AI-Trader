@@ -1,0 +1,162 @@
+2025-01-03 16:03:35,906: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-03 16:03:36,348: root: INFO: Current backtesting datetime 2023-12-01 08:30:00-05:00
+2025-01-03 16:03:36,348: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2025-01-03 16:03:36,348: root: INFO: Current backtesting datetime 2023-12-01 09:30:00-05:00
+2025-01-03 16:03:36,348: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2025-01-03 16:03:36,349: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-03 16:03:36[0m
+2025-01-03 16:03:36,374: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 16:03:49,150: root: INFO: Invalidating cache for AAPL because its splits have changed.
+2025-01-03 16:03:49,337: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 16:04:03,334: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 16:04:19,549: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-03 16:04:19,858: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 263.0 BTC/USD buy | at price $228.39600000000002 of class bracket with status new[0m
+2025-01-03 16:04:19,865: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-03 16:04:19[0m
+2025-01-03 16:04:19,865: asyncio: INFO: [MLTrader] Getting historical prices for BTC/USD, 2 bars, minute
+2025-01-03 16:04:19,906: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 16:04:21,415: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-03 16:04:21,594: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-03 16:04:21,761: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-03 16:04:32,970: root: INFO: Invalidating cache for BTC/USD because its splits have changed.
+2025-01-03 16:04:33,097: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 16:04:45,764: root: ERROR: Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/backtesting/polygon_backtesting.py", line 131, in _update_pandas_data
+    df = polygon_helper.get_price_data_from_polygon(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/polygon_helper.py", line 116, in get_price_data_from_polygon
+    result = polygon_client.get_aggs(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/polygon/rest/aggs.py", line 93, in get_aggs
+    return self._get(
+           ^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/polygon_helper.py", line 536, in _get
+    return super()._get(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/polygon/rest/base.py", line 133, in _get
+    raise BadResponse(resp.data.decode("utf-8"))
+polygon.exceptions.BadResponse: 404 page not found
+
+2025-01-03 16:04:45,765: asyncio: ERROR: [MLTrader] 404 page not found
+2025-01-03 16:04:45,769: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 874, in _run_trading_session
+    self.broker.process_pending_orders(strategy=self.strategy)
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/backtesting/backtesting_broker.py", line 584, in process_pending_orders
+    ohlc = strategy.get_historical_prices(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy.py", line 3061, in get_historical_prices
+    return self.broker.data_source.get_historical_prices(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/pandas_data.py", line 417, in get_historical_prices
+    response = self._pull_source_symbol_bars(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/backtesting/polygon_backtesting.py", line 216, in _pull_source_symbol_bars
+    self._update_pandas_data(asset, quote, length, timestep, current_dt)
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/backtesting/polygon_backtesting.py", line 131, in _update_pandas_data
+    df = polygon_helper.get_price_data_from_polygon(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/polygon_helper.py", line 116, in get_price_data_from_polygon
+    result = polygon_client.get_aggs(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/polygon/rest/aggs.py", line 93, in get_aggs
+    return self._get(
+           ^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/polygon_helper.py", line 536, in _get
+    return super()._get(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/polygon/rest/base.py", line 133, in _get
+    raise BadResponse(resp.data.decode("utf-8"))
+polygon.exceptions.BadResponse: 404 page not found
+
+2025-01-03 16:15:45,550: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 16:15:45,564: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 16:15:46,407: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 16:32:11,012: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 16:32:11,024: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 16:32:11,852: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 16:58:52,302: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 16:58:52,313: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 16:58:53,282: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 18:14:17,967: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 18:14:17,980: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 18:14:18,978: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 21:19:47,131: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 21:19:47,146: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 21:19:48,314: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 21:37:07,613: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 21:37:07,624: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 21:37:08,627: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 21:55:47,209: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 21:55:47,222: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 21:55:48,056: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 22:09:08,633: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 22:09:08,653: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 22:09:09,490: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 22:15:25,390: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 22:15:25,403: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 22:15:26,247: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 22:40:59,329: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: sent 1011 (unexpected error) keepalive ping timeout; no close frame received
+2025-01-03 22:40:59,343: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 22:41:00,192: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 22:58:09,487: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 22:58:09,500: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 22:58:10,342: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 23:19:56,877: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 23:19:56,890: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 23:19:57,788: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 23:39:02,936: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 23:39:02,947: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 23:39:03,791: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 23:45:24,465: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 23:45:24,480: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 23:45:25,321: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 23:53:30,554: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 23:53:30,566: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 23:53:31,407: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-03 23:56:41,027: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-03 23:56:41,041: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-03 23:56:41,804: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-04 00:14:59,903: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-04 00:14:59,916: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-04 00:15:00,747: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-04 00:31:59,411: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-04 00:31:59,424: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-04 00:32:00,265: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-04 02:48:15,759: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-04 02:48:15,772: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-04 02:48:16,713: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-04 03:08:41,213: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-04 03:08:41,227: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-04 03:08:42,131: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-04 04:21:15,104: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-04 04:21:15,118: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-04 04:21:16,020: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-04 05:37:20,410: alpaca.trading.stream: WARNING: trading stream websocket error, restarting  connection: no close frame received or sent
+2025-01-04 05:37:20,425: alpaca.trading.stream: INFO: starting trading websocket connection
+2025-01-04 05:37:21,356: alpaca.trading.stream: INFO: connected to: BaseURL.TRADING_STREAM_PAPER
+2025-01-04 06:36:12,082: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:12,233: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:21,902: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:22,077: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:22,217: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:22,388: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:22,533: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:22,684: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:22,820: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:22,970: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:23,117: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:23,254: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:23,396: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:23,476: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:23,630: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method
+2025-01-04 06:36:23,802: asyncio: INFO: [MLTrader] Executing the on_abrupt_closing event method

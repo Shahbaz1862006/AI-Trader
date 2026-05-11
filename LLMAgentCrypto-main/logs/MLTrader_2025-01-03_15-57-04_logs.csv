@@ -1,0 +1,51 @@
+2025-01-03 15:57:04,779: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-03 15:57:05,203: root: INFO: Current backtesting datetime 2023-12-01 08:30:00-05:00
+2025-01-03 15:57:05,203: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2025-01-03 15:57:05,204: root: INFO: Current backtesting datetime 2023-12-01 09:30:00-05:00
+2025-01-03 15:57:05,204: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2025-01-03 15:57:05,204: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-03 15:57:05[0m
+2025-01-03 15:57:05,229: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 15:57:18,055: root: INFO: Invalidating cache for BTC-USD because its splits have changed.
+2025-01-03 15:57:18,674: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 15:57:31,513: root: INFO: 
+Sleeping 12 seconds while getting data from Polygon to avoid hitting the rate limit; consider a paid Polygon subscription for faster results.
+
+2025-01-03 15:57:43,933: asyncio: ERROR: [MLTrader] unsupported operand type(s) for /: 'float' and 'NoneType'
+2025-01-03 15:57:43,934: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 286, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 397, in _on_trading_iteration
+    raise e
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 369, in _on_trading_iteration
+    on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 62, in func_output
+    frame, result = call_function_get_frame(func_input, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 30, in call_function_get_frame
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/tradingbotv2.py", line 50, in on_trading_iteration
+    cash, last_price, quantity = self.position_sizing()
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/tradingbotv2.py", line 33, in position_sizing
+    quantity = round(cash * self.cash_at_risk / last_price, 0)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+
+2025-01-03 15:57:43,934: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-03 15:57:43,936: root: INFO: Backtesting finished
+2025-01-03 15:57:44,816: asyncio: WARNING: [MLTrader] Cannot plot returns because the strategy returns are missing
+2025-01-03 15:57:44,849: asyncio: WARNING: [MLTrader] Cannot create a tearsheet because the strategy returns are missing
+2025-01-03 15:57:44,850: backtest_stats: INFO: Backtest took 0:00:40.070750 for a speed of 0.000

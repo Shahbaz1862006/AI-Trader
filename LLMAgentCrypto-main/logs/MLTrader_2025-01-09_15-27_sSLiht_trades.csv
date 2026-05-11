@@ -1,0 +1,25 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
+2024-01-31 00:00:00-05:00,MLTrader,7d6d3ae0f923478c9ae6c1d75224caf0,BTC,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-01-31 00:00:00-05:00,MLTrader,7d6d3ae0f923478c9ae6c1d75224caf0,BTC,sell,market,fill,1,gtc,0.0,1,stock,42956.0,1.1750411851935412,0.0
+2024-02-09 00:00:00-05:00,MLTrader,8101a73bb1b94bb191ca27b35dfc9673,BTC,buy,limit,canceled,1,day,0.0,1,stock,,,
+2024-02-09 00:00:00-05:00,MLTrader,239448e8dd154f7daa05ae6b36476f13,BTC,buy,stop,fill,1,day,0.0,1,stock,46806.87,1.1750411851935412,0.0
+2024-02-20 00:00:00-05:00,MLTrader,976187063fdd4050a23f6343b9cd9a57,BTC,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-02-20 00:00:00-05:00,MLTrader,976187063fdd4050a23f6343b9cd9a57,BTC,sell,market,fill,1,gtc,0.0,1,stock,51771.2,0.9132856944139551,0.0
+2024-02-27 00:00:00-05:00,MLTrader,974c20a2db09420d8703c2202f21c3ff,BTC,buy,limit,canceled,1,day,0.0,1,stock,,,
+2024-02-27 00:00:00-05:00,MLTrader,3eda1e52a56e4c1da719078bfcc5f52f,BTC,buy,stop,fill,1,day,0.0,1,stock,57497.11,0.9132856944139551,0.0
+2024-03-15 01:00:00-04:00,MLTrader,8c081eba90a2470da6db7000119fbf0e,BTC,buy,market,new,1,gtc,0.0,1,stock,,,
+2024-03-15 01:00:00-04:00,MLTrader,8c081eba90a2470da6db7000119fbf0e,BTC,buy,market,fill,1,gtc,0.0,1,stock,71371.3,0.6493541222518732,0.0
+2024-03-19 01:00:00-04:00,MLTrader,b114b392ad624b0d8b5b9a307c16c1f0,BTC,sell,limit,canceled,1,day,0.0,1,stock,,,
+2024-03-19 01:00:00-04:00,MLTrader,aedcf55e939148ecb32b578d9cb5197c,BTC,sell,stop,fill,1,day,0.0,1,stock,62539.920000000006,0.6493541222518732,0.0
+2024-04-02 01:00:00-04:00,MLTrader,0f2f59a3422e45f68b0087e959da8830,BTC,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-04-02 01:00:00-04:00,MLTrader,0f2f59a3422e45f68b0087e959da8830,BTC,sell,market,fill,1,gtc,0.0,1,stock,69681.1,0.645539894928161,0.0
+2024-04-08 01:00:00-04:00,MLTrader,c97b57b5f8984c16a5aa7ef46159e6cd,BTC,buy,limit,canceled,1,day,0.0,1,stock,,,
+2024-04-08 01:00:00-04:00,MLTrader,04fafacb37e544e3b21054af1485846a,BTC,buy,stop,fill,1,day,0.0,1,stock,72003.36,0.645539894928161,0.0
+2024-04-10 01:00:00-04:00,MLTrader,dd2e17fc74814cf49ba2d7fef21fa424,BTC,buy,market,new,1,gtc,0.0,1,stock,,,
+2024-04-10 01:00:00-04:00,MLTrader,dd2e17fc74814cf49ba2d7fef21fa424,BTC,buy,market,fill,1,gtc,0.0,1,stock,69159.9,0.587801208403812,0.0
+2024-04-13 01:00:00-04:00,MLTrader,8e4011288ce442609926347e3d237885,BTC,sell,limit,canceled,1,day,0.0,1,stock,,,
+2024-04-13 01:00:00-04:00,MLTrader,7af94b5b1c90472aa405117c06728bc9,BTC,sell,stop,fill,1,day,0.0,1,stock,63550.979999999996,0.587801208403812,0.0
+2024-04-15 01:00:00-04:00,MLTrader,bd1fb63d35404707bdd93f9d0b82d260,BTC,buy,market,new,1,gtc,0.0,1,stock,,,
+2024-04-15 01:00:00-04:00,MLTrader,bd1fb63d35404707bdd93f9d0b82d260,BTC,buy,market,fill,1,gtc,0.0,1,stock,65700.0,0.6285834607265205,0.0
+2024-05-01 01:00:00-04:00,MLTrader,e4c07654095940db908bcd51c69ca14f,BTC,sell,limit,canceled,1,day,0.0,1,stock,,,
+2024-05-01 01:00:00-04:00,MLTrader,6651b424cb99409dada6f84f939e41f5,BTC,sell,stop,fill,1,day,0.0,1,stock,57067.560000000005,0.6285834607265205,0.0

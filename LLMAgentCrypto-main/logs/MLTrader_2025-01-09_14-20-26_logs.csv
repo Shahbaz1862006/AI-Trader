@@ -1,0 +1,139 @@
+2025-01-09 14:20:27,803: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-09 14:20:27,813: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:27[0m
+2025-01-09 14:20:27,828: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-09 14:20:27,834: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-08-05T00:00:00.000000 | 2024-09-09T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-09 14:20:28,809: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:28[0m
+2025-01-09 14:20:28,809: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:28,810: root: INFO: Current backtesting datetime 2023-12-02 00:00:00-05:00
+2025-01-09 14:20:28,810: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:28[0m
+2025-01-09 14:20:29,079: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:29,079: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:29,079: root: INFO: Current backtesting datetime 2023-12-03 00:00:00-05:00
+2025-01-09 14:20:29,079: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:29,419: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:29,419: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:29,419: root: INFO: Current backtesting datetime 2023-12-04 00:00:00-05:00
+2025-01-09 14:20:29,419: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:29,675: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:29,675: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:29,675: root: INFO: Current backtesting datetime 2023-12-05 00:00:00-05:00
+2025-01-09 14:20:29,676: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:29,957: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:29,957: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:29,957: root: INFO: Current backtesting datetime 2023-12-06 00:00:00-05:00
+2025-01-09 14:20:29,957: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:29[0m
+2025-01-09 14:20:30,238: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:30[0m
+2025-01-09 14:20:30,239: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:30,239: root: INFO: Current backtesting datetime 2023-12-07 00:00:00-05:00
+2025-01-09 14:20:30,239: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:30[0m
+2025-01-09 14:20:30,621: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:30[0m
+2025-01-09 14:20:30,621: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:30,621: root: INFO: Current backtesting datetime 2023-12-08 00:00:00-05:00
+2025-01-09 14:20:30,621: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:30[0m
+2025-01-09 14:20:30,939: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:30[0m
+2025-01-09 14:20:30,939: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:30,939: root: INFO: Current backtesting datetime 2023-12-09 00:00:00-05:00
+2025-01-09 14:20:30,939: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:30[0m
+2025-01-09 14:20:31,259: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:31[0m
+2025-01-09 14:20:31,259: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:31,260: root: INFO: Current backtesting datetime 2023-12-10 00:00:00-05:00
+2025-01-09 14:20:31,260: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:31[0m
+2025-01-09 14:20:31,564: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:31[0m
+2025-01-09 14:20:31,565: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:31,565: root: INFO: Current backtesting datetime 2023-12-11 00:00:00-05:00
+2025-01-09 14:20:31,565: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:31[0m
+2025-01-09 14:20:32,159: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:32[0m
+2025-01-09 14:20:32,159: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:32,159: root: INFO: Current backtesting datetime 2023-12-12 00:00:00-05:00
+2025-01-09 14:20:32,160: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:32[0m
+2025-01-09 14:20:32,440: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:32[0m
+2025-01-09 14:20:32,440: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:32,440: root: INFO: Current backtesting datetime 2023-12-13 00:00:00-05:00
+2025-01-09 14:20:32,441: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:32[0m
+2025-01-09 14:20:32,730: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:32[0m
+2025-01-09 14:20:32,730: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:32,730: root: INFO: Current backtesting datetime 2023-12-14 00:00:00-05:00
+2025-01-09 14:20:32,731: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:32[0m
+2025-01-09 14:20:33,026: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:33[0m
+2025-01-09 14:20:33,026: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:33,026: root: INFO: Current backtesting datetime 2023-12-15 00:00:00-05:00
+2025-01-09 14:20:33,026: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:33[0m
+2025-01-09 14:20:33,426: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:33[0m
+2025-01-09 14:20:33,426: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:33,426: root: INFO: Current backtesting datetime 2023-12-16 00:00:00-05:00
+2025-01-09 14:20:33,427: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:33[0m
+2025-01-09 14:20:33,743: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:33[0m
+2025-01-09 14:20:33,743: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:33,743: root: INFO: Current backtesting datetime 2023-12-17 00:00:00-05:00
+2025-01-09 14:20:33,743: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:33[0m
+2025-01-09 14:20:34,074: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:34[0m
+2025-01-09 14:20:34,074: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:34,074: root: INFO: Current backtesting datetime 2023-12-18 00:00:00-05:00
+2025-01-09 14:20:34,074: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:34[0m
+2025-01-09 14:20:34,369: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:34[0m
+2025-01-09 14:20:34,369: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:34,369: root: INFO: Current backtesting datetime 2023-12-19 00:00:00-05:00
+2025-01-09 14:20:34,369: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:20:34[0m
+2025-01-09 14:20:34,722: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 684.5564074479737 SOL buy | at price $87.64800000000001 of class bracket with status new[0m
+2025-01-09 14:20:34,726: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 14:20:34[0m
+2025-01-09 14:20:34,726: asyncio: INFO: [MLTrader] Getting historical prices for SOL, 1 bars, 
+2025-01-09 14:20:34,727: root: INFO: market order of | 684.5564074479737 SOL buy | at price $87.64800000000001 of class bracket with status new was sent to broker backtesting
+2025-01-09 14:20:34,727: root: INFO: market order of | 684.5564074479737 SOL buy | at price $87.64800000000001 of class bracket with status new was sent to broker backtesting
+2025-01-09 14:20:34,728: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 684.5564074479737 SOL buy | at price $74.41 of class bracket with status fill[0m
+2025-01-09 14:20:34,729: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 14:20:34,729: root: INFO: Current backtesting datetime 2023-12-20 00:00:00-05:00
+2025-01-09 14:20:34,730: asyncio: ERROR: [MLTrader] 'Asset' object has no attribute 'replace'
+2025-01-09 14:20:34,731: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 284, in func_output
+    self.strategy._update_portfolio_value()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 449, in _update_portfolio_value
+    prices = self.broker.data_source.get_last_prices(assets)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/data_source.py", line 348, in get_last_prices
+    result[asset] = self.get_last_price(asset, quote=quote, exchange=exchange)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 242, in get_last_price
+    bars = self.get_historical_prices(asset, 1, timestep=timestep, quote=quote, timeshift=None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 174, in get_historical_prices
+    response = self._pull_source_symbol_bars(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 109, in _pull_source_symbol_bars
+    data = self._pull_source_bars([asset],length,timestep,timeshift,quote,include_after_hours)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 154, in _pull_source_bars
+    data = self.cache_db.download_ohlcv(symbol,parsed_timestep,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 173, in download_ohlcv
+    download_ranges,overap_range_ids,cache_range = self._calc_download_ranges(symbol, timeframe,start_dt, end_dt)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 272, in _calc_download_ranges
+    cache_file = self.get_cache_file_name(symbol, timeframe)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 92, in get_cache_file_name
+    f"{symbol.replace('/', '_')}_{timeframe}.duckdb")
+       ^^^^^^^^^^^^^^
+AttributeError: 'Asset' object has no attribute 'replace'
+
+2025-01-09 14:20:34,731: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-09 14:20:35,646: yfinance: ERROR: $^IRX: possibly delisted; No price data found  (1d 1926-02-02 -> 2025-01-08)
+2025-01-09 14:20:35,674: root: INFO: Backtesting finished
+2025-01-09 14:20:37,391: yfinance: ERROR: $^IRX: possibly delisted; No price data found  (1d 1926-02-02 -> 2025-01-08)
+2025-01-09 14:20:37,398: root: ERROR: Not enough data to create a tearsheet, at least 2 days of data are required. Skipping
+2025-01-09 14:20:37,398: backtest_stats: INFO: Backtest took 0:00:09.595641 for a speed of 0.000

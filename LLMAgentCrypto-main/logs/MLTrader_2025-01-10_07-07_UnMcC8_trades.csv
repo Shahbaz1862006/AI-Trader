@@ -1,0 +1,7 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
+2024-03-23 01:00:00-04:00,MLTrader,fef575a3faad4f5788c54505a366c345,LTC,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-03-23 01:00:00-04:00,MLTrader,fef575a3faad4f5788c54505a366c345,LTC,sell,market,fill,1,gtc,0.0,1,stock,63810.0,0.7808290843217328,0.0
+2024-03-24 01:00:00-04:00,MLTrader,69693528c5d6479aa9448f56b8c14c0c,LTC,buy,market,new,1,day,0.0,1,stock,,,
+2024-03-24 01:00:00-04:00,MLTrader,719164974286450eb7b82f25555d6884,LTC,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-03-24 01:00:00-04:00,MLTrader,69693528c5d6479aa9448f56b8c14c0c,LTC,buy,market,fill,1,day,0.0,1,stock,64034.4,0.7808290843217328,0.0
+2024-03-24 01:00:00-04:00,MLTrader,719164974286450eb7b82f25555d6884,LTC,sell,market,fill,1,gtc,0.0,1,stock,64034.4,1.1148683427407085,0.0

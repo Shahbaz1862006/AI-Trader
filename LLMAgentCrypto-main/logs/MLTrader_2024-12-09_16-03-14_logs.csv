@@ -1,0 +1,50 @@
+2024-12-09 16:03:14,128: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2024-12-09 16:03:14,652: root: INFO: Current backtesting datetime 2022-12-01 08:30:00-05:00
+2024-12-09 16:03:14,652: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2024-12-09 16:03:14,653: root: INFO: Current backtesting datetime 2022-12-01 09:30:00-05:00
+2024-12-09 16:03:14,653: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2024-12-09 16:03:14,653: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2024-12-09 16:03:14[0m
+2024-12-09 16:03:14,653: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-12-09 16:03:15,383: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-12-09 16:03:16,537: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2024-12-09 16:03:16[0m
+2024-12-09 16:03:16,538: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2024-12-09 16:03:16,539: root: INFO: Current backtesting datetime 2022-12-01 16:00:00-05:00
+2024-12-09 16:03:16,539: root: INFO: Current backtesting datetime 2022-12-02 09:30:00-05:00
+2024-12-09 16:03:16,539: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2024-12-09 16:03:16[0m
+2024-12-09 16:03:16,539: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-12-09 16:03:16,540: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-12-09 16:03:16,836: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2024-12-09 16:03:16[0m
+2024-12-09 16:03:16,837: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2024-12-09 16:03:16,838: root: INFO: Current backtesting datetime 2022-12-02 16:00:00-05:00
+2024-12-09 16:03:16,838: root: INFO: Current backtesting datetime 2022-12-03 09:30:00-05:00
+2024-12-09 16:03:16,838: asyncio: INFO: [MLTrader] [34mThe market is not currently open, skipping this trading iteration[0m
+2024-12-09 16:03:16,839: root: INFO: Current backtesting datetime 2022-12-03 09:29:00-05:00
+2024-12-09 16:03:16,839: root: INFO: Current backtesting datetime 2022-12-03 09:29:00-05:00
+2024-12-09 16:03:16,839: asyncio: INFO: [MLTrader] Executing the after_market_closes lifecycle method
+2024-12-09 16:03:16,840: root: INFO: Current backtesting datetime 2022-12-05 08:30:00-05:00
+2024-12-09 16:03:16,840: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2024-12-09 16:03:16,841: root: INFO: Current backtesting datetime 2022-12-05 09:30:00-05:00
+2024-12-09 16:03:16,841: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2024-12-09 16:03:16,841: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2024-12-09 16:03:16[0m
+2024-12-09 16:03:16,841: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-12-09 16:03:16,842: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-12-09 16:03:17,164: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 3.0 BTCUSD sell | at price $13580.190625000001 of class bracket with status new[0m
+2024-12-09 16:03:17,166: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2024-12-09 16:03:17[0m
+2024-12-09 16:03:17,166: asyncio: INFO: [MLTrader] Getting historical prices for BTCUSD, 1 bars, 
+2024-12-09 16:03:17,166: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-12-09 16:03:19,795: yfinance: ERROR: $BTCUSD: possibly delisted; No timezone found
+2024-12-09 16:03:19,799: root: ERROR: YAHOO did not return data for symbol BTCUSD. Make sure this symbol is valid.
+2024-12-09 16:03:19,799: asyncio: ERROR: [MLTrader] 'NoneType' object has no attribute 'df'
+2024-12-09 16:03:19,801: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 874, in _run_trading_session
+    self.broker.process_pending_orders(strategy=self.strategy)
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/backtesting/backtesting_broker.py", line 574, in process_pending_orders
+    dt = ohlc.df.index[-1]
+AttributeError: 'NoneType' object has no attribute 'df'
+
+2024-12-09 16:03:19,802: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2024-12-09 16:03:20,973: root: INFO: Backtesting finished
+2024-12-09 16:03:22,232: root: ERROR: Not enough data to create a tearsheet, at least 2 days of data are required. Skipping
+2024-12-09 16:03:22,232: backtest_stats: INFO: Backtest took 0:00:08.105308 for a speed of 0.000

@@ -1,0 +1,9 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
+2024-01-31 00:00:00-05:00,MLTrader,5736659365354c3185e6354ad1ecafee,BTC,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-01-31 00:00:00-05:00,MLTrader,5736659365354c3185e6354ad1ecafee,BTC,sell,market,fill,1,gtc,0.0,1,stock,42956.0,1.1750411851935412,0.0
+2024-02-01 00:00:00-05:00,MLTrader,7392aa2347d048e8b63dba592f2f5c3a,BTC,buy,limit,canceled,1,day,0.0,1,stock,,,
+2024-02-01 00:00:00-05:00,MLTrader,cbebab39bc2e4ec7b1471aad7477fdde,BTC,buy,stop,fill,1,day,0.0,1,stock,42551.7,1.1750411851935412,0.0
+2024-02-20 00:00:00-05:00,MLTrader,6fef12142a74419fbc0cf328a9cd88c6,BTC,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-02-20 00:00:00-05:00,MLTrader,6fef12142a74419fbc0cf328a9cd88c6,BTC,sell,market,fill,1,gtc,0.0,1,stock,51771.2,0.9611141852720174,0.0
+2024-02-21 00:00:00-05:00,MLTrader,530f06dece524dacbafe146b8b219127,BTC,buy,limit,canceled,1,day,0.0,1,stock,,,
+2024-02-21 00:00:00-05:00,MLTrader,9508d227e8094a0ea2c87cb7e3a23f48,BTC,buy,stop,fill,1,day,0.0,1,stock,52270.1,0.9611141852720174,0.0

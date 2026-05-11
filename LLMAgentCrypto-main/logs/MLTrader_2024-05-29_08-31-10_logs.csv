@@ -1,0 +1,41 @@
+2024-05-29 08:31:10,790: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2024-05-29 08:31:11,256: root: INFO: Current backtesting datetime 2020-01-02 08:30:00-05:00
+2024-05-29 08:31:11,257: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2024-05-29 08:31:11,257: root: INFO: Current backtesting datetime 2020-01-02 09:30:00-05:00
+2024-05-29 08:31:11,257: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2024-05-29 08:31:11,258: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2024-05-29 08:31:11[0m
+2024-05-29 08:31:11,258: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2024-05-29 08:31:17,427: yfinance: ERROR: Failed to get ticker 'BTC/USD' reason: Expecting value: line 1 column 1 (char 0)
+2024-05-29 08:31:17,429: yfinance: ERROR: $BTC/USD: possibly delisted; No timezone found
+2024-05-29 08:31:19,574: yfinance: ERROR: 404 Client Error: Not Found for url: https://query2.finance.yahoo.com/v10/finance/quoteSummary/BTC/USD?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=BTC%2FUSD&crumb=49Pug.yXXmD
+2024-05-29 08:31:21,669: asyncio: INFO: [MLTrader] [31mCould not get last price for BTC/USD[0m
+2024-05-29 08:31:21,670: asyncio: INFO: [MLTrader] [Errno 2] No such file or directory: '/Users/nicholasrenotte/Library/Caches/lumibot/1.0/yahoo/BTC/USD_info.pickle'
+2024-05-29 08:31:21,670: asyncio: ERROR: [MLTrader] unsupported operand type(s) for /: 'float' and 'NoneType'
+2024-05-29 08:31:21,674: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 286, in func_output
+    result = func_input(self, *args, **kwargs)
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 397, in _on_trading_iteration
+    raise e
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/strategies/strategy_executor.py", line 369, in _on_trading_iteration
+    on_trading_iteration()
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/tools/decorators.py", line 62, in func_output
+    frame, result = call_function_get_frame(func_input, *args, **kwargs)
+  File "/opt/anaconda3/envs/mltrader/lib/python3.10/site-packages/lumibot/tools/decorators.py", line 30, in call_function_get_frame
+    result = func(*args, **kwargs)
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/tradingbot.py", line 44, in on_trading_iteration
+    cash, last_price, quantity = self.position_sizing()
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/tradingbot.py", line 28, in position_sizing
+    quantity = round(cash * self.cash_at_risk / last_price, 0)
+TypeError: unsupported operand type(s) for /: 'float' and 'NoneType'
+
+2024-05-29 08:31:21,674: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2024-05-29 08:31:21,678: root: INFO: Backtesting finished
+2024-05-29 08:31:23,237: asyncio: WARNING: [MLTrader] Cannot plot returns because the strategy returns are missing
+2024-05-29 08:31:23,262: asyncio: WARNING: [MLTrader] Cannot create a tearsheet because the strategy returns are missing
+2024-05-29 08:31:23,262: backtest_stats: INFO: Backtest took 0:00:12.474227 for a speed of 0.000

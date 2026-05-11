@@ -1,0 +1,46 @@
+2025-01-09 14:35:22,780: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-09 14:35:22,788: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 14:35:22[0m
+2025-01-09 14:35:22,798: CcxtCacheDB: INFO: download ranges :
++---------------------+----------------------------+
+| from                | to                         |
+|---------------------+----------------------------|
+| 2024-09-24 00:00:00 | 2024-12-31 23:59:59.999999 |
++---------------------+----------------------------+
+2025-01-09 14:35:24,009: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-03-06T00:00:00.000000 | 2024-12-31T23:59:59.999999 |
++----+----------------------------+----------------------------+
+2025-01-09 14:35:24,877: asyncio: ERROR: [MLTrader] can only concatenate str (not "tuple") to str
+2025-01-09 14:35:24,878: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 286, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 397, in _on_trading_iteration
+    raise e
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 369, in _on_trading_iteration
+    on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 62, in func_output
+    frame, result = call_function_get_frame(func_input, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 30, in call_function_get_frame
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/4. old_bot_new_ml.py", line 63, in on_trading_iteration
+    print(Fore.YELLOW + (probability, sentiment) + Fore.RESET)
+          ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: can only concatenate str (not "tuple") to str
+
+2025-01-09 14:35:24,878: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-09 14:35:24,879: root: INFO: Backtesting finished
+2025-01-09 14:35:25,828: asyncio: WARNING: [MLTrader] Cannot plot returns because the strategy returns are missing
+2025-01-09 14:35:25,850: asyncio: WARNING: [MLTrader] Cannot create a tearsheet because the strategy returns are missing
+2025-01-09 14:35:25,850: backtest_stats: INFO: Backtest took 0:00:03.070632 for a speed of 0.000

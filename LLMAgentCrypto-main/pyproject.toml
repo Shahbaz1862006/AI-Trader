@@ -1,0 +1,17 @@
+[project]
+name = "29-05-2024-tradingv2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alpaca-trade-api>=3.2.0",
+    "colorama>=0.4.6",
+    "langchain>=0.3.24",
+    "langchain-community>=0.3.21",
+    "langchain-ollama>=0.3.2",
+    "lumibot>=3.11.10",
+    "timedelta>=2020.12.3",
+    "torch>=2.7.0",
+    "transformers>=4.51.3",
+]

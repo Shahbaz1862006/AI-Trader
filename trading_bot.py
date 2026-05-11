@@ -1,17 +1,19 @@
 """
-AI-Powered Crypto Trading Bot — Enhanced Version v4
-Changes from v3:
-  - Minimum position size: $30 per trade (hard enforced)
-  - Minimum leverage: 20x (hard enforced), max 50x
-  - Full Technical Analysis:
-      • Multi-timeframe: 4H + 1H + 15m
-      • Market Structure: HH/HL/LH/LL (detect_market_structure_detail)
-      • Break of Structure (BOS) on 1H and 15m
-      • Order Blocks (bullish/bearish OB detection)
-      • Liquidity Levels (equal highs/lows + sweep detection)
-      • Fair Value Gap on both 4H and 15m
-  - AI prompt: 8-step TA framework with minimum 3 confluences required
-  - 4H candles added to build_payload for macro bias
+AI-Powered Crypto Trading Bot — Merged Version v5
+Merges:
+  [YOUR BOT]  Multi-TF TA, Order Book, BOS, FVG, Liquidity, Smart Money (Binance WS)
+  [HIS BOT]   FinBERT financial-domain sentiment from real crypto news headlines
+
+Merged Parameters (fixed, no AI guessing):
+  - Trade size   : $20 per trade (always)
+  - Leverage     : 30x (always)
+  - Stop Loss    : 3.333% from entry = $20 max loss per trade (100% of margin)
+  - Take Profit  : 5.000% from entry = $30 profit per trade (1.5:1 RR)
+  - Trading Fees : $0.60 round-trip per trade (0.1% of $600 notional)
+  - Win Prob Min : 55% (was 75% — was too strict, bot rarely traded)
+  - Max trades   : 5 open simultaneously = $100 max risk of $500 capital
+
+Assets: BTC ETH SOL BNB XRP LTC DYDX RUNE LINK SUI
 """
 
 import os
@@ -42,6 +44,16 @@ from typing import Optional
 from dotenv import load_dotenv
 from openai import OpenAI
 
+# ── FinBERT (optional — pip install torch transformers) ─────────────────────────
+# Provides financial-domain sentiment analysis on real news headlines.
+# Falls back to Groq LLM sentiment if not installed.
+try:
+    from transformers import AutoTokenizer, AutoModelForSequenceClassification
+    import torch as _torch
+    _FINBERT_AVAILABLE = True
+except ImportError:
+    _FINBERT_AVAILABLE = False
+
 # ─── LOAD .env ─────────────────────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(BASE_DIR, ".env"))
@@ -56,8 +68,30 @@ SIMULATION_MODE    = os.getenv("SIMULATION_MODE", "True") == "True"
 INITIAL_CAPITAL    = float(os.getenv("INITIAL_CAPITAL", "500"))
 MAX_OPEN_TRADES    = int(os.getenv("MAX_OPEN_TRADES", "5"))
 RISK_PER_TRADE     = float(os.getenv("RISK_PER_TRADE", "0.02"))
-MIN_WIN_PROB       = float(os.getenv("MIN_WIN_PROBABILITY", "75")) / 100   # ← minimum 75%
-MAX_LEVERAGE = int(os.getenv("MAX_LEVERAGE", "50"))
+MIN_WIN_PROB       = float(os.getenv("MIN_WIN_PROBABILITY", "55")) / 100   # ← minimum 55% (was 75%, too strict)
+
+# ── MERGED STRATEGY: Fixed trade parameters (no AI guessing) ───────────────────
+FIXED_TRADE_USDT = 20.0               # always $20 margin per trade
+FIXED_LEVERAGE   = 30                  # always 30x leverage
+FIXED_SL_PCT     = round(1 / 30, 6)   # 3.3333% = $20 loss at 30x (full margin gone)
+FIXED_TP_PCT     = round(1 / 30 * 1.5, 6)  # 5.0% = $30 profit (1.5:1 RR)
+ROUND_TRIP_FEE   = round(FIXED_TRADE_USDT * FIXED_LEVERAGE * 0.001, 4)  # $0.60
+
+# News is fetched from Google News RSS + Reddit + CoinDesk — all 100% free, no API key needed
+
+# ── High-volatility assets — cap at 1 concurrent trade each ────────────────────
+HIGH_VOL_SYMBOLS = {"DYDXUSDT", "RUNEUSDT", "SUIUSDT"}
+
+# ── Coin names for news search queries ─────────────────────────────────────────
+COIN_NEWS_NAMES = {
+    "BTCUSDT":  "bitcoin",       "ETHUSDT":  "ethereum",
+    "SOLUSDT":  "solana",        "BNBUSDT":  "BNB binance coin",
+    "XRPUSDT":  "XRP ripple",    "LTCUSDT":  "litecoin",
+    "DYDXUSDT": "dydx",          "RUNEUSDT": "thorchain rune",
+    "LINKUSDT": "chainlink",     "SUIUSDT":  "sui crypto",
+}
+
+MAX_LEVERAGE = int(os.getenv("MAX_LEVERAGE", "30"))   # kept for legacy compatibility
 
 STATE_FILE = os.path.join(BASE_DIR, "trading_state.json")
 LOCK_FILE  = os.path.join(BASE_DIR, "bot.lock")
@@ -67,8 +101,8 @@ os.makedirs(os.path.join(BASE_DIR, "logs"), exist_ok=True)
 BINANCE_BASE = "https://fapi.binance.com"
 
 SCAN_SYMBOLS = [
-    "BTCUSDT", "ETHUSDT", "XRPUSDT", "BNBUSDT", "SOLUSDT",
-    "ALGOUSDT", "RUNEUSDT", "AVAXUSDT", "NEARUSDT", "DYDXUSDT"
+    "BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT",
+    "LTCUSDT", "DYDXUSDT", "RUNEUSDT", "LINKUSDT", "SUIUSDT"
 ]
 
 PSYCH_LEVELS = {
@@ -77,11 +111,11 @@ PSYCH_LEVELS = {
     "SOLUSDT":  [300,250,200,180,150,120,100,80],
     "XRPUSDT":  [5,4,3,2,1.5,1,0.5],
     "BNBUSDT":  [1000,800,700,600,500,400,300],
-    "ALGOUSDT": [2,1.5,1,0.5,0.25],
-    "RUNEUSDT": [20,15,10,8,5,3],
-    "AVAXUSDT": [100,80,60,50,40,30,20],
-    "NEARUSDT": [10,8,6,5,4,3,2],
+    "LTCUSDT":  [200,150,100,80,60,50,30],
     "DYDXUSDT": [5,4,3,2,1.5,1],
+    "RUNEUSDT": [20,15,10,8,5,3],
+    "LINKUSDT": [30,25,20,15,10,8,5],
+    "SUIUSDT":  [5,4,3,2,1.5,1,0.5],
 }
 
 # High-impact economic events 2026 (month, day, name)
@@ -182,9 +216,10 @@ def load_state() -> dict:
     default = {
         "balance": INITIAL_CAPITAL, "initial_balance": INITIAL_CAPITAL,
         "open_trades": [], "closed_trades": [],
-        "total_profit": 0.0, "win_count": 0, "loss_count": 0,
+        "total_profit": 0.0, "total_fees": 0.0,
+        "win_count": 0, "loss_count": 0,
         "last_scan": None, "session_start": datetime.now().isoformat(),
-        "sl_cooldowns": {}   # {"SUIUSDT_SHORT": "2026-03-30T10:45:00", ...}
+        "sl_cooldowns": {}
     }
     try:
         if os.path.exists(STATE_FILE):
@@ -519,6 +554,190 @@ def get_btc_dominance() -> dict:
 
     log.error("[BTC_DOM] both attempts failed — using default")
     return _default
+
+# ─── FINBERT SENTIMENT (from his bot — financial-domain AI) ───────────────────
+_finbert_tokenizer = None
+_finbert_model     = None
+_finbert_device    = "cpu"
+
+def _load_finbert() -> bool:
+    """Lazy-load FinBERT once. Returns True if ready, False if unavailable."""
+    global _finbert_tokenizer, _finbert_model, _finbert_device
+    if not _FINBERT_AVAILABLE:
+        return False
+    if _finbert_model is not None:
+        return True
+    try:
+        _finbert_device = "cuda" if _torch.cuda.is_available() else "cpu"
+        _finbert_tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
+        _finbert_model = AutoModelForSequenceClassification.from_pretrained(
+            "ProsusAI/finbert"
+        ).to(_finbert_device)
+        log.info(f"[FINBERT] Loaded on {_finbert_device}")
+        return True
+    except Exception as e:
+        log.warning(f"[FINBERT] Load failed: {e}")
+        return False
+
+def fetch_crypto_news(symbol: str) -> list:
+    """
+    Fetch recent news headlines — 100% FREE, zero API keys required.
+
+    Priority order:
+      1. Google News RSS  — real Reuters/Bloomberg/CoinDesk articles, coin-specific
+      2. Reddit JSON API  — r/CryptoCurrency + r/<coin> community + news posts
+      3. CoinDesk RSS     — professional crypto journalism (general, filtered by coin)
+
+    Uses only Python built-ins (xml.etree) + requests (already a dependency).
+    """
+    import xml.etree.ElementTree as ET
+    from urllib.parse import quote
+
+    coin_name    = COIN_NEWS_NAMES.get(symbol, symbol.replace("USDT", "").lower())
+    ticker       = symbol.replace("USDT", "")
+    ticker_upper = ticker.upper()
+    browser_ua   = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36")
+
+    # ── 1. Google News RSS (best quality, coin-specific, completely free) ─────
+    try:
+        query = quote(f"{coin_name} crypto price")
+        url   = f"https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
+        r = requests.get(url, headers={"User-Agent": browser_ua}, timeout=10)
+        if r.status_code == 200:
+            root  = ET.fromstring(r.content)
+            items = root.findall(".//item")
+            headlines = []
+            for item in items[:15]:
+                title = item.findtext("title", "").strip()
+                if title:
+                    headlines.append(title)
+            if headlines:
+                log.info(f"[NEWS] {symbol}: {len(headlines)} headlines (Google News RSS — free)")
+                return headlines
+    except Exception as e:
+        log.debug(f"[NEWS] Google News RSS {symbol}: {e}")
+
+    # ── 2. Reddit JSON API (no key, completely free) ──────────────────────────
+    try:
+        # Search r/CryptoCurrency for coin-specific posts from past day
+        url = (f"https://www.reddit.com/r/CryptoCurrency/search.json"
+               f"?q={quote(coin_name)}&sort=new&limit=15&t=day&restrict_sr=1")
+        r = requests.get(url, headers={"User-Agent": "TradingBot/2.0"}, timeout=8)
+        if r.status_code == 200:
+            posts = r.json().get("data", {}).get("children", [])
+            headlines = [p["data"]["title"] for p in posts if p.get("data", {}).get("title")]
+            if headlines:
+                log.info(f"[NEWS] {symbol}: {len(headlines)} headlines (Reddit — free)")
+                return headlines
+    except Exception as e:
+        log.debug(f"[NEWS] Reddit {symbol}: {e}")
+
+    # ── 3. CoinDesk RSS (professional crypto news, no key, coin-filtered) ─────
+    try:
+        url = "https://www.coindesk.com/arc/outboundfeeds/rss/"
+        r   = requests.get(url, headers={"User-Agent": browser_ua}, timeout=8)
+        if r.status_code == 200:
+            root      = ET.fromstring(r.content)
+            items     = root.findall(".//item")
+            keywords  = {ticker_upper, coin_name.upper().split()[0], "CRYPTO", "BITCOIN", "MARKET"}
+            headlines = []
+            for item in items[:30]:
+                title = item.findtext("title", "").strip()
+                desc  = item.findtext("description", "").upper()
+                if title and any(kw in (title.upper() + " " + desc) for kw in keywords):
+                    headlines.append(title)
+            if headlines:
+                log.info(f"[NEWS] {symbol}: {len(headlines)} headlines (CoinDesk RSS — free)")
+                return headlines
+    except Exception as e:
+        log.debug(f"[NEWS] CoinDesk RSS {symbol}: {e}")
+
+    log.debug(f"[NEWS] {symbol}: all free sources returned empty — sentiment will be NEUTRAL")
+    return []
+
+def get_coin_sentiment(symbol: str) -> dict:
+    """
+    Returns sentiment for a coin using FinBERT → Groq fallback → neutral.
+
+    Contrarian logic (core of his bot's winning strategy):
+      - Overwhelming NEGATIVE news (>= 0.75 conf) → contrarian LONG signal
+        (market is overselling on fear → buy the dip)
+      - Overwhelming POSITIVE news (>= 0.80 conf) → contrarian SHORT signal
+        (market is euphoric → peak likely near → sell)
+      - Everything else → NEUTRAL (let TA decide direction alone)
+
+    Returns dict:
+      sentiment, confidence, contrarian_signal, headline_count, source
+    """
+    _neutral = {
+        "sentiment": "neutral", "confidence": 0.5,
+        "contrarian_signal": "NEUTRAL", "headline_count": 0, "source": "unavailable"
+    }
+    headlines = fetch_crypto_news(symbol)
+    if not headlines:
+        return _neutral
+
+    def _apply_contrarian(sentiment: str, confidence: float) -> str:
+        if sentiment == "negative" and confidence >= 0.75:
+            return "LONG"
+        if sentiment == "positive" and confidence >= 0.80:
+            return "SHORT"
+        return "NEUTRAL"
+
+    # ── FinBERT ──────────────────────────────────────────────────────────────
+    if _load_finbert():
+        try:
+            tokens = _finbert_tokenizer(
+                headlines[:10], return_tensors="pt",
+                padding=True, truncation=True, max_length=512
+            ).to(_finbert_device)
+            with _torch.no_grad():
+                logits = _finbert_model(**tokens).logits
+            probs     = _torch.nn.functional.softmax(_torch.sum(logits, dim=0), dim=-1)
+            labels    = ["positive", "negative", "neutral"]
+            idx       = _torch.argmax(probs).item()
+            sentiment = labels[idx]
+            confidence= round(probs[idx].item(), 3)
+            contrarian= _apply_contrarian(sentiment, confidence)
+            log.info(f"[FINBERT] {symbol}: {sentiment} conf={confidence} → {contrarian}")
+            return {
+                "sentiment": sentiment, "confidence": confidence,
+                "contrarian_signal": contrarian,
+                "headline_count": len(headlines), "source": "finbert"
+            }
+        except Exception as e:
+            log.warning(f"[FINBERT] Inference error {symbol}: {e}")
+
+    # ── Groq / Ollama fallback ────────────────────────────────────────────────
+    try:
+        client = OpenAI(base_url=OLLAMA_BASE_URL, api_key=AI_API_KEY, max_retries=0)
+        hl_text = "\n".join(f"- {h}" for h in headlines[:10])
+        resp = client.chat.completions.create(
+            model=OLLAMA_MODEL, max_tokens=60, temperature=0, timeout=20,
+            messages=[{"role": "user", "content":
+                f'Analyze these {symbol.replace("USDT","")} crypto news headlines.\n'
+                f'Reply ONLY with JSON: {{"sentiment":"positive/negative/neutral","confidence":0.0-1.0}}\n'
+                f'Headlines:\n{hl_text}'}]
+        )
+        raw = resp.choices[0].message.content.strip()
+        s, e = raw.find("{"), raw.rfind("}") + 1
+        if s != -1 and e > s:
+            obj       = json.loads(raw[s:e])
+            sentiment = obj.get("sentiment", "neutral")
+            confidence= round(float(obj.get("confidence", 0.5)), 3)
+            contrarian= _apply_contrarian(sentiment, confidence)
+            log.info(f"[LLM_SENT] {symbol}: {sentiment} conf={confidence} → {contrarian}")
+            return {
+                "sentiment": sentiment, "confidence": confidence,
+                "contrarian_signal": contrarian,
+                "headline_count": len(headlines), "source": "llm"
+            }
+    except Exception as e:
+        log.warning(f"[SENTIMENT] LLM fallback failed {symbol}: {e}")
+
+    return _neutral
 
 # ─── ECONOMIC CALENDAR ────────────────────────────────────────────────────────
 def check_high_impact_event() -> dict:
@@ -1184,6 +1403,15 @@ def _format_analysis_for_llm(d: dict) -> str:
         f"ATR        : {atr.get('atr_pct')}%  sufficient={atr.get('sufficient_volatility')}\n"
         f"VOLUME     : ratio_5m={d.get('volume_ratio_5m')}  ratio_15m={d.get('volume_ratio_15m')}\n"
         f"FUNDING    : {d.get('funding_rate')}  24h_chg={d.get('price_change_24h')}%\n"
+        f"── SENTIMENT (FinBERT/LLM on real news — contrarian logic) ──\n"
+        f"SENTIMENT  : {d.get('sentiment',{}).get('sentiment','unavailable')}  "
+        f"conf={d.get('sentiment',{}).get('confidence',0)}  "
+        f"contrarian_signal={d.get('sentiment',{}).get('contrarian_signal','NEUTRAL')}  "
+        f"headlines={d.get('sentiment',{}).get('headline_count',0)}  "
+        f"source={d.get('sentiment',{}).get('source','none')}\n"
+        f"CONTRARIAN : If contrarian_signal=LONG → news panic = dip-buy opportunity\n"
+        f"             If contrarian_signal=SHORT → news euphoria = sell-the-news setup\n"
+        f"             If contrarian_signal=NEUTRAL → ignore sentiment, follow TA only\n"
     )
 
 
@@ -1193,96 +1421,69 @@ def analyze_with_ai(analyses, balance, open_count, fg, btc, ev, market_regime="N
     # also dropped the WebSocket connection (Binance closes idle WS after ~3min).
     client = OpenAI(base_url=OLLAMA_BASE_URL, api_key=AI_API_KEY, max_retries=0)
 
-    system = """You are a crypto futures trading AI. Your primary job is to identify Support/Resistance setups and trade them with confirmation.
+    system = """You are a merged crypto trading AI combining two strategies:
+  1. TA-based (S/R, BOS, Order Blocks, FVG, Orderbook)
+  2. Contrarian sentiment (FinBERT on real news headlines)
 
-PRICE RULE (CRITICAL):
-- Every symbol block shows "ENTRY PRICE = X". Your entry_price MUST equal that exact number.
-- SL and TP are % offsets from that price. NEVER guess or invent a price.
-
-═══════════════════════════════════════════════
-PRIMARY SETUPS — trade direction comes from S/R
-═══════════════════════════════════════════════
-
-SETUP 1 ► LONG — Confirmed Resistance Break
-  Trigger : SR_INT = CONFIRMED_BREAK_RESISTANCE on any timeframe
-  Logic   : Price closed above resistance AND stayed above → old resistance is new support → BUY
-  Requires: volume_ratio > 1.1 OR BOS = BULLISH_BOS OR RSI < 75
-  Trade   : LONG at current price, TP toward next resistance, SL just below broken level
-
-SETUP 2 ► SHORT — Bounce / Rejection from Resistance
-  Trigger : SR_INT = BOUNCE_FROM_RESISTANCE or FAKE_BREAK_RESISTANCE on any timeframe
-  Logic   : Price wicked up to resistance but closed back below → sellers in control → SELL
-  Requires: RSI > 55 OR OB=SELL OR bearish candle body OR volume_ratio > 0.8
-  Trade   : SHORT at current price, TP toward support, SL just above the wick high
-
-SETUP 3 ► SHORT — Confirmed Support Break
-  Trigger : SR_INT = CONFIRMED_BREAK_SUPPORT on any timeframe
-  Logic   : Price closed below support AND stayed below → old support is new resistance → SELL
-  Requires: volume_ratio > 1.1 OR BOS = BEARISH_BOS OR RSI > 25
-  Trade   : SHORT at current price, TP toward next support, SL just above broken level
-
-SETUP 4 ► LONG — Bounce / Rejection from Support
-  Trigger : SR_INT = BOUNCE_FROM_SUPPORT or FAKE_BREAK_SUPPORT on any timeframe
-  Logic   : Price wicked down to support but closed back above → buyers stepped in → BUY
-  Requires: RSI < 45 OR OB=BUY OR bullish candle body OR volume_ratio > 0.8
-  Trade   : LONG at current price, TP toward resistance, SL just below the wick low
-
-SETUP 5 ► TREND CONTINUATION (only when NO S/R signal on any TF)
-  Trigger : BOS detected (BULLISH_BOS → LONG, BEARISH_BOS → SHORT) on 1h or 15m
-  Requires: Market structure aligned on 4h + EMA stack aligned + RSI in trend zone (40-70 for LONG, 30-60 for SHORT)
+FIXED PARAMETERS — DO NOT include these in output, they are set by the system:
+  Trade size = $20 | Leverage = 30x | SL = 3.333% | TP = 5.0% | RR = 1.5:1
+  Your job: ONLY decide TRADE or WAIT, which symbol, and LONG or SHORT.
 
 ═══════════════════════════════════════════════
-CONFLUENCE SCORING — count how many align:
+SIGNAL LAYER 1 — SENTIMENT (from his bot)
 ═══════════════════════════════════════════════
-[1] SR_INT signal matches trade direction        ← PRIMARY (worth 2 points)
-[2] Breakout volume confirmed (vol_ratio > 1.1)  ← strong add-on
-[3] BOS on 15m or 1h matches direction           ← strong add-on
-[4] OB signal matches direction                  ← confirmatory
-[5] RSI supports direction (< 45 LONG, > 55 SHORT)
-[6] EMA21 aligned (price above for LONG, below for SHORT)
-[7] Volume delta (buyers_in_control for LONG, sellers for SHORT)
-[8] Orderblock nearby matches direction
+Read the SENTIMENT block for each symbol:
+  contrarian_signal=LONG  → news is overwhelmingly negative (panic) → dip-buy opportunity
+  contrarian_signal=SHORT → news is overwhelmingly positive (euphoria) → sell-the-news setup
+  contrarian_signal=NEUTRAL → ignore sentiment, follow TA only
 
-Trade if total score >= 3 points (S/R counts as 2).
-Higher score = higher confidence and win_probability.
+When contrarian_signal is LONG or SHORT AND TA confirms → HIGHEST conviction trades.
+When contrarian_signal is NEUTRAL → TA must stand alone with >= 3 confluence points.
 
 ═══════════════════════════════════════════════
-SKIP RULES — do NOT trade if:
+SIGNAL LAYER 2 — TECHNICAL ANALYSIS (your bot)
 ═══════════════════════════════════════════════
-- ALL SR_INT signals = WAIT or MID_RANGE (price not at any S/R level) AND no BOS
-- volume_ratio_5m < 0.3 (no participation)
-- econ_event should_skip = true
-- Fake breakout risk is high AND no volume confirmation AND OB neutral
-- RSI > 80 for LONG entry or RSI < 20 for SHORT entry (extreme exhaustion)
-NOTE: ATR sufficient=false is a WARNING only — you may still trade a clear S/R bounce/break
-      but use a slightly wider SL (add 10% to normal SL) to avoid noise-hits.
+SETUP A ► LONG — Support bounce / fake break recovery / confirmed resistance break
+  SR_INT = BOUNCE_FROM_SUPPORT | FAKE_BREAK_SUPPORT | CONFIRMED_BREAK_RESISTANCE
+  Needs: RSI < 60 | OB=BUY | vol_ratio > 0.8 | EMA21 support
+
+SETUP B ► SHORT — Resistance rejection / fake break reversal / confirmed support break
+  SR_INT = BOUNCE_FROM_RESISTANCE | FAKE_BREAK_RESISTANCE | CONFIRMED_BREAK_SUPPORT
+  Needs: RSI > 40 | OB=SELL | vol_ratio > 0.8 | EMA21 overhead
+
+SETUP C ► TREND — BOS continuation (only when no S/R signal)
+  BOS BULLISH_BOS → LONG | BEARISH_BOS → SHORT
+  Needs: 4h structure aligned + EMA stack aligned
 
 ═══════════════════════════════════════════════
-TP / SL SIZING
+CONFLUENCE SCORING
 ═══════════════════════════════════════════════
-Bounce trades  : TP = full range to opposite S/R level, SL = just beyond the wick
-Break trades   : TP = 0.5–1.0× the broken range, SL = just inside broken level
-- BTC/ETH   : TP 0.3–0.7%,  SL 0.2–0.45%
-- SOL/BNB   : TP 0.4–0.9%,  SL 0.25–0.55%
-- Small caps: TP 0.5–1.3%,  SL 0.3–0.75%
-LONG : TP = entry × (1 + tp_pct),  SL = entry × (1 - sl_pct)
-SHORT: TP = entry × (1 - tp_pct),  SL = entry × (1 + sl_pct)
-Risk/Reward must be >= 1.5.
+[+2] S/R interaction signal matches direction   ← primary
+[+2] contrarian_signal matches direction        ← primary (from his bot)
+[+1] BOS on 15m or 1h matches
+[+1] Orderbook signal matches
+[+1] RSI supports (< 50 for LONG, > 50 for SHORT)
+[+1] Volume delta (buyers for LONG, sellers for SHORT)
+[+1] EMA21 aligned
 
-HARD LIMITS: leverage 20x–50x | position_size_usdt min $20 | win_probability >= 75 | risk_reward >= 1.5
+TRADE if score >= 3. Higher score = higher win_probability.
+WAIT if score < 3 OR all SR_INT = WAIT/MID_RANGE AND no BOS AND sentiment = NEUTRAL.
 
-FEAR & GREED (soft bias — S/R setup overrides this):
-- EXTREME FEAR  (<=25): prefer SHORT; LONG only if CONFIRMED_BREAK_RESISTANCE with volume
-- EXTREME GREED (>=76): prefer LONG;  SHORT only if CONFIRMED_BREAK_SUPPORT with volume
-- Otherwise: both directions freely allowed based on S/R setup
+═══════════════════════════════════════════════
+SKIP RULES
+═══════════════════════════════════════════════
+- econ_event should_skip = true → WAIT always
+- volume_ratio_5m < 0.3 → WAIT (dead market)
+- RSI > 82 for LONG or RSI < 18 for SHORT → WAIT (extreme exhaustion)
+- Symbol is BLOCKED → WAIT
 
-TRADE TYPES: SR_BOUNCE | SR_BREAK | FAKE_BREAK | BOS_BREAK | TREND | FVG | SMC
+TRADE TYPES: SR_BOUNCE | SR_BREAK | FAKE_BREAK | SENTIMENT_DIP | SENTIMENT_PEAK | BOS_BREAK | TREND
 
-OUTPUT — JSON only, no markdown, no text outside the JSON object:
-{"action":"TRADE","symbol":"BTCUSDT","trade_type":"SR_BOUNCE","direction":"SHORT","confidence":80,"win_probability":74,"leverage":25,"entry_price":83500.0,"stop_loss":84100.0,"take_profit":82600.0,"position_size_usdt":30.0,"risk_reward":1.5,"expected_profit_usdt":4.5,"reasoning":"15m BOUNCE_FROM_RESISTANCE conf=80, RSI_15m=68 overbought, OB=SELL conf=72, wick rejected at 83900 resistance","invalidation":"Candle closes above 84100","estimated_duration_hours":2}
+OUTPUT — JSON only, no markdown:
+{"action":"TRADE","symbol":"BTCUSDT","trade_type":"SR_BOUNCE","direction":"LONG","confidence":78,"win_probability":62,"reasoning":"15m BOUNCE_FROM_SUPPORT conf=80, contrarian_signal=LONG (panic news), RSI_15m=38 oversold, OB=BUY","invalidation":"Candle closes below support wick","estimated_duration_hours":3}
 
-If no valid setup found:
-{"action":"WAIT","reason":"explain which setup was closest and why it did not qualify"}"""
+If no setup:
+{"action":"WAIT","reason":"closest setup and why it failed"}"""
 
     blocked_symbols = blocked_symbols or {}
     blocked_str = "\n".join(f"  BLOCKED: {k} — {v}" for k, v in blocked_symbols.items()) or "  None"
@@ -1362,10 +1563,10 @@ If no valid setup found:
         return {"action": "WAIT", "reason": str(e)}
 
 # ─── TRADE MANAGEMENT ─────────────────────────────────────────────────────────
-MIN_POSITION_USDT = 20.0   # hard minimum per trade
-MIN_LEVERAGE      = 20     # hard minimum leverage
-SL_COOLDOWN_MINS  = 45     # minutes to block a symbol+direction after SL hit
-HARD_TIMEOUT_HRS  = 4      # absolute max trade duration regardless of estimated_duration_hours
+MIN_POSITION_USDT = FIXED_TRADE_USDT   # always $20
+MIN_LEVERAGE      = FIXED_LEVERAGE     # always 30x
+SL_COOLDOWN_MINS  = 45
+HARD_TIMEOUT_HRS  = 4
 
 def is_on_cooldown(state: dict, symbol: str, direction: str):
     """Returns (True, mins_remaining) if symbol+direction is blocked after recent SL, else (False, 0)."""
@@ -1384,88 +1585,92 @@ def is_on_cooldown(state: dict, symbol: str, direction: str):
     return False, 0
 
 def open_trade(state, decision) -> dict:
-    # ── Enforce hard minimums ─────────────────────────────────────
-    lev  = max(MIN_LEVERAGE, min(MAX_LEVERAGE, int(decision.get("leverage", MIN_LEVERAGE))))
-    size = max(MIN_POSITION_USDT, float(decision.get("position_size_usdt", MIN_POSITION_USDT)))
-    # Re-calculate expected profit with enforced values
-    entry = float(decision["entry_price"])
-    tp    = float(decision["take_profit"])
-    sl    = float(decision["stop_loss"])
+    # ── FIXED PARAMETERS — no AI guessing, no drift ───────────────
+    lev  = FIXED_LEVERAGE     # always 30x
+    size = FIXED_TRADE_USDT   # always $20
 
-    # ── GUARD: validate AI entry price against real market price ──
-    sym = decision.get("symbol", "")
+    sym       = decision.get("symbol", "")
+    direction = decision.get("direction", "")
+    if not sym or direction not in ("LONG", "SHORT"):
+        log.error(f"[OPEN] Invalid symbol or direction: {sym} {direction}")
+        return {}
+
+    # ── Always use REAL market price as entry ────────────────────
     real_price = get_current_price(sym)
-    if real_price > 0:
-        deviation = abs(entry - real_price) / real_price
-        log.info(f"[PRICE GUARD] {sym}: AI_entry={entry:.4f} market={real_price:.4f} deviation={deviation*100:.2f}%")
-        if deviation > 0.02:  # AI price deviates >2% from real market — hallucination
-            msg = (f"[PRICE GUARD] REJECT {sym}: AI entry {entry:.4f} deviates "
-                   f"{deviation*100:.1f}% from market {real_price:.4f} — discarding trade")
-            log.error(msg)
-            print(msg)
-            return {}
-        # Use actual current price as entry (more accurate than AI's snapshot)
-        entry = real_price
+    if real_price <= 0:
+        log.error(f"[OPEN] Cannot fetch price for {sym}")
+        return {}
+    entry = real_price
 
-    # ── GUARD: SL and TP must be on correct side of entry ─────────
-    direction = decision["direction"]
+    # ── AUTO-CALCULATE SL and TP from fixed percentages ──────────
     if direction == "LONG":
-        if sl >= entry:
-            msg = f"[PRICE GUARD] REJECT {sym}: LONG stop_loss {sl} >= entry {entry:.4f}"
-            log.error(msg); print(msg); return {}
-        if tp <= entry:
-            msg = f"[PRICE GUARD] REJECT {sym}: LONG take_profit {tp} <= entry {entry:.4f}"
-            log.error(msg); print(msg); return {}
+        sl = round(entry * (1 - FIXED_SL_PCT), 6)   # 3.333% below entry
+        tp = round(entry * (1 + FIXED_TP_PCT), 6)   # 5.000% above entry
     else:
-        if sl <= entry:
-            msg = f"[PRICE GUARD] REJECT {sym}: SHORT stop_loss {sl} <= entry {entry:.4f}"
-            log.error(msg); print(msg); return {}
-        if tp >= entry:
-            msg = f"[PRICE GUARD] REJECT {sym}: SHORT take_profit {tp} >= entry {entry:.4f}"
-            log.error(msg); print(msg); return {}
-    if decision["direction"] == "LONG":
-        exp_profit = size * (tp - entry) / entry * lev if entry > 0 else 0
-    else:
-        exp_profit = size * (entry - tp) / entry * lev if entry > 0 else 0
+        sl = round(entry * (1 + FIXED_SL_PCT), 6)   # 3.333% above entry
+        tp = round(entry * (1 - FIXED_TP_PCT), 6)   # 5.000% below entry
+
+    exp_profit = round(size * FIXED_TP_PCT * lev, 2)   # always ~$30
+    # ── Legacy price-guard path removed — entry IS real price now ─
+    if True:
+        deviation = 0.0
+        log.info(f"[OPEN] {sym}: entry={entry:.4f}  SL={sl:.4f} ({FIXED_SL_PCT*100:.2f}%)  TP={tp:.4f} ({FIXED_TP_PCT*100:.2f}%)  expected=+${exp_profit}")
+
+    # ── Insufficient balance check ────────────────────────────────
+    if state["balance"] < size:
+        msg = f"[OPEN] Insufficient balance: ${state['balance']:.2f} < ${size}"
+        log.error(msg); print(msg); return {}
 
     trade = {
-        "id": f"SIM_{int(time.time())}",
-        "symbol":      decision["symbol"],
-        "trade_type":  decision.get("trade_type","TREND"),
-        "direction":   decision["direction"],
-        "confidence":  decision.get("confidence",0),
-        "win_probability": decision.get("win_probability",0),
-        "leverage":    lev,
-        "entry_price": entry,
-        "stop_loss":   sl,
-        "take_profit": tp,
+        "id":           f"SIM_{int(time.time())}",
+        "symbol":       sym,
+        "trade_type":   decision.get("trade_type", "TREND"),
+        "direction":    direction,
+        "confidence":   decision.get("confidence", 0),
+        "win_probability": decision.get("win_probability", 0),
+        "leverage":     lev,
+        "entry_price":  entry,
+        "stop_loss":    sl,
+        "take_profit":  tp,
+        "sl_pct":       round(FIXED_SL_PCT * 100, 3),
+        "tp_pct":       round(FIXED_TP_PCT * 100, 3),
         "position_size": size,
-        "risk_reward": decision.get("risk_reward",2.0),
-        "expected_profit": round(exp_profit, 2),
-        "reasoning":   decision.get("reasoning",""),
-        "invalidation":decision.get("invalidation",""),
-        "filters_passed": decision.get("filters_passed",""),
-        "estimated_duration_hours": decision.get("estimated_duration_hours",4),
-        "open_time":   datetime.now().isoformat(),
-        "status":      "OPEN",
-        "current_pnl": 0.0, "current_pnl_pct": 0.0,
+        "risk_reward":  1.5,
+        "expected_profit": exp_profit,
+        "expected_loss":   size,
+        "round_trip_fee":  ROUND_TRIP_FEE,
+        "sentiment":    decision.get("sentiment", {}),
+        "reasoning":    decision.get("reasoning", ""),
+        "invalidation": decision.get("invalidation", ""),
+        "estimated_duration_hours": decision.get("estimated_duration_hours", 4),
+        "open_time":    datetime.now().isoformat(),
+        "status":       "OPEN",
+        "current_pnl":  0.0,
+        "current_pnl_pct": 0.0,
         "current_price": entry,
     }
     with _state_lock:
         state["open_trades"].append(trade)
 
-    e  = "🟢" if trade["direction"]=="LONG" else "🔴"
-    c  = trade["symbol"].replace("USDT","")
-    tt = trade["trade_type"]
+    arrow = "LONG " if trade["direction"] == "LONG" else "SHORT"
+    c     = trade["symbol"].replace("USDT", "")
+    tt    = trade["trade_type"]
+    sent  = trade.get("sentiment", {})
+    cs    = sent.get("contrarian_signal", "NEUTRAL")
+    src   = sent.get("source", "none")
     print(f"""
 ╔════════════════════════════════════════════════════════════════╗
-║  {c:<6} FUTURES — {e} {trade['direction']:<5}  [{tt:<8}]  [OPEN]             ║
+║  {c:<6} FUTURES  {arrow}  [{tt:<12}]  [OPEN]               ║
 ╠════════════════════════════════════════════════════════════════╣
-║  Confidence: {trade['confidence']}%  |  Win Prob: {trade['win_probability']}%  |  RR: 1:{trade['risk_reward']:.1f}      ║
+║  Conf: {trade['confidence']}%  WinProb: {trade['win_probability']}%  RR: 1.5:1  Lev: {FIXED_LEVERAGE}x       ║
 ╠════════════════════════════════════════════════════════════════╣
-║  Leverage: {trade['leverage']}x  |  Size: ${trade['position_size']:.2f}  |  Expected: ~${trade['expected_profit']:.2f}   ║
+║  Size: $20 fixed  |  Max Loss: -$20  |  TP Target: +$30        ║
 ╠════════════════════════════════════════════════════════════════╣
-║  Entry: ${trade['entry_price']:<12.4f}  SL: ${trade['stop_loss']:<12.4f}  TP: ${trade['take_profit']:<10.4f} ║
+║  Entry: ${trade['entry_price']:<12.4f}                                        ║
+║  SL   : ${trade['stop_loss']:<12.4f}  (-{FIXED_SL_PCT*100:.2f}% | -$20 max)               ║
+║  TP   : ${trade['take_profit']:<12.4f}  (+{FIXED_TP_PCT*100:.2f}% | +$30 target)            ║
+╠════════════════════════════════════════════════════════════════╣
+║  Sentiment: {cs:<8} ({src:<6}) | Fee: -${ROUND_TRIP_FEE:.2f} round-trip         ║
 ╠════════════════════════════════════════════════════════════════╣
 ║  {trade['reasoning'][:64]:<64} ║
 ╚════════════════════════════════════════════════════════════════╝""")
@@ -1550,8 +1755,12 @@ def update_open_trades_ws(state, latest_prices: dict):
 def close_trade(state, trade, cp, reason):
     e, sz, lv, d = trade["entry_price"], trade["position_size"], trade["leverage"], trade["direction"]
     pnl = sz*(cp-e)/e*lv if d=="LONG" else sz*(e-cp)/e*lv
-    # Cap loss at position size (simulates liquidation — can never lose more than you put in)
     pnl = max(-sz, pnl)
+
+    # Deduct round-trip trading fee (0.1% of notional = $0.60 on $600)
+    fee = trade.get("round_trip_fee", ROUND_TRIP_FEE)
+    pnl = round(pnl - fee, 4)
+    state["total_fees"] = round(state.get("total_fees", 0.0) + fee, 4)
 
     trade.update({"close_price":cp,"close_time":datetime.now().isoformat(),
                   "realized_pnl":round(pnl,4),"close_reason":reason,"status":"CLOSED"})
@@ -1584,17 +1793,19 @@ def close_trade(state, trade, cp, reason):
 
 # ─── DISPLAY ───────────────────────────────────────────────────────────────────
 def print_portfolio(state):
-    b,i  = state["balance"], state["initial_balance"]
-    p    = state["total_profit"]
-    w,l  = state["win_count"], state["loss_count"]
-    t    = w+l
-    wr   = w/t*100 if t>0 else 0
+    b, i  = state["balance"], state["initial_balance"]
+    p     = state["total_profit"]
+    fees  = state.get("total_fees", 0.0)
+    w, l  = state["win_count"], state["loss_count"]
+    t     = w + l
+    wr    = w / t * 100 if t > 0 else 0
     print(f"""
-+-----------------------------------------------+
-|  Balance: ${b:>10.2f}  |  Profit: ${p:>+9.2f}  |
-|  Return:  {(b-i)/i*100:>+10.2f}%  |  WR: {wr:.0f}%  Trades: {t}  |
-|  Open: {len(state['open_trades'])}/{MAX_OPEN_TRADES}                                  |
-+-----------------------------------------------+""")
++----------------------------------------------------------+
+|  Balance : ${b:>10.2f}  |  Net P&L : ${p:>+9.2f}          |
+|  Return  : {(b-i)/i*100:>+10.2f}%  |  Fees paid: ${fees:>7.2f}         |
+|  Win Rate: {wr:>5.1f}%  ({w}W / {l}L / {t} total trades)        |
+|  Open    : {len(state['open_trades'])}/{MAX_OPEN_TRADES}  |  $20/trade  30x lev  $20 max loss  |
++----------------------------------------------------------+""")
 
 def print_context(fg, btc, ev):
     ev_str = ev['event_name'] if ev['has_event'] else "None"
@@ -1636,18 +1847,35 @@ def _run_full_scan(state: dict, latest_prices: dict):
         save_state(state)
         return
 
-    print(f"  Scanning {len(SCAN_SYMBOLS)} symbols...")
+    # ── LAYER 1: Fetch news sentiment for all symbols (his bot) ─────────────────
+    print(f"  [SENTIMENT] Fetching news for {len(SCAN_SYMBOLS)} symbols...")
+    symbol_sentiments = {}
+    for sym in SCAN_SYMBOLS:
+        symbol_sentiments[sym] = get_coin_sentiment(sym)
+        cs = symbol_sentiments[sym]["contrarian_signal"]
+        src = symbol_sentiments[sym]["source"]
+        hl  = symbol_sentiments[sym]["headline_count"]
+        print(f"    {sym:<12} | sentiment→{cs:<7} | {hl} headlines | {src}")
+        time.sleep(0.2)
+
+    # ── LAYER 2: Technical analysis scan (your bot) ──────────────────────────
+    print(f"  [TA] Scanning {len(SCAN_SYMBOLS)} symbols...")
     analyses = []
     for sym in SCAN_SYMBOLS:
         d = build_payload(sym)
         if d:
+            d["sentiment"] = symbol_sentiments.get(sym, {
+                "sentiment": "neutral", "confidence": 0.5,
+                "contrarian_signal": "NEUTRAL", "headline_count": 0, "source": "unavailable"
+            })
             atr_ok  = d["atr_filter"]["sufficient_volatility"]
             rng     = d["range_setup"]["setup"] if d["range_setup"]["is_range"] else "-"
             bko     = d["breakout"]
             bko_str = f"BO:{bko['type']}" if bko.get("breakout_detected") else "BO:-"
-            print(f"    {sym:<12} | {d['market_structure']:<8} | ATR:{'OK' if atr_ok else 'LOW'} | {rng} | {bko_str}")
+            cs_str  = d["sentiment"]["contrarian_signal"]
+            print(f"    {sym:<12} | {d['market_structure']:<8} | ATR:{'OK' if atr_ok else 'LOW'} | {rng} | {bko_str} | sent:{cs_str}")
             analyses.append(d)
-        time.sleep(0.5)   # throttle between symbols to reduce CPU/network burst
+        time.sleep(0.5)
 
     # ── BTC market regime ────────────────────────────────────────────
     btc_data = next((a for a in analyses if a["symbol"] == "BTCUSDT"), None)
@@ -1664,6 +1892,10 @@ def _run_full_scan(state: dict, latest_prices: dict):
     # ── Blocked symbols ──────────────────────────────────────────────
     blocked_symbols = {}
     open_syms = {t["symbol"] for t in state["open_trades"]}
+
+    # Count how many high-vol symbols are already open
+    high_vol_open_count = sum(1 for t in state["open_trades"] if t["symbol"] in HIGH_VOL_SYMBOLS)
+
     for sym in SCAN_SYMBOLS:
         if sym in open_syms:
             blocked_symbols[sym] = "already have open trade"
@@ -1675,6 +1907,9 @@ def _run_full_scan(state: dict, latest_prices: dict):
             blocked_symbols[f"{sym}_SHORT"] = "BTC regime BULL — no alt shorts"
         elif market_regime == "BEAR" and sym != "BTCUSDT":
             blocked_symbols[f"{sym}_LONG"]  = "BTC regime BEAR — no alt longs"
+        # High-volatility cap: DYDX/RUNE/SUI max 1 concurrent trade
+        if sym in HIGH_VOL_SYMBOLS and high_vol_open_count >= 1 and sym not in open_syms:
+            blocked_symbols[sym] = f"high-vol cap: 1 max concurrent ({sym} is DYDX/RUNE/SUI)"
 
     # Log all active blocks so we can see why symbols are being skipped
     if blocked_symbols:
@@ -1788,22 +2023,20 @@ def _run_full_scan(state: dict, latest_prices: dict):
     if decision.get("action") == "TRADE":
         trades_attempted = 1
         wp   = decision.get("win_probability", 0)
-        rr   = decision.get("risk_reward", 0)
         sym  = decision.get("symbol", "?")
         dir_ = decision.get("direction", "?")
         conf = decision.get("confidence", 0)
 
+        # Attach the sentiment data for this symbol into the decision
+        decision["sentiment"] = symbol_sentiments.get(sym, {})
+
         log.info(
-            f"[TRADE GATE] {sym} {dir_}: win_prob={wp}% (min={int(MIN_WIN_PROB*100)}%) "
-            f"rr={rr} (min=1.5) confidence={conf}%"
+            f"[TRADE GATE] {sym} {dir_}: win_prob={wp}% (min={int(MIN_WIN_PROB*100)}%) confidence={conf}%"
         )
-        print(f"  [TRADE GATE] {sym} {dir_}: wp={wp}% rr={rr} conf={conf}%")
+        print(f"  [TRADE GATE] {sym} {dir_}: wp={wp}% conf={conf}%")
 
         if wp < MIN_WIN_PROB * 100:
             msg = f"  [AI_REJECT] {sym} {dir_}: win_prob {wp}% < {int(MIN_WIN_PROB*100)}% minimum — skipping"
-            print(msg); log.info(msg)
-        elif rr < 1.5:
-            msg = f"  [AI_REJECT] {sym} {dir_}: risk_reward {rr} < 1.5 minimum (wp={wp}%) — skipping"
             print(msg); log.info(msg)
         else:
             result = open_trade(state, decision)
@@ -2011,15 +2244,22 @@ def main():
         _provider = "GOOGLE GEMINI"
     else:
         _provider = "CLOUD AI"
-    print("="*60)
-    print("  AI TRADING BOT v4 — WEBSOCKET EDITION")
-    print(f"  Min Win Prob: {int(MIN_WIN_PROB*100)}% | Min Leverage: {MIN_LEVERAGE}x | Min Size: ${MIN_POSITION_USDT:.0f} | Max Trades: {MAX_OPEN_TRADES}")
-    print("  4H+1H+15m | OB+BOS+Liquidity+FVG+Structure+SR")
-    print(f"  AI: {_provider} | Model: {OLLAMA_MODEL}")
-    print(f"  Mode: {'SIMULATION' if SIMULATION_MODE else 'LIVE'} | Capital: ${INITIAL_CAPITAL}")
-    print(f"  PID: {os.getpid()}")
-    print("  Trigger: 15m candle close via WebSocket (no polling)")
-    print("="*60)
+    _finbert_status = "YES (torch+transformers installed)" if _FINBERT_AVAILABLE else "NO  (pip install torch transformers)"
+    _news_status    = "Google News RSS + Reddit + CoinDesk (100% free, no keys needed)"
+    print("=" * 65)
+    print("  MERGED BOT v5 — FinBERT Sentiment + TA + Fixed Risk")
+    print("-" * 65)
+    print(f"  [MERGED]  Trade: $20 fixed | 30x | SL: 3.33% | TP: 5.00% | Fee: $0.60")
+    print(f"  [MERGED]  Max loss/trade: $20 | Max concurrent risk: ${MAX_OPEN_TRADES*FIXED_TRADE_USDT:.0f}")
+    print(f"  [MERGED]  Win prob min: {int(MIN_WIN_PROB*100)}% (was 75%) | RR: 1.5:1 fixed")
+    print(f"  [FINBERT] Available: {_finbert_status}")
+    print(f"  [NEWS]    Sources  : {_news_status}")
+    print(f"  [TA]      Timeframes: 5m+15m+1h+4h | OB+BOS+FVG+Liquidity+SR")
+    print(f"  [AI]      {_provider} | Model: {OLLAMA_MODEL}")
+    print(f"  [MODE]    {'SIMULATION' if SIMULATION_MODE else 'LIVE'} | Capital: ${INITIAL_CAPITAL} | Symbols: {len(SCAN_SYMBOLS)}")
+    print(f"  [ASSETS]  {', '.join(s.replace('USDT','') for s in SCAN_SYMBOLS)}")
+    print(f"  [PID]     {os.getpid()}")
+    print("=" * 65)
 
     if not OLLAMA_BASE_URL:
         print("[ERROR] OLLAMA_BASE_URL missing in .env")

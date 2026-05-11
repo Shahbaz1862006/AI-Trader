@@ -1,0 +1,3 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
+2023-02-11 00:00:00-05:00,MLTrader,9e1f856166c6494c8823f9ebaed7f059,BTC,buy,market,new,1,gtc,0.0,1,crypto,,,
+2023-02-11 00:00:00-05:00,MLTrader,9e1f856166c6494c8823f9ebaed7f059,BTC,buy,market,fill,1,gtc,0.0,1,crypto,21638.2,1.0,0.0

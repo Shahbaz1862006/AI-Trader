@@ -1,0 +1,46 @@
+2025-01-06 13:14:26,775: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-06 13:14:26,784: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:14:26[0m
+2025-01-06 13:14:26,792: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-06 13:14:26,797: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-04-17T00:00:00.000000 | 2024-09-24T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-06 13:14:27,841: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:14:28,236: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:14:28[0m
+2025-01-06 13:14:28,237: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:14:28,237: root: INFO: Current backtesting datetime 2023-12-31 00:00:00-05:00
+2025-01-06 13:14:28,239: asyncio: INFO: [MLTrader] Executing the before_market_closes lifecycle method
+2025-01-06 13:14:28,239: asyncio: INFO: [MLTrader] Executing the after_market_closes lifecycle method
+2025-01-06 13:14:28,239: asyncio: INFO: [MLTrader] Executing the on_strategy_end lifecycle method
+2025-01-06 13:14:29,073: asyncio: ERROR: [MLTrader] Cache file /Users/nicholasrenotte/Library/Caches/lumibot/1.0/kraken/BTC_USDT_1d.duckdb does not exist
+2025-01-06 13:14:29,074: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 944, in run
+    self._on_strategy_end()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 423, in _on_strategy_end
+    self.strategy._dump_stats()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 573, in _dump_stats
+    self._dump_benchmark_stats()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 635, in _dump_benchmark_stats
+    bars = self.broker.data_source.get_historical_prices_between_dates(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 216, in get_historical_prices_between_dates
+    data = self.cache_db.get_data_from_cache(symbol, parsed_timestep, start_dt, end_dt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 118, in get_data_from_cache
+    raise Exception(f"Cache file {cache_file} does not exist")
+Exception: Cache file /Users/nicholasrenotte/Library/Caches/lumibot/1.0/kraken/BTC_USDT_1d.duckdb does not exist
+
+2025-01-06 13:14:29,074: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-06 13:14:29,715: root: INFO: Backtesting finished
+2025-01-06 13:14:29,793: asyncio: WARNING: [MLTrader] Cannot plot returns because the benchmark returns are missing
+2025-01-06 13:14:29,888: root: ERROR: No data to create tearsheet, skipping
+2025-01-06 13:14:29,889: backtest_stats: INFO: Backtest took 0:00:03.113650 for a speed of 0.000

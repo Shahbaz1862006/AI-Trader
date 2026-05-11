@@ -1,0 +1,118 @@
+2025-01-06 13:11:28,372: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-06 13:11:28,381: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:28[0m
+2025-01-06 13:11:28,389: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-06 13:11:28,394: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-04-17T00:00:00.000000 | 2024-09-24T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-06 13:11:30,529: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:30,915: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1.0 BTC/USD buy | at price $46428.0 of class bracket with status new[0m
+2025-01-06 13:11:30,921: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:30[0m
+2025-01-06 13:11:30,922: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:30,923: root: INFO: market order of | 1.0 BTC/USD buy | at price $46428.0 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:30,923: root: INFO: market order of | 1.0 BTC/USD buy | at price $46428.0 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:30,923: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1.0 BTC/USD buy | at price $37719.0 of class bracket with status fill[0m
+2025-01-06 13:11:30,926: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:30,927: root: INFO: Current backtesting datetime 2023-12-02 00:00:00-05:00
+2025-01-06 13:11:30,928: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:30[0m
+2025-01-06 13:11:33,454: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:33,844: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:33[0m
+2025-01-06 13:11:33,845: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:33,848: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:33,849: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:33,849: root: INFO: Current backtesting datetime 2023-12-03 00:00:00-05:00
+2025-01-06 13:11:33,851: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:33[0m
+2025-01-06 13:11:35,739: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:36,005: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 0.0 BTC/USD buy | at price $47970.119999999995 of class bracket with status new[0m
+2025-01-06 13:11:36,012: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:36[0m
+2025-01-06 13:11:36,012: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:36,014: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:36,014: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:36,015: root: INFO: market order of | 0.0 BTC/USD buy | at price $47970.119999999995 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:36,015: root: INFO: market order of | 0.0 BTC/USD buy | at price $47970.119999999995 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:36,015: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 0.0 BTC/USD buy | of class bracket with status fill[0m
+2025-01-06 13:11:36,018: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:36,019: root: INFO: Current backtesting datetime 2023-12-04 00:00:00-05:00
+2025-01-06 13:11:36,020: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:36[0m
+2025-01-06 13:11:37,822: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:38,776: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:38[0m
+2025-01-06 13:11:38,777: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:38,778: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:38,779: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:38,779: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:38,780: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:38,780: root: INFO: Current backtesting datetime 2023-12-05 00:00:00-05:00
+2025-01-06 13:11:38,780: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:38[0m
+2025-01-06 13:11:41,004: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:41,356: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 0.0 BTC/USD buy | at price $52896.96 of class bracket with status new[0m
+2025-01-06 13:11:41,359: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:41[0m
+2025-01-06 13:11:41,360: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:41,360: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:41,360: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:41,360: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:41,360: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:41,361: root: INFO: market order of | 0.0 BTC/USD buy | at price $52896.96 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:41,361: root: INFO: market order of | 0.0 BTC/USD buy | at price $52896.96 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:41,361: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 0.0 BTC/USD buy | of class bracket with status fill[0m
+2025-01-06 13:11:41,364: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:41,364: root: INFO: Current backtesting datetime 2023-12-06 00:00:00-05:00
+2025-01-06 13:11:41,365: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:41[0m
+2025-01-06 13:11:43,350: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:43,756: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 0.0 BTC/USD buy | at price $52514.03999999999 of class bracket with status new[0m
+2025-01-06 13:11:43,760: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:43[0m
+2025-01-06 13:11:43,760: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:43,761: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:43,762: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:43,763: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:43,763: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:43,764: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:43,764: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:43,765: root: INFO: market order of | 0.0 BTC/USD buy | at price $52514.03999999999 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:43,765: root: INFO: market order of | 0.0 BTC/USD buy | at price $52514.03999999999 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:43,765: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 0.0 BTC/USD buy | of class bracket with status fill[0m
+2025-01-06 13:11:43,768: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:43,768: root: INFO: Current backtesting datetime 2023-12-07 00:00:00-05:00
+2025-01-06 13:11:43,770: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:43[0m
+2025-01-06 13:11:45,657: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:45,927: asyncio: WARNING: [MLTrader] Selling all positions for MLTrader strategy
+2025-01-06 13:11:45,929: asyncio: INFO: [MLTrader] [32mOrder was canceled: stop order of | 1.0 BTC/USD sell | at price $36755.5 with status canceled[0m
+2025-01-06 13:11:45,936: asyncio: INFO: [MLTrader] [32mOrder was canceled: limit order of | 1.0 BTC/USD sell | at price $46428.0 with status canceled[0m
+2025-01-06 13:11:45,940: asyncio: INFO: [MLTrader] [32mOrder was canceled: stop order of | 0.0 BTC/USD sell | at price $37976.344999999994 with status canceled[0m
+2025-01-06 13:11:45,943: asyncio: INFO: [MLTrader] [32mOrder was canceled: limit order of | 0.0 BTC/USD sell | at price $47970.119999999995 with status canceled[0m
+2025-01-06 13:11:45,945: asyncio: INFO: [MLTrader] [32mOrder was canceled: stop order of | 0.0 BTC/USD sell | at price $41876.76 with status canceled[0m
+2025-01-06 13:11:45,949: asyncio: INFO: [MLTrader] [32mOrder was canceled: limit order of | 0.0 BTC/USD sell | at price $52896.96 with status canceled[0m
+2025-01-06 13:11:45,950: asyncio: INFO: [MLTrader] [32mOrder was canceled: stop order of | 0.0 BTC/USD sell | at price $41573.615 with status canceled[0m
+2025-01-06 13:11:45,951: asyncio: INFO: [MLTrader] [32mOrder was canceled: limit order of | 0.0 BTC/USD sell | at price $52514.03999999999 with status canceled[0m
+2025-01-06 13:11:45,952: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1.0 BTC/USD sell | with status new[0m
+2025-01-06 13:11:45,953: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 0.0 BTC/USD sell | at price $34633.36 of class bracket with status new[0m
+2025-01-06 13:11:45,954: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:45[0m
+2025-01-06 13:11:45,954: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:45,954: root: INFO: Position MLTrader Position: 0.0 shares of BTC (5 orders) liquidated
+2025-01-06 13:11:45,954: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1.0 BTC/USD sell | at price $43761.7 with status fill[0m
+2025-01-06 13:11:45,955: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:45,955: root: INFO: market order of | 0.0 BTC/USD sell | at price $34633.36 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:45,955: root: INFO: market order of | 0.0 BTC/USD sell | at price $34633.36 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:45,955: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 0.0 BTC/USD sell | of class bracket with status fill[0m
+2025-01-06 13:11:45,956: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:45,956: root: INFO: Current backtesting datetime 2023-12-08 00:00:00-05:00
+2025-01-06 13:11:45,957: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:45[0m
+2025-01-06 13:11:48,414: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:11:48,816: asyncio: WARNING: [MLTrader] Selling all positions for MLTrader strategy
+2025-01-06 13:11:48,818: asyncio: INFO: [MLTrader] [32mOrder was canceled: stop order of | 0.0 BTC/USD buy | at price $45456.284999999996 with status canceled[0m
+2025-01-06 13:11:48,820: asyncio: INFO: [MLTrader] [32mOrder was canceled: limit order of | 0.0 BTC/USD buy | at price $34633.36 with status canceled[0m
+2025-01-06 13:11:48,822: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1.0 BTC/USD buy | at price $53015.4 of class bracket with status new[0m
+2025-01-06 13:11:48,825: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:11:48[0m
+2025-01-06 13:11:48,825: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 13:11:48,826: root: INFO: market order of | 1.0 BTC/USD buy | at price $53015.4 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:48,826: root: INFO: market order of | 1.0 BTC/USD buy | at price $53015.4 of class bracket with status new was sent to broker backtesting
+2025-01-06 13:11:48,826: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1.0 BTC/USD buy | at price $43288.1 of class bracket with status fill[0m
+2025-01-06 13:11:48,828: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:11:48,828: root: INFO: Current backtesting datetime 2023-12-09 00:00:00-05:00
+2025-01-06 13:11:48,829: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:11:48[0m
+2025-01-06 13:11:51,500: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"

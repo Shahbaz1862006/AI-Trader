@@ -1,0 +1,5 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
+2023-03-23 01:00:00-04:00,MLTrader,66d04050fa234c59bf2f07faa7c8888e,XRP,buy,market,new,1,gtc,0.0,1,stock,,,
+2023-03-23 01:00:00-04:00,MLTrader,66d04050fa234c59bf2f07faa7c8888e,XRP,buy,market,fill,1,gtc,0.0,1,stock,0.422,112612.61261261262,0.0
+2023-07-13 01:00:00-04:00,MLTrader,9d68f03d3d4c42a198d1fe855b971b4b,XRP,sell,stop,canceled,1,day,0.0,1,stock,,,
+2023-07-13 01:00:00-04:00,MLTrader,36883554e8de4b128b1a5b9331b17a1f,XRP,sell,limit,fill,1,day,0.0,1,stock,0.666,112612.61261261262,0.0

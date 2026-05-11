@@ -1,0 +1,71 @@
+2025-01-06 13:14:42,689: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-06 13:14:42,698: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:14:42[0m
+2025-01-06 13:14:42,706: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-06 13:14:42,711: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-04-17T00:00:00.000000 | 2024-09-24T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-06 13:14:44,764: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:14:45,198: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:14:45[0m
+2025-01-06 13:14:45,199: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:14:45,199: root: INFO: Current backtesting datetime 2023-12-26 00:00:00-05:00
+2025-01-06 13:14:45,201: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:14:45[0m
+2025-01-06 13:14:47,487: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:14:47,839: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:14:47[0m
+2025-01-06 13:14:47,839: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:14:47,839: root: INFO: Current backtesting datetime 2023-12-27 00:00:00-05:00
+2025-01-06 13:14:47,840: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:14:47[0m
+2025-01-06 13:14:49,287: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:14:49,648: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:14:49[0m
+2025-01-06 13:14:49,648: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:14:49,649: root: INFO: Current backtesting datetime 2023-12-28 00:00:00-05:00
+2025-01-06 13:14:49,651: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:14:49[0m
+2025-01-06 13:14:51,576: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:14:51,881: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:14:51[0m
+2025-01-06 13:14:51,882: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:14:51,882: root: INFO: Current backtesting datetime 2023-12-29 00:00:00-05:00
+2025-01-06 13:14:51,884: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:14:51[0m
+2025-01-06 13:14:53,524: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:14:53,871: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:14:53[0m
+2025-01-06 13:14:53,872: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:14:53,872: root: INFO: Current backtesting datetime 2023-12-30 00:00:00-05:00
+2025-01-06 13:14:53,877: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:14:53[0m
+2025-01-06 13:14:55,407: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:14:55,802: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:14:55[0m
+2025-01-06 13:14:55,802: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:14:55,802: root: INFO: Current backtesting datetime 2023-12-31 00:00:00-05:00
+2025-01-06 13:14:55,802: asyncio: INFO: [MLTrader] Executing the before_market_closes lifecycle method
+2025-01-06 13:14:55,802: asyncio: INFO: [MLTrader] Executing the after_market_closes lifecycle method
+2025-01-06 13:14:55,802: asyncio: INFO: [MLTrader] Executing the on_strategy_end lifecycle method
+2025-01-06 13:14:56,459: asyncio: ERROR: [MLTrader] Cache file /Users/nicholasrenotte/Library/Caches/lumibot/1.0/kraken/BTC_USDT_1d.duckdb does not exist
+2025-01-06 13:14:56,460: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 944, in run
+    self._on_strategy_end()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 423, in _on_strategy_end
+    self.strategy._dump_stats()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 573, in _dump_stats
+    self._dump_benchmark_stats()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/_strategy.py", line 635, in _dump_benchmark_stats
+    bars = self.broker.data_source.get_historical_prices_between_dates(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/ccxt_backtesting_data.py", line 216, in get_historical_prices_between_dates
+    data = self.cache_db.get_data_from_cache(symbol, parsed_timestep, start_dt, end_dt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/ccxt_data_store.py", line 118, in get_data_from_cache
+    raise Exception(f"Cache file {cache_file} does not exist")
+Exception: Cache file /Users/nicholasrenotte/Library/Caches/lumibot/1.0/kraken/BTC_USDT_1d.duckdb does not exist
+
+2025-01-06 13:14:56,460: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-06 13:14:56,859: root: INFO: Backtesting finished
+2025-01-06 13:14:56,935: asyncio: WARNING: [MLTrader] Cannot plot returns because the benchmark returns are missing
+2025-01-06 13:14:57,026: root: ERROR: No data to create tearsheet, skipping
+2025-01-06 13:14:57,026: backtest_stats: INFO: Backtest took 0:00:14.336994 for a speed of 0.000

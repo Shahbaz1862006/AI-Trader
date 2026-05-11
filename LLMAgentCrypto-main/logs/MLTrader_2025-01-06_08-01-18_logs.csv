@@ -1,0 +1,35 @@
+2025-01-06 08:01:18,647: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-06 08:01:19,097: root: INFO: Current backtesting datetime 2023-12-01 08:30:00-05:00
+2025-01-06 08:01:19,098: asyncio: INFO: [MLTrader] Executing the before_market_opens lifecycle method
+2025-01-06 08:01:19,098: root: INFO: Current backtesting datetime 2023-12-01 09:30:00-05:00
+2025-01-06 08:01:19,098: asyncio: INFO: [MLTrader] Executing the before_starting_trading lifecycle method
+2025-01-06 08:01:19,098: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 08:01:19[0m
+2025-01-06 08:01:26,277: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 08:01:26,669: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 0.1 BTC/USD buy | of class bracket with status new[0m
+2025-01-06 08:01:26,678: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 08:01:26[0m
+2025-01-06 08:01:26,678: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-06 08:01:26,678: root: WARNING: quote is not implemented for YahooData, but USD was passed as the quote
+2025-01-06 08:01:26,678: asyncio: ERROR: [MLTrader] 'tuple' object has no attribute 'symbol'
+2025-01-06 08:01:26,682: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 874, in _run_trading_session
+    self.broker.process_pending_orders(strategy=self.strategy)
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/backtesting/backtesting_broker.py", line 567, in process_pending_orders
+    ohlc = strategy.get_historical_prices(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy.py", line 3061, in get_historical_prices
+    return self.broker.data_source.get_historical_prices(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/yahoo_data.py", line 180, in get_historical_prices
+    response = self._pull_source_symbol_bars(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/data_sources/yahoo_data.py", line 74, in _pull_source_symbol_bars
+    asset.symbol,
+    ^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'symbol'
+
+2025-01-06 08:01:26,682: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-06 08:01:28,059: root: INFO: Backtesting finished
+2025-01-06 08:01:29,080: root: ERROR: Not enough data to create a tearsheet, at least 2 days of data are required. Skipping
+2025-01-06 08:01:29,080: backtest_stats: INFO: Backtest took 0:00:10.433816 for a speed of 0.000

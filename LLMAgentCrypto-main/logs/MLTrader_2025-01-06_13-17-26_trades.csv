@@ -1,0 +1,9 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
+2023-12-25 00:00:00-05:00,MLTrader,7cbbbf14d0524330b9f8e5a845bd74b1,BTC,buy,market,new,1,gtc,0.0,1,crypto,,,
+2023-12-25 00:00:00-05:00,MLTrader,7cbbbf14d0524330b9f8e5a845bd74b1,BTC,buy,market,fill,1,gtc,0.0,1,crypto,43014.9,0.5733405803582691,0.0
+2023-12-26 00:00:00-05:00,MLTrader,70c70e154eee4874b280f7be765d8d8e,BTC,buy,market,new,1,gtc,0.0,1,crypto,,,
+2023-12-26 00:00:00-05:00,MLTrader,70c70e154eee4874b280f7be765d8d8e,BTC,buy,market,fill,1,gtc,0.0,1,crypto,43604.1,0.4429645281176406,0.0
+2023-12-27 00:00:00-05:00,MLTrader,ad5d71c23b514d6c9e98fc31935eb1f5,BTC,buy,market,new,1,gtc,0.0,1,crypto,,,
+2023-12-27 00:00:00-05:00,MLTrader,ad5d71c23b514d6c9e98fc31935eb1f5,BTC,buy,market,fill,1,gtc,0.0,1,crypto,42519.1,0.32220607002291723,0.0
+2023-12-29 00:00:00-05:00,MLTrader,0d2efb0bf58a41a5bd75f7798ab72a7d,BTC,sell,limit,canceled,1,day,0.0,1,crypto,,,
+2023-12-29 00:00:00-05:00,MLTrader,3be2801cc6254dfd9a31de0faa8a7698,BTC,sell,stop,fill,1,day,0.0,1,crypto,41423.895,0.5733405803582691,0.0

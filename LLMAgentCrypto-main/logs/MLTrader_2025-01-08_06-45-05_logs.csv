@@ -1,0 +1,81 @@
+2025-01-08 06:45:06,515: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-08 06:45:06,525: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-08 06:45:06[0m
+2025-01-08 06:45:06,548: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-08 06:45:06,553: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-03-06T00:00:00.000000 | 2024-09-24T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-08 06:45:09,011: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-08 06:45:09,397: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-08 06:45:09[0m
+2025-01-08 06:45:09,398: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-08 06:45:09,398: root: INFO: Current backtesting datetime 2023-06-02 00:00:00-04:00
+2025-01-08 06:45:09,399: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-08 06:45:09[0m
+2025-01-08 06:45:11,150: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-08 06:45:11,499: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-08 06:45:11[0m
+2025-01-08 06:45:11,499: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-08 06:45:11,500: root: INFO: Current backtesting datetime 2023-06-03 00:00:00-04:00
+2025-01-08 06:45:11,501: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-08 06:45:11[0m
+2025-01-08 06:45:12,688: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-08 06:45:13,029: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 0.9234667681248822 BTC/USD sell | at price $21657.520000000004 of class bracket with status new[0m
+2025-01-08 06:45:13,037: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-08 06:45:13[0m
+2025-01-08 06:45:13,038: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-08 06:45:13,039: root: INFO: market order of | 0.9234667681248822 BTC/USD sell | at price $21657.520000000004 of class bracket with status new was sent to broker backtesting
+2025-01-08 06:45:13,039: root: INFO: market order of | 0.9234667681248822 BTC/USD sell | at price $21657.520000000004 of class bracket with status new was sent to broker backtesting
+2025-01-08 06:45:13,040: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 0.9234667681248822 BTC/USD sell | at price $27253.1 of class bracket with status fill[0m
+2025-01-08 06:45:13,043: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-08 06:45:13,043: root: INFO: Current backtesting datetime 2023-06-04 00:00:00-04:00
+2025-01-08 06:45:13,044: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-08 06:45:13[0m
+2025-01-08 06:45:14,333: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-08 06:45:14,692: asyncio: WARNING: [MLTrader] Selling all positions for MLTrader strategy
+2025-01-08 06:45:14,694: asyncio: INFO: [MLTrader] [32mOrder was canceled: stop order of | 0.9234667681248822 BTC/USD buy | at price $28425.495000000003 with status canceled[0m
+2025-01-08 06:45:14,698: asyncio: INFO: [MLTrader] [32mOrder was canceled: limit order of | 0.9234667681248822 BTC/USD buy | at price $21657.520000000004 with status canceled[0m
+2025-01-08 06:45:14,702: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 0.9234667681248822 BTC/USD buy | with status new[0m
+2025-01-08 06:45:14,705: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1.153705283896488 BTC/USD buy | at price $32547.48 of class bracket with status new[0m
+2025-01-08 06:45:14,707: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-08 06:45:14[0m
+2025-01-08 06:45:14,707: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-08 06:45:14,708: root: INFO: Position MLTrader Position: 0.0 shares of BTC (2 orders) liquidated
+2025-01-08 06:45:14,708: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 0.9234667681248822 BTC/USD buy | at price $27072.0 with status fill[0m
+2025-01-08 06:45:14,710: asyncio: INFO: [MLTrader] Getting historical prices for (BTC, USD), 1 bars, 
+2025-01-08 06:45:14,711: root: INFO: market order of | 1.153705283896488 BTC/USD buy | at price $32547.48 of class bracket with status new was sent to broker backtesting
+2025-01-08 06:45:14,711: root: INFO: market order of | 1.153705283896488 BTC/USD buy | at price $32547.48 of class bracket with status new was sent to broker backtesting
+2025-01-08 06:45:14,711: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1.153705283896488 BTC/USD buy | at price $27072.0 of class bracket with status fill[0m
+2025-01-08 06:45:14,713: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-08 06:45:14,713: root: INFO: Current backtesting datetime 2023-06-05 00:00:00-04:00
+2025-01-08 06:45:14,714: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-08 06:45:14[0m
+2025-01-08 06:45:16,231: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-08 06:45:18,532: asyncio: ERROR: [MLTrader] 'sentiment'
+2025-01-08 06:45:18,538: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 286, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 397, in _on_trading_iteration
+    raise e
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 369, in _on_trading_iteration
+    on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 62, in func_output
+    frame, result = call_function_get_frame(func_input, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 30, in call_function_get_frame
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/cryptobot.py", line 55, in on_trading_iteration
+    sentiment = news_data["sentiment"]
+                ~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'sentiment'
+
+2025-01-08 06:45:18,539: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-08 06:45:19,415: root: INFO: Backtesting finished
+2025-01-08 06:45:22,562: backtest_stats: INFO: Backtest took 0:00:16.046547 for a speed of 0.000

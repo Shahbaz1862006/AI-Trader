@@ -1,0 +1,2 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type
+2020-12-04 09:30:00-05:00,MLTrader,f200bcd0cdc942ef9ab92e1389522f47,BTCUSD,sell,market,new,1,gtc,0.0,1,stock

@@ -1,0 +1,51 @@
+2025-01-08 06:40:33,869: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-08 06:40:33,878: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-08 06:40:33[0m
+2025-01-08 06:40:33,894: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-08 06:40:33,900: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-03-06T00:00:00.000000 | 2024-09-24T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-08 06:40:33,912: asyncio: ERROR: [MLTrader] name 'three_days_prior' is not defined
+2025-01-08 06:40:33,914: asyncio: ERROR: [MLTrader] Traceback (most recent call last):
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 923, in run
+    self._run_trading_session()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 871, in _run_trading_session
+    self._on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 262, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 286, in func_output
+    result = func_input(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 397, in _on_trading_iteration
+    raise e
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/strategies/strategy_executor.py", line 369, in _on_trading_iteration
+    on_trading_iteration()
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 62, in func_output
+    frame, result = call_function_get_frame(func_input, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/devin/lib/python3.11/site-packages/lumibot/tools/decorators.py", line 30, in call_function_get_frame
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/cryptobot.py", line 54, in on_trading_iteration
+    news_data = self.get_sentiment()
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/cryptobot.py", line 44, in get_sentiment
+    today, day_prior = self.get_dates()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/nicholasrenotte/Desktop/YT/29-05-2024-Tradingv2/cryptobot.py", line 41, in get_dates
+    return today.strftime("%Y-%m-%d"), three_days_prior.strftime("%Y-%m-%d")
+                                       ^^^^^^^^^^^^^^^^
+NameError: name 'three_days_prior' is not defined
+
+2025-01-08 06:40:33,914: asyncio: INFO: [MLTrader] Executing the on_bot_crash event method
+2025-01-08 06:40:33,915: root: INFO: Backtesting finished
+2025-01-08 06:40:35,192: asyncio: WARNING: [MLTrader] Cannot plot returns because the strategy returns are missing
+2025-01-08 06:40:35,247: asyncio: WARNING: [MLTrader] Cannot create a tearsheet because the strategy returns are missing
+2025-01-08 06:40:35,247: backtest_stats: INFO: Backtest took 0:00:01.378487 for a speed of 0.000

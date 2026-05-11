@@ -4,14 +4,15 @@
   "open_trades": [],
   "closed_trades": [],
   "total_profit": 0.0,
+  "total_fees": 0.0,
   "win_count": 0,
   "loss_count": 0,
-  "last_scan": "2026-05-10T16:31:54.731808",
-  "session_start": null,
+  "last_scan": "2026-05-11T17:22:01.390079",
+  "session_start": "2026-05-11T17:21:48.121527",
   "sl_cooldowns": {},
   "market_context": {
     "fear_greed": {
-      "value": 47,
+      "value": 48,
       "label": "Neutral",
       "signal": "NEUTRAL",
       "soft_avoid_longs": false,
@@ -21,11 +22,11 @@
       "breakout_override_note": "Neutral: both directions allowed freely"
     },
     "btc_dominance": {
-      "value": 58.31,
-      "btc_dominance": 58.31,
+      "value": 58.28,
+      "btc_dominance": 58.28,
       "signal": "BTC_DOMINANT",
       "avoid_alts": true
     },
-    "data_freshness": "2026-05-10T16:31:54.731808"
+    "data_freshness": "2026-05-11T17:22:01.390079"
   }
 }

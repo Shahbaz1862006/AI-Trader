@@ -1,0 +1,15 @@
+time,strategy,identifier,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
+2023-03-23 01:00:00-04:00,MLTrader,bbd7ae7554ff4607a39847a5891f28f9,XRP,buy,market,new,1,gtc,0.0,1,stock,,,
+2023-03-23 01:00:00-04:00,MLTrader,bbd7ae7554ff4607a39847a5891f28f9,XRP,buy,market,fill,1,gtc,0.0,1,stock,0.422,112612.61261261262,0.0
+2023-04-22 01:00:00-04:00,MLTrader,49efc3bdc9674c00b003f98103068bff,XRP,sell,market,new,1,day,0.0,1,stock,,,
+2023-04-22 01:00:00-04:00,MLTrader,06ca9f1972084cfd8da062be46e07f0b,XRP,sell,market,new,1,gtc,0.0,1,stock,,,
+2023-04-22 01:00:00-04:00,MLTrader,49efc3bdc9674c00b003f98103068bff,XRP,sell,market,fill,1,day,0.0,1,stock,0.449,112612.61261261262,0.0
+2023-04-22 01:00:00-04:00,MLTrader,06ca9f1972084cfd8da062be46e07f0b,XRP,sell,market,fill,1,gtc,0.0,1,stock,0.449,55590.54817529394,0.0
+2023-08-10 01:00:00-04:00,MLTrader,97966da22a774775a54a28b2131c41d7,XRP,buy,market,new,1,day,0.0,1,stock,,,
+2023-08-10 01:00:00-04:00,MLTrader,41f26a5adf8640f5992b98b6ebc48bc1,XRP,buy,market,new,1,gtc,0.0,1,stock,,,
+2023-08-10 01:00:00-04:00,MLTrader,97966da22a774775a54a28b2131c41d7,XRP,buy,market,fill,1,day,0.0,1,stock,0.643,55590.54817529394,0.0
+2023-08-10 01:00:00-04:00,MLTrader,41f26a5adf8640f5992b98b6ebc48bc1,XRP,buy,market,fill,1,gtc,0.0,1,stock,0.643,101106.39547491906,0.0
+2024-01-19 00:00:00-05:00,MLTrader,cc698521b90746c6b4209cbed703512d,XRP,sell,market,new,1,day,0.0,1,stock,,,
+2024-01-19 00:00:00-05:00,MLTrader,2d3305d8f855422790c275df0a525c66,XRP,sell,market,new,1,gtc,0.0,1,stock,,,
+2024-01-19 00:00:00-05:00,MLTrader,cc698521b90746c6b4209cbed703512d,XRP,sell,market,fill,1,day,0.0,1,stock,0.552,101106.39547491906,0.0
+2024-01-19 00:00:00-05:00,MLTrader,2d3305d8f855422790c275df0a525c66,XRP,sell,market,fill,1,gtc,0.0,1,stock,0.552,25040.957632500522,0.0

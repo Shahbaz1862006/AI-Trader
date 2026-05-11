@@ -1,0 +1,590 @@
+2025-01-09 08:14:32,046: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-09 08:14:32,054: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:32[0m
+2025-01-09 08:14:32,062: CcxtCacheDB: INFO: download ranges :
++---------------------+---------------------+
+| from                | to                  |
+|---------------------+---------------------|
+| 2022-08-05 00:00:00 | 2023-01-20 00:00:00 |
++---------------------+---------------------+
+2025-01-09 08:14:33,125: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-08-05T00:00:00.000000 | 2024-09-09T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-09 08:14:35,617: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:36,642: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1218.9176011701609 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:14:36,647: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:36[0m
+2025-01-09 08:14:36,647: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:14:36,648: root: INFO: market order of | 1218.9176011701609 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:14:36,648: root: INFO: market order of | 1218.9176011701609 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:14:36,648: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1218.9176011701609 SOL/USD buy | at price $20.83 of class bracket with status fill[0m
+2025-01-09 08:14:36,650: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:36,650: root: INFO: Current backtesting datetime 2023-06-02 00:00:00-04:00
+2025-01-09 08:14:36,650: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:36[0m
+2025-01-09 08:14:38,664: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:39,080: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:39[0m
+2025-01-09 08:14:39,080: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:14:39,081: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1218.9176011701609 SOL/USD sell | with status canceled[0m
+2025-01-09 08:14:39,082: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:14:39,082: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1218.9176011701609 SOL/USD sell | at price $20.5 with status fill[0m
+2025-01-09 08:14:39,083: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:39,083: root: INFO: Current backtesting datetime 2023-06-03 00:00:00-04:00
+2025-01-09 08:14:39,083: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:39[0m
+2025-01-09 08:14:40,819: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:41,234: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:41[0m
+2025-01-09 08:14:41,234: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:41,235: root: INFO: Current backtesting datetime 2023-06-04 00:00:00-04:00
+2025-01-09 08:14:41,236: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:41[0m
+2025-01-09 08:14:42,941: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:43,347: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:43[0m
+2025-01-09 08:14:43,348: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:43,348: root: INFO: Current backtesting datetime 2023-06-05 00:00:00-04:00
+2025-01-09 08:14:43,349: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:43[0m
+2025-01-09 08:14:45,644: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:46,638: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:46[0m
+2025-01-09 08:14:46,638: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:46,638: root: INFO: Current backtesting datetime 2023-06-06 00:00:00-04:00
+2025-01-09 08:14:46,640: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:46[0m
+2025-01-09 08:14:48,058: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:48,466: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:48[0m
+2025-01-09 08:14:48,466: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:48,466: root: INFO: Current backtesting datetime 2023-06-07 00:00:00-04:00
+2025-01-09 08:14:48,466: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:48[0m
+2025-01-09 08:14:50,010: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:50,422: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:50[0m
+2025-01-09 08:14:50,422: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:50,422: root: INFO: Current backtesting datetime 2023-06-08 00:00:00-04:00
+2025-01-09 08:14:50,422: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:50[0m
+2025-01-09 08:14:52,012: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:52,427: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:52[0m
+2025-01-09 08:14:52,427: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:52,427: root: INFO: Current backtesting datetime 2023-06-09 00:00:00-04:00
+2025-01-09 08:14:52,427: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:52[0m
+2025-01-09 08:14:54,875: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:55,288: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:55[0m
+2025-01-09 08:14:55,289: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:55,289: root: INFO: Current backtesting datetime 2023-06-10 00:00:00-04:00
+2025-01-09 08:14:55,291: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:55[0m
+2025-01-09 08:14:57,020: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:57,444: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:57[0m
+2025-01-09 08:14:57,445: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:57,445: root: INFO: Current backtesting datetime 2023-06-11 00:00:00-04:00
+2025-01-09 08:14:57,447: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:57[0m
+2025-01-09 08:14:58,941: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:14:59,352: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:14:59[0m
+2025-01-09 08:14:59,352: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:14:59,352: root: INFO: Current backtesting datetime 2023-06-12 00:00:00-04:00
+2025-01-09 08:14:59,355: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:14:59[0m
+2025-01-09 08:15:00,676: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:01,667: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:01[0m
+2025-01-09 08:15:01,667: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:01,667: root: INFO: Current backtesting datetime 2023-06-13 00:00:00-04:00
+2025-01-09 08:15:01,668: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:01[0m
+2025-01-09 08:15:03,206: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:04,198: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:04[0m
+2025-01-09 08:15:04,198: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:04,199: root: INFO: Current backtesting datetime 2023-06-14 00:00:00-04:00
+2025-01-09 08:15:04,200: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:04[0m
+2025-01-09 08:15:06,245: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:06,657: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:06[0m
+2025-01-09 08:15:06,657: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:06,658: root: INFO: Current backtesting datetime 2023-06-15 00:00:00-04:00
+2025-01-09 08:15:06,660: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:06[0m
+2025-01-09 08:15:08,211: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:09,211: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:09[0m
+2025-01-09 08:15:09,211: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:09,211: root: INFO: Current backtesting datetime 2023-06-16 00:00:00-04:00
+2025-01-09 08:15:09,212: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:09[0m
+2025-01-09 08:15:10,799: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:11,212: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:11[0m
+2025-01-09 08:15:11,212: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:11,213: root: INFO: Current backtesting datetime 2023-06-17 00:00:00-04:00
+2025-01-09 08:15:11,216: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:11[0m
+2025-01-09 08:15:12,926: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:13,339: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:13[0m
+2025-01-09 08:15:13,340: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:13,340: root: INFO: Current backtesting datetime 2023-06-18 00:00:00-04:00
+2025-01-09 08:15:13,341: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:13[0m
+2025-01-09 08:15:14,769: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:15,743: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:15[0m
+2025-01-09 08:15:15,744: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:15,744: root: INFO: Current backtesting datetime 2023-06-19 00:00:00-04:00
+2025-01-09 08:15:15,746: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:15[0m
+2025-01-09 08:15:17,510: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:17,917: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:17[0m
+2025-01-09 08:15:17,918: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:17,918: root: INFO: Current backtesting datetime 2023-06-20 00:00:00-04:00
+2025-01-09 08:15:17,921: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:17[0m
+2025-01-09 08:15:20,486: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:20,899: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:20[0m
+2025-01-09 08:15:20,899: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:20,900: root: INFO: Current backtesting datetime 2023-06-21 00:00:00-04:00
+2025-01-09 08:15:20,902: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:20[0m
+2025-01-09 08:15:22,418: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:22,851: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1443.4457564002007 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:15:22,855: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:22[0m
+2025-01-09 08:15:22,856: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:22,857: root: INFO: market order of | 1443.4457564002007 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:22,857: root: INFO: market order of | 1443.4457564002007 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:22,857: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1443.4457564002007 SOL/USD buy | at price $16.65 of class bracket with status fill[0m
+2025-01-09 08:15:22,860: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:22,861: root: INFO: Current backtesting datetime 2023-06-22 00:00:00-04:00
+2025-01-09 08:15:22,862: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:22[0m
+2025-01-09 08:15:24,644: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:25,642: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:25[0m
+2025-01-09 08:15:25,642: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:25,644: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1443.4457564002007 SOL/USD sell | with status canceled[0m
+2025-01-09 08:15:25,647: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:15:25,647: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1443.4457564002007 SOL/USD sell | at price $17.24 with status fill[0m
+2025-01-09 08:15:25,648: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:25,648: root: INFO: Current backtesting datetime 2023-06-23 00:00:00-04:00
+2025-01-09 08:15:25,649: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:25[0m
+2025-01-09 08:15:27,197: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:28,202: asyncio: WARNING: [MLTrader] Selling all positions for MLTrader strategy
+2025-01-09 08:15:28,202: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1463.423516723339 SOL/USD sell | of class bracket with status new[0m
+2025-01-09 08:15:28,204: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:28[0m
+2025-01-09 08:15:28,204: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:28,204: root: INFO: market order of | 1463.423516723339 SOL/USD sell | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:28,204: root: INFO: market order of | 1463.423516723339 SOL/USD sell | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:28,204: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1463.423516723339 SOL/USD sell | at price $16.63 of class bracket with status fill[0m
+2025-01-09 08:15:28,206: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:28,206: root: INFO: Current backtesting datetime 2023-06-24 00:00:00-04:00
+2025-01-09 08:15:28,207: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:28[0m
+2025-01-09 08:15:29,668: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:30,656: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:30[0m
+2025-01-09 08:15:30,657: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:30,658: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1463.423516723339 SOL/USD buy | with status canceled[0m
+2025-01-09 08:15:30,661: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:15:30,661: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1463.423516723339 SOL/USD buy | at price $17.15 with status fill[0m
+2025-01-09 08:15:30,662: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:30,662: root: INFO: Current backtesting datetime 2023-06-25 00:00:00-04:00
+2025-01-09 08:15:30,662: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:30[0m
+2025-01-09 08:15:32,152: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:33,163: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:33[0m
+2025-01-09 08:15:33,163: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:33,163: root: INFO: Current backtesting datetime 2023-06-26 00:00:00-04:00
+2025-01-09 08:15:33,164: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:33[0m
+2025-01-09 08:15:34,767: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:35,174: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:35[0m
+2025-01-09 08:15:35,174: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:35,174: root: INFO: Current backtesting datetime 2023-06-27 00:00:00-04:00
+2025-01-09 08:15:35,176: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:35[0m
+2025-01-09 08:15:36,628: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:37,039: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:37[0m
+2025-01-09 08:15:37,039: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:37,039: root: INFO: Current backtesting datetime 2023-06-28 00:00:00-04:00
+2025-01-09 08:15:37,041: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:37[0m
+2025-01-09 08:15:38,477: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:38,895: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:38[0m
+2025-01-09 08:15:38,895: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:38,896: root: INFO: Current backtesting datetime 2023-06-29 00:00:00-04:00
+2025-01-09 08:15:38,898: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:38[0m
+2025-01-09 08:15:41,002: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:41,433: asyncio: WARNING: [MLTrader] Selling all positions for MLTrader strategy
+2025-01-09 08:15:41,434: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1385.330877698636 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:15:41,437: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:41[0m
+2025-01-09 08:15:41,437: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:41,438: root: INFO: market order of | 1385.330877698636 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:41,438: root: INFO: market order of | 1385.330877698636 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:41,438: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1385.330877698636 SOL/USD buy | at price $15.97 of class bracket with status fill[0m
+2025-01-09 08:15:41,439: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:41,439: root: INFO: Current backtesting datetime 2023-06-30 00:00:00-04:00
+2025-01-09 08:15:41,439: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:41[0m
+2025-01-09 08:15:43,475: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:43,905: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1028.163783700247 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:15:43,909: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:43[0m
+2025-01-09 08:15:43,909: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:43,910: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1385.330877698636 SOL/USD sell | with status canceled[0m
+2025-01-09 08:15:43,911: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:15:43,911: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1385.330877698636 SOL/USD sell | at price $17.99 with status fill[0m
+2025-01-09 08:15:43,912: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:43,912: root: INFO: market order of | 1028.163783700247 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:43,912: root: INFO: market order of | 1028.163783700247 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:15:43,912: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1028.163783700247 SOL/USD buy | at price $17.99 of class bracket with status fill[0m
+2025-01-09 08:15:43,913: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:43,913: root: INFO: Current backtesting datetime 2023-07-01 00:00:00-04:00
+2025-01-09 08:15:43,914: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:43[0m
+2025-01-09 08:15:45,488: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:45,892: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:45[0m
+2025-01-09 08:15:45,892: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:15:45,893: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1028.163783700247 SOL/USD sell | with status canceled[0m
+2025-01-09 08:15:45,894: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:15:45,894: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1028.163783700247 SOL/USD sell | at price $18.89 with status fill[0m
+2025-01-09 08:15:45,895: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:45,895: root: INFO: Current backtesting datetime 2023-07-02 00:00:00-04:00
+2025-01-09 08:15:45,895: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:45[0m
+2025-01-09 08:15:47,421: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:47,829: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:47[0m
+2025-01-09 08:15:47,830: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:47,830: root: INFO: Current backtesting datetime 2023-07-03 00:00:00-04:00
+2025-01-09 08:15:47,833: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:47[0m
+2025-01-09 08:15:49,336: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:49,751: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:49[0m
+2025-01-09 08:15:49,752: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:49,752: root: INFO: Current backtesting datetime 2023-07-04 00:00:00-04:00
+2025-01-09 08:15:49,754: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:49[0m
+2025-01-09 08:15:51,351: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:51,767: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:51[0m
+2025-01-09 08:15:51,767: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:51,768: root: INFO: Current backtesting datetime 2023-07-05 00:00:00-04:00
+2025-01-09 08:15:51,770: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:51[0m
+2025-01-09 08:15:54,269: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:54,685: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:54[0m
+2025-01-09 08:15:54,685: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:54,685: root: INFO: Current backtesting datetime 2023-07-06 00:00:00-04:00
+2025-01-09 08:15:54,686: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:54[0m
+2025-01-09 08:15:56,149: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:56,556: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:56[0m
+2025-01-09 08:15:56,556: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:56,556: root: INFO: Current backtesting datetime 2023-07-07 00:00:00-04:00
+2025-01-09 08:15:56,556: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:56[0m
+2025-01-09 08:15:58,862: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:15:59,278: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:15:59[0m
+2025-01-09 08:15:59,278: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:15:59,278: root: INFO: Current backtesting datetime 2023-07-08 00:00:00-04:00
+2025-01-09 08:15:59,278: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:15:59[0m
+2025-01-09 08:16:00,816: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:01,193: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:01[0m
+2025-01-09 08:16:01,193: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:01,193: root: INFO: Current backtesting datetime 2023-07-09 00:00:00-04:00
+2025-01-09 08:16:01,194: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:01[0m
+2025-01-09 08:16:02,960: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:03,377: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:03[0m
+2025-01-09 08:16:03,377: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:03,377: root: INFO: Current backtesting datetime 2023-07-10 00:00:00-04:00
+2025-01-09 08:16:03,378: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:03[0m
+2025-01-09 08:16:05,499: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:05,913: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:05[0m
+2025-01-09 08:16:05,914: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:05,914: root: INFO: Current backtesting datetime 2023-07-11 00:00:00-04:00
+2025-01-09 08:16:05,916: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:05[0m
+2025-01-09 08:16:07,492: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:07,905: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:07[0m
+2025-01-09 08:16:07,905: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:07,905: root: INFO: Current backtesting datetime 2023-07-12 00:00:00-04:00
+2025-01-09 08:16:07,906: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:07[0m
+2025-01-09 08:16:09,672: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:10,088: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:10[0m
+2025-01-09 08:16:10,089: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:10,089: root: INFO: Current backtesting datetime 2023-07-13 00:00:00-04:00
+2025-01-09 08:16:10,091: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:10[0m
+2025-01-09 08:16:12,468: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:12,883: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:12[0m
+2025-01-09 08:16:12,884: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:12,884: root: INFO: Current backtesting datetime 2023-07-14 00:00:00-04:00
+2025-01-09 08:16:12,886: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:12[0m
+2025-01-09 08:16:14,390: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:15,385: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:15[0m
+2025-01-09 08:16:15,385: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:15,385: root: INFO: Current backtesting datetime 2023-07-15 00:00:00-04:00
+2025-01-09 08:16:15,386: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:15[0m
+2025-01-09 08:16:16,764: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:17,197: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 942.8530792986444 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:16:17,202: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:17[0m
+2025-01-09 08:16:17,202: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:16:17,202: root: INFO: market order of | 942.8530792986444 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:16:17,202: root: INFO: market order of | 942.8530792986444 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:16:17,202: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 942.8530792986444 SOL/USD buy | at price $26.64 of class bracket with status fill[0m
+2025-01-09 08:16:17,205: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:17,205: root: INFO: Current backtesting datetime 2023-07-16 00:00:00-04:00
+2025-01-09 08:16:17,206: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:17[0m
+2025-01-09 08:16:18,318: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:19,277: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:19[0m
+2025-01-09 08:16:19,277: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:16:19,278: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 942.8530792986444 SOL/USD sell | with status canceled[0m
+2025-01-09 08:16:19,282: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:16:19,282: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 942.8530792986444 SOL/USD sell | at price $27.47 with status fill[0m
+2025-01-09 08:16:19,283: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:19,284: root: INFO: Current backtesting datetime 2023-07-17 00:00:00-04:00
+2025-01-09 08:16:19,284: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:19[0m
+2025-01-09 08:16:20,952: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:21,939: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:21[0m
+2025-01-09 08:16:21,939: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:21,939: root: INFO: Current backtesting datetime 2023-07-18 00:00:00-04:00
+2025-01-09 08:16:21,941: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:21[0m
+2025-01-09 08:16:23,287: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:23,717: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1019.1186795118662 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:16:23,720: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:23[0m
+2025-01-09 08:16:23,720: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:16:23,721: root: INFO: market order of | 1019.1186795118662 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:16:23,721: root: INFO: market order of | 1019.1186795118662 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:16:23,721: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1019.1186795118662 SOL/USD buy | at price $26.82 of class bracket with status fill[0m
+2025-01-09 08:16:23,722: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:23,722: root: INFO: Current backtesting datetime 2023-07-19 00:00:00-04:00
+2025-01-09 08:16:23,723: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:23[0m
+2025-01-09 08:16:25,093: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:26,094: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:26[0m
+2025-01-09 08:16:26,094: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:16:26,094: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1019.1186795118662 SOL/USD sell | with status canceled[0m
+2025-01-09 08:16:26,096: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:16:26,096: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1019.1186795118662 SOL/USD sell | at price $25.55 with status fill[0m
+2025-01-09 08:16:26,097: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:26,097: root: INFO: Current backtesting datetime 2023-07-20 00:00:00-04:00
+2025-01-09 08:16:26,097: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:26[0m
+2025-01-09 08:16:27,807: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:28,221: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:28[0m
+2025-01-09 08:16:28,221: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:28,221: root: INFO: Current backtesting datetime 2023-07-21 00:00:00-04:00
+2025-01-09 08:16:28,221: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:28[0m
+2025-01-09 08:16:29,804: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:30,218: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:30[0m
+2025-01-09 08:16:30,218: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:30,219: root: INFO: Current backtesting datetime 2023-07-22 00:00:00-04:00
+2025-01-09 08:16:30,221: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:30[0m
+2025-01-09 08:16:31,889: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:32,304: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:32[0m
+2025-01-09 08:16:32,304: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:32,305: root: INFO: Current backtesting datetime 2023-07-23 00:00:00-04:00
+2025-01-09 08:16:32,307: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:32[0m
+2025-01-09 08:16:33,565: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:33,939: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:33[0m
+2025-01-09 08:16:33,939: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:33,940: root: INFO: Current backtesting datetime 2023-07-24 00:00:00-04:00
+2025-01-09 08:16:33,941: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:33[0m
+2025-01-09 08:16:35,621: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:36,609: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:36[0m
+2025-01-09 08:16:36,609: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:36,609: root: INFO: Current backtesting datetime 2023-07-25 00:00:00-04:00
+2025-01-09 08:16:36,611: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:36[0m
+2025-01-09 08:16:38,831: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:39,243: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:39[0m
+2025-01-09 08:16:39,244: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:39,244: root: INFO: Current backtesting datetime 2023-07-26 00:00:00-04:00
+2025-01-09 08:16:39,246: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:39[0m
+2025-01-09 08:16:41,210: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:42,210: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1021.6482632080334 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:16:42,213: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:42[0m
+2025-01-09 08:16:42,213: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:16:42,214: root: INFO: market order of | 1021.6482632080334 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:16:42,214: root: INFO: market order of | 1021.6482632080334 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:16:42,214: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1021.6482632080334 SOL/USD buy | at price $23.31 of class bracket with status fill[0m
+2025-01-09 08:16:42,215: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:42,215: root: INFO: Current backtesting datetime 2023-07-27 00:00:00-04:00
+2025-01-09 08:16:42,215: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:42[0m
+2025-01-09 08:16:44,197: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:44,610: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:44[0m
+2025-01-09 08:16:44,611: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:16:44,613: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1021.6482632080334 SOL/USD sell | with status canceled[0m
+2025-01-09 08:16:44,615: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:16:44,615: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1021.6482632080334 SOL/USD sell | at price $25.17 with status fill[0m
+2025-01-09 08:16:44,616: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:44,616: root: INFO: Current backtesting datetime 2023-07-28 00:00:00-04:00
+2025-01-09 08:16:44,617: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:44[0m
+2025-01-09 08:16:47,300: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:47,715: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:47[0m
+2025-01-09 08:16:47,715: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:47,716: root: INFO: Current backtesting datetime 2023-07-29 00:00:00-04:00
+2025-01-09 08:16:47,718: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:47[0m
+2025-01-09 08:16:49,378: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:49,803: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:49[0m
+2025-01-09 08:16:49,804: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:49,804: root: INFO: Current backtesting datetime 2023-07-30 00:00:00-04:00
+2025-01-09 08:16:49,807: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:49[0m
+2025-01-09 08:16:51,468: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:51,881: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:51[0m
+2025-01-09 08:16:51,881: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:51,882: root: INFO: Current backtesting datetime 2023-07-31 00:00:00-04:00
+2025-01-09 08:16:51,884: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:51[0m
+2025-01-09 08:16:53,452: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:54,435: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:54[0m
+2025-01-09 08:16:54,435: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:54,435: root: INFO: Current backtesting datetime 2023-08-01 00:00:00-04:00
+2025-01-09 08:16:54,436: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:54[0m
+2025-01-09 08:16:55,842: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:56,254: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:56[0m
+2025-01-09 08:16:56,255: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:56,255: root: INFO: Current backtesting datetime 2023-08-02 00:00:00-04:00
+2025-01-09 08:16:56,257: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:56[0m
+2025-01-09 08:16:57,875: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:16:58,288: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:16:58[0m
+2025-01-09 08:16:58,288: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:16:58,288: root: INFO: Current backtesting datetime 2023-08-03 00:00:00-04:00
+2025-01-09 08:16:58,289: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:16:58[0m
+2025-01-09 08:17:00,019: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:00,452: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1158.786807163645 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:17:00,456: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:00[0m
+2025-01-09 08:17:00,456: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:00,456: root: INFO: market order of | 1158.786807163645 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:00,457: root: INFO: market order of | 1158.786807163645 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:00,457: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1158.786807163645 SOL/USD buy | at price $23.14 of class bracket with status fill[0m
+2025-01-09 08:17:00,458: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:00,458: root: INFO: Current backtesting datetime 2023-08-04 00:00:00-04:00
+2025-01-09 08:17:00,460: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:00[0m
+2025-01-09 08:17:02,916: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:03,325: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:03[0m
+2025-01-09 08:17:03,325: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:03,326: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1158.786807163645 SOL/USD sell | with status canceled[0m
+2025-01-09 08:17:03,327: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:17:03,327: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1158.786807163645 SOL/USD sell | at price $22.62 with status fill[0m
+2025-01-09 08:17:03,328: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:03,328: root: INFO: Current backtesting datetime 2023-08-05 00:00:00-04:00
+2025-01-09 08:17:03,329: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:03[0m
+2025-01-09 08:17:04,820: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:05,230: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:05[0m
+2025-01-09 08:17:05,231: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:05,231: root: INFO: Current backtesting datetime 2023-08-06 00:00:00-04:00
+2025-01-09 08:17:05,235: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:05[0m
+2025-01-09 08:17:06,547: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:06,951: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:06[0m
+2025-01-09 08:17:06,952: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:06,952: root: INFO: Current backtesting datetime 2023-08-07 00:00:00-04:00
+2025-01-09 08:17:06,954: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:06[0m
+2025-01-09 08:17:09,001: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:09,412: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:09[0m
+2025-01-09 08:17:09,412: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:09,412: root: INFO: Current backtesting datetime 2023-08-08 00:00:00-04:00
+2025-01-09 08:17:09,412: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:09[0m
+2025-01-09 08:17:11,518: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:11,952: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1075.5378788207572 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:17:11,958: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:11[0m
+2025-01-09 08:17:11,958: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:11,958: root: INFO: market order of | 1075.5378788207572 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:11,958: root: INFO: market order of | 1075.5378788207572 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:11,958: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1075.5378788207572 SOL/USD buy | at price $23.1 of class bracket with status fill[0m
+2025-01-09 08:17:11,959: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:11,960: root: INFO: Current backtesting datetime 2023-08-09 00:00:00-04:00
+2025-01-09 08:17:11,960: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:11[0m
+2025-01-09 08:17:13,628: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:14,038: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:14[0m
+2025-01-09 08:17:14,039: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:14,040: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1075.5378788207572 SOL/USD sell | with status canceled[0m
+2025-01-09 08:17:14,043: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:17:14,043: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1075.5378788207572 SOL/USD sell | at price $24.22 with status fill[0m
+2025-01-09 08:17:14,044: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:14,044: root: INFO: Current backtesting datetime 2023-08-10 00:00:00-04:00
+2025-01-09 08:17:14,045: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:14[0m
+2025-01-09 08:17:16,041: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:16,417: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:16[0m
+2025-01-09 08:17:16,417: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:16,417: root: INFO: Current backtesting datetime 2023-08-11 00:00:00-04:00
+2025-01-09 08:17:16,417: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:16[0m
+2025-01-09 08:17:17,899: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:18,307: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:18[0m
+2025-01-09 08:17:18,307: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:18,307: root: INFO: Current backtesting datetime 2023-08-12 00:00:00-04:00
+2025-01-09 08:17:18,307: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:18[0m
+2025-01-09 08:17:19,867: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:20,286: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:20[0m
+2025-01-09 08:17:20,286: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:20,287: root: INFO: Current backtesting datetime 2023-08-13 00:00:00-04:00
+2025-01-09 08:17:20,288: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:20[0m
+2025-01-09 08:17:21,897: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:22,306: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:22[0m
+2025-01-09 08:17:22,306: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:22,306: root: INFO: Current backtesting datetime 2023-08-14 00:00:00-04:00
+2025-01-09 08:17:22,306: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:22[0m
+2025-01-09 08:17:23,980: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:24,393: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:24[0m
+2025-01-09 08:17:24,394: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:24,394: root: INFO: Current backtesting datetime 2023-08-15 00:00:00-04:00
+2025-01-09 08:17:24,397: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:24[0m
+2025-01-09 08:17:26,320: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:26,735: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:26[0m
+2025-01-09 08:17:26,736: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:26,736: root: INFO: Current backtesting datetime 2023-08-16 00:00:00-04:00
+2025-01-09 08:17:26,738: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:26[0m
+2025-01-09 08:17:28,315: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:28,725: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:28[0m
+2025-01-09 08:17:28,726: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:28,726: root: INFO: Current backtesting datetime 2023-08-17 00:00:00-04:00
+2025-01-09 08:17:28,727: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:28[0m
+2025-01-09 08:17:30,348: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:31,333: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:31[0m
+2025-01-09 08:17:31,333: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:31,333: root: INFO: Current backtesting datetime 2023-08-18 00:00:00-04:00
+2025-01-09 08:17:31,334: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:31[0m
+2025-01-09 08:17:32,733: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:33,150: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:33[0m
+2025-01-09 08:17:33,150: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:33,151: root: INFO: Current backtesting datetime 2023-08-19 00:00:00-04:00
+2025-01-09 08:17:33,152: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:33[0m
+2025-01-09 08:17:34,843: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:35,268: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:35[0m
+2025-01-09 08:17:35,268: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:35,269: root: INFO: Current backtesting datetime 2023-08-20 00:00:00-04:00
+2025-01-09 08:17:35,271: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:35[0m
+2025-01-09 08:17:36,851: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:37,848: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:37[0m
+2025-01-09 08:17:37,848: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:37,848: root: INFO: Current backtesting datetime 2023-08-21 00:00:00-04:00
+2025-01-09 08:17:37,849: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:37[0m
+2025-01-09 08:17:39,406: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:39,819: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:39[0m
+2025-01-09 08:17:39,820: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:39,820: root: INFO: Current backtesting datetime 2023-08-22 00:00:00-04:00
+2025-01-09 08:17:39,823: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:39[0m
+2025-01-09 08:17:41,112: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:41,521: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:41[0m
+2025-01-09 08:17:41,521: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:41,522: root: INFO: Current backtesting datetime 2023-08-23 00:00:00-04:00
+2025-01-09 08:17:41,522: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:41[0m
+2025-01-09 08:17:43,602: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:44,021: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:44[0m
+2025-01-09 08:17:44,022: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:44,022: root: INFO: Current backtesting datetime 2023-08-24 00:00:00-04:00
+2025-01-09 08:17:44,025: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:44[0m
+2025-01-09 08:17:45,688: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:46,120: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1252.4086516686575 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:17:46,123: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:46[0m
+2025-01-09 08:17:46,124: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:46,124: root: INFO: market order of | 1252.4086516686575 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:46,124: root: INFO: market order of | 1252.4086516686575 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:46,124: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1252.4086516686575 SOL/USD buy | at price $21.74 of class bracket with status fill[0m
+2025-01-09 08:17:46,125: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:46,126: root: INFO: Current backtesting datetime 2023-08-25 00:00:00-04:00
+2025-01-09 08:17:46,126: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:46[0m
+2025-01-09 08:17:47,647: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:48,058: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:48[0m
+2025-01-09 08:17:48,059: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:48,063: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1252.4086516686575 SOL/USD sell | with status canceled[0m
+2025-01-09 08:17:48,067: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:17:48,067: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1252.4086516686575 SOL/USD sell | at price $21.05 with status fill[0m
+2025-01-09 08:17:48,070: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:48,070: root: INFO: Current backtesting datetime 2023-08-26 00:00:00-04:00
+2025-01-09 08:17:48,071: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:48[0m
+2025-01-09 08:17:49,672: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:50,082: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:50[0m
+2025-01-09 08:17:50,083: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:50,083: root: INFO: Current backtesting datetime 2023-08-27 00:00:00-04:00
+2025-01-09 08:17:50,086: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:50[0m
+2025-01-09 08:17:51,428: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:51,844: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:51[0m
+2025-01-09 08:17:51,845: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:51,845: root: INFO: Current backtesting datetime 2023-08-28 00:00:00-04:00
+2025-01-09 08:17:51,848: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:51[0m
+2025-01-09 08:17:53,174: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:53,561: asyncio: INFO: [MLTrader] [32mNew order was created: market order of | 1271.139958107768 SOL/USD buy | of class bracket with status new[0m
+2025-01-09 08:17:53,565: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:53[0m
+2025-01-09 08:17:53,565: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:53,565: root: INFO: market order of | 1271.139958107768 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:53,565: root: INFO: market order of | 1271.139958107768 SOL/USD buy | of class bracket with status new was sent to broker backtesting
+2025-01-09 08:17:53,566: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1271.139958107768 SOL/USD buy | at price $20.78 of class bracket with status fill[0m
+2025-01-09 08:17:53,568: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:53,569: root: INFO: Current backtesting datetime 2023-08-29 00:00:00-04:00
+2025-01-09 08:17:53,570: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:53[0m
+2025-01-09 08:17:55,109: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:56,100: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:56[0m
+2025-01-09 08:17:56,100: asyncio: INFO: [MLTrader] Getting historical prices for (SOL, USD), 1 bars, 
+2025-01-09 08:17:56,102: asyncio: INFO: [MLTrader] [32mOrder was canceled: market order of | 1271.139958107768 SOL/USD sell | with status canceled[0m
+2025-01-09 08:17:56,104: root: INFO: Position MLTrader Position: 0.0 shares of SOL (2 orders) liquidated
+2025-01-09 08:17:56,104: asyncio: INFO: [MLTrader] [32mOrder was filled: market order of | 1271.139958107768 SOL/USD sell | at price $20.57 with status fill[0m
+2025-01-09 08:17:56,105: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:56,105: root: INFO: Current backtesting datetime 2023-08-30 00:00:00-04:00
+2025-01-09 08:17:56,106: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:56[0m
+2025-01-09 08:17:57,508: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:17:58,491: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:17:58[0m
+2025-01-09 08:17:58,492: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:17:58,492: root: INFO: Current backtesting datetime 2023-08-31 00:00:00-04:00
+2025-01-09 08:17:58,493: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:17:58[0m
+2025-01-09 08:18:00,245: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:18:00,658: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:18:00[0m
+2025-01-09 08:18:00,659: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:18:00,659: root: INFO: Current backtesting datetime 2023-09-01 00:00:00-04:00
+2025-01-09 08:18:00,661: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:18:00[0m
+2025-01-09 08:18:02,393: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-09 08:18:03,389: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-09 08:18:03[0m
+2025-01-09 08:18:03,389: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-09 08:18:03,389: root: INFO: Current backtesting datetime 2023-09-02 00:00:00-04:00
+2025-01-09 08:18:03,390: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-09 08:18:03[0m
+2025-01-09 08:18:05,004: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"

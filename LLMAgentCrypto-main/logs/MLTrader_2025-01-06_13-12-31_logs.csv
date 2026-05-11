@@ -1,0 +1,169 @@
+2025-01-06 13:12:33,186: asyncio: INFO: [MLTrader] Executing the initialize lifecycle method
+2025-01-06 13:12:33,194: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:33[0m
+2025-01-06 13:12:33,202: CcxtCacheDB: INFO: download ranges :
++--------+------+
+| from   | to   |
+|--------+------|
++--------+------+
+2025-01-06 13:12:33,207: CcxtCacheDB: INFO: cache ranges:
++----+----------------------------+----------------------------+
+|    | from                       | to                         |
+|----+----------------------------+----------------------------|
+|  0 | 2022-04-17T00:00:00.000000 | 2024-09-24T00:00:00.000000 |
++----+----------------------------+----------------------------+
+2025-01-06 13:12:35,345: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:35,732: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:35[0m
+2025-01-06 13:12:35,733: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:35,733: root: INFO: Current backtesting datetime 2023-12-02 00:00:00-05:00
+2025-01-06 13:12:35,736: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:35[0m
+2025-01-06 13:12:38,260: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:38,652: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:38[0m
+2025-01-06 13:12:38,653: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:38,653: root: INFO: Current backtesting datetime 2023-12-03 00:00:00-05:00
+2025-01-06 13:12:38,656: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:38[0m
+2025-01-06 13:12:40,192: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:40,578: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:40[0m
+2025-01-06 13:12:40,578: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:40,579: root: INFO: Current backtesting datetime 2023-12-04 00:00:00-05:00
+2025-01-06 13:12:40,581: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:40[0m
+2025-01-06 13:12:42,626: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:43,016: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:43[0m
+2025-01-06 13:12:43,016: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:43,017: root: INFO: Current backtesting datetime 2023-12-05 00:00:00-05:00
+2025-01-06 13:12:43,019: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:43[0m
+2025-01-06 13:12:46,732: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:47,117: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:47[0m
+2025-01-06 13:12:47,118: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:47,118: root: INFO: Current backtesting datetime 2023-12-06 00:00:00-05:00
+2025-01-06 13:12:47,121: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:47[0m
+2025-01-06 13:12:48,833: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:49,233: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:49[0m
+2025-01-06 13:12:49,233: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:49,234: root: INFO: Current backtesting datetime 2023-12-07 00:00:00-05:00
+2025-01-06 13:12:49,236: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:49[0m
+2025-01-06 13:12:52,250: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:52,657: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:52[0m
+2025-01-06 13:12:52,658: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:52,658: root: INFO: Current backtesting datetime 2023-12-08 00:00:00-05:00
+2025-01-06 13:12:52,659: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:52[0m
+2025-01-06 13:12:54,298: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:54,616: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:54[0m
+2025-01-06 13:12:54,617: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:54,617: root: INFO: Current backtesting datetime 2023-12-09 00:00:00-05:00
+2025-01-06 13:12:54,619: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:54[0m
+2025-01-06 13:12:56,559: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:56,915: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:56[0m
+2025-01-06 13:12:56,915: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:56,916: root: INFO: Current backtesting datetime 2023-12-10 00:00:00-05:00
+2025-01-06 13:12:56,918: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:56[0m
+2025-01-06 13:12:59,505: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:12:59,900: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:12:59[0m
+2025-01-06 13:12:59,900: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:12:59,900: root: INFO: Current backtesting datetime 2023-12-11 00:00:00-05:00
+2025-01-06 13:12:59,902: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:12:59[0m
+2025-01-06 13:13:01,838: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:02,227: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:02[0m
+2025-01-06 13:13:02,228: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:02,228: root: INFO: Current backtesting datetime 2023-12-12 00:00:00-05:00
+2025-01-06 13:13:02,231: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:02[0m
+2025-01-06 13:13:04,129: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:04,414: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:04[0m
+2025-01-06 13:13:04,414: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:04,415: root: INFO: Current backtesting datetime 2023-12-13 00:00:00-05:00
+2025-01-06 13:13:04,417: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:04[0m
+2025-01-06 13:13:06,520: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:06,821: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:06[0m
+2025-01-06 13:13:06,822: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:06,822: root: INFO: Current backtesting datetime 2023-12-14 00:00:00-05:00
+2025-01-06 13:13:06,823: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:06[0m
+2025-01-06 13:13:08,392: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:08,690: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:08[0m
+2025-01-06 13:13:08,690: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:08,691: root: INFO: Current backtesting datetime 2023-12-15 00:00:00-05:00
+2025-01-06 13:13:08,692: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:08[0m
+2025-01-06 13:13:10,523: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:11,395: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:11[0m
+2025-01-06 13:13:11,395: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:11,395: root: INFO: Current backtesting datetime 2023-12-16 00:00:00-05:00
+2025-01-06 13:13:11,397: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:11[0m
+2025-01-06 13:13:13,390: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:13,692: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:13[0m
+2025-01-06 13:13:13,693: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:13,693: root: INFO: Current backtesting datetime 2023-12-17 00:00:00-05:00
+2025-01-06 13:13:13,696: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:13[0m
+2025-01-06 13:13:16,205: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:16,596: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:16[0m
+2025-01-06 13:13:16,599: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:16,600: root: INFO: Current backtesting datetime 2023-12-18 00:00:00-05:00
+2025-01-06 13:13:16,601: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:16[0m
+2025-01-06 13:13:18,810: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:19,076: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:19[0m
+2025-01-06 13:13:19,076: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:19,077: root: INFO: Current backtesting datetime 2023-12-19 00:00:00-05:00
+2025-01-06 13:13:19,078: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:19[0m
+2025-01-06 13:13:22,085: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:22,446: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:22[0m
+2025-01-06 13:13:22,447: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:22,447: root: INFO: Current backtesting datetime 2023-12-20 00:00:00-05:00
+2025-01-06 13:13:22,450: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:22[0m
+2025-01-06 13:13:24,105: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:24,516: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:24[0m
+2025-01-06 13:13:24,517: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:24,517: root: INFO: Current backtesting datetime 2023-12-21 00:00:00-05:00
+2025-01-06 13:13:24,520: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:24[0m
+2025-01-06 13:13:26,329: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:26,725: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:26[0m
+2025-01-06 13:13:26,725: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:26,726: root: INFO: Current backtesting datetime 2023-12-22 00:00:00-05:00
+2025-01-06 13:13:26,728: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:26[0m
+2025-01-06 13:13:28,630: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:28,951: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:28[0m
+2025-01-06 13:13:28,952: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:28,952: root: INFO: Current backtesting datetime 2023-12-23 00:00:00-05:00
+2025-01-06 13:13:28,953: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:28[0m
+2025-01-06 13:13:30,555: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:30,944: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:30[0m
+2025-01-06 13:13:30,945: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:30,945: root: INFO: Current backtesting datetime 2023-12-24 00:00:00-05:00
+2025-01-06 13:13:30,947: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:30[0m
+2025-01-06 13:13:32,682: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:33,092: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:33[0m
+2025-01-06 13:13:33,092: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:33,093: root: INFO: Current backtesting datetime 2023-12-25 00:00:00-05:00
+2025-01-06 13:13:33,095: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:33[0m
+2025-01-06 13:13:35,263: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:35,616: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:35[0m
+2025-01-06 13:13:35,617: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:35,617: root: INFO: Current backtesting datetime 2023-12-26 00:00:00-05:00
+2025-01-06 13:13:35,620: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:35[0m
+2025-01-06 13:13:37,301: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:37,694: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:37[0m
+2025-01-06 13:13:37,694: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:37,695: root: INFO: Current backtesting datetime 2023-12-27 00:00:00-05:00
+2025-01-06 13:13:37,697: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:37[0m
+2025-01-06 13:13:39,447: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:39,835: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:39[0m
+2025-01-06 13:13:39,836: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:39,836: root: INFO: Current backtesting datetime 2023-12-28 00:00:00-05:00
+2025-01-06 13:13:39,838: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:39[0m
+2025-01-06 13:13:41,716: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:42,113: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:42[0m
+2025-01-06 13:13:42,113: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:42,114: root: INFO: Current backtesting datetime 2023-12-29 00:00:00-05:00
+2025-01-06 13:13:42,117: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:42[0m
+2025-01-06 13:13:43,879: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:44,291: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:44[0m
+2025-01-06 13:13:44,292: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:44,292: root: INFO: Current backtesting datetime 2023-12-30 00:00:00-05:00
+2025-01-06 13:13:44,295: asyncio: INFO: [MLTrader] [34mExecuting the on_trading_iteration lifecycle method at 2025-01-06 13:13:44[0m
+2025-01-06 13:13:46,390: httpx: INFO: HTTP Request: POST http://127.0.0.1:11434/api/generate "HTTP/1.1 200 OK"
+2025-01-06 13:13:46,690: asyncio: INFO: [MLTrader] [34mTrading iteration ended at 2025-01-06 13:13:46[0m
+2025-01-06 13:13:46,691: asyncio: INFO: [MLTrader] [34mSleeping for 86400 seconds[0m
+2025-01-06 13:13:46,691: root: INFO: Current backtesting datetime 2023-12-31 00:00:00-05:00
+2025-01-06 13:13:46,692: asyncio: INFO: [MLTrader] Executing the before_market_closes lifecycle method
+2025-01-06 13:13:46,692: asyncio: INFO: [MLTrader] Executing the after_market_closes lifecycle method
+2025-01-06 13:13:46,692: asyncio: INFO: [MLTrader] Executing the on_strategy_end lifecycle method
+2025-01-06 13:13:47,649: root: INFO: Backtesting finished
+2025-01-06 13:13:48,139: root: INFO: There were no trades in this backtest.
+2025-01-06 13:13:48,516: root: ERROR: Not enough data to create a tearsheet, at least 2 days of data are required. Skipping
+2025-01-06 13:13:48,516: backtest_stats: INFO: Backtest took 0:01:15.331108 for a speed of 0.000
